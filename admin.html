@@ -299,7 +299,11 @@ placeholder="اكتبي وصف المنتج"
 ></textarea>
 
 
-<label>الألوان</label>
+<label>
+<input type="checkbox" id="productHasColors">
+للمنتج ألوان
+</label>
+  <label>الألوان</label>
 <input
 id="productColors"
 placeholder="مثال: بني، أسود، أزرق"
@@ -470,7 +474,16 @@ imageUrls.push(result.secure_url);
 return imageUrls;
 }
 const $ = id => document.getElementById(id);
+const hasColors = $("productHasColors");
+const colorsInput = $("productColors");
 
+function toggleColors(){
+colorsInput.disabled = !hasColors.checked;
+if(!hasColors.checked) colorsInput.value = "";
+}
+
+hasColors.addEventListener("change", toggleColors);
+toggleColors();
 let categories = [];
 let products = [];
 let editingProductId = null;
