@@ -775,7 +775,8 @@ $("productMessage"),
 return;
 }
 
-
+const files = $("productImages").files;
+const imageUrls = files.length ? await uploadProductImages(files) : [];
 const data={
 
 name,
@@ -794,9 +795,7 @@ splitValues($("productColors").value),
 sizes:
 splitValues($("productSizes").value),
 
-image:
-$("productImage").value.trim(),
-
+images: imageUrls,
 active:
 $("productActive").checked,
 
