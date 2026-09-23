@@ -303,14 +303,20 @@ placeholder="اكتبي وصف المنتج"
 <input type="checkbox" id="productHasColors">
 للمنتج ألوان
 </label>
-  <label>الألوان</label>
-<input
-id="productColors"
-placeholder="مثال: بني، أسود، أزرق"
->
+
+<div id="colorVariantsSection" class="hidden">
+<h3>ألوان المنتج</h3>
+
+<div id="colorVariants"></div>
+
+<button type="button" id="addColorBtn">
++ إضافة لون
+</button>
+
 <small>
-افصلي بين الألوان بفاصلة.
+أضيفي كل لون مع الكمية والصور الخاصة به.
 </small>
+</div>
 
 
 <label>المقاسات</label>
@@ -475,15 +481,74 @@ return imageUrls;
 }
 const $ = id => document.getElementById(id);
 const hasColors = $("productHasColors");
-const colorsInput = $("productColors");
+const colorVariantsSection = $("colorVariantsSection");
+const colorVariants = $("colorVariants");
+const addColorBtn = $("addColorBtn");
 
 function toggleColors(){
-colorsInput.disabled = !hasColors.checked;
-if(!hasColors.checked) colorsInput.value = "";
+colorVariantsSection.classList.toggle("hidden", !hasColors.checked);
+
+if (!hasColors.checked) {
+colorVariants.innerHTML = "";
+}
 }
 
 hasColors.addEventListener("change", toggleColors);
 toggleColors();
+
+function addColorVariant(data = {}){
+const box = document.createElement("div");
+box.className = "color-variant";
+
+box.innerHTML = `
+<div>
+<label>اسم اللون</label>
+<input
+type="text"
+class="variantColor"
+placeholder="مثال: أصفر"
+value="${data.color || ""}"
+>
+</div>
+
+<div>
+<label>كمية هذا اللون</label>
+<input
+type="number"
+class="variantStock"
+min="0"
+value="${data.stock ?? 0}"
+>
+</div>
+
+<div>
+<label>صور هذا اللون</label>
+<input
+type="file"
+class="variantImages"
+accept="image/*"
+multiple
+>
+<small>يمكنك اختيار أكثر من صورة لهذا اللون</small>
+</div>
+
+<button type="button" class="removeColorBtn">
+حذف اللون
+</button>
+
+<hr>
+`;
+
+box.querySelector(".removeColorBtn").onclick = () => {
+box.remove();
+};
+
+colorVariants.appendChild(box);
+}
+
+addColorBtn.addEventListener("click", () => {
+addColorVariant();
+});
 let categories = [];
 let products = [];
 let editingProductId = null;
