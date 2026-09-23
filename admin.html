@@ -442,6 +442,33 @@ const db = getFirestore(app);
   
 const CLOUDINARY_CLOUD_NAME = "uovzwhia";
 const CLOUDINARY_UPLOAD_PRESET = "rimi_products";
+
+  async function uploadProductImages(files) {
+const imageUrls = [];
+
+for (const file of files) {
+const formData = new FormData();
+formData.append("file", file);
+formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+const response = await fetch(
+`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+{
+method: "POST",
+body: formData
+}
+);
+
+if (!response.ok) {
+throw new Error("فشل رفع إحدى الصور");
+}
+
+const result = await response.json();
+imageUrls.push(result.secure_url);
+}
+
+return imageUrls;
+}
 const $ = id => document.getElementById(id);
 
 let categories = [];
