@@ -2,55 +2,64 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Rimi Admin</title>
 
 <style>
 :root{
---burgundy:#741b35;
---dark:#541024;
---cream:#fffaf0;
---yellow:#fff3bd;
---white:#ffffff;
---text:#4c2730;
---border:#ead9b9;
+--b:#741b35;
+--d:#541024;
+--c:#fffaf0;
+--y:#fff3bd;
+--w:#ffffff;
+--t:#4c2730;
+--bd:#ead9b9;
+--mut:#80666d;
 }
 
-*{box-sizing:border-box}
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
 font-family:Arial,Tahoma,sans-serif;
-background:var(--cream);
-color:var(--text);
+background:var(--c);
+color:var(--t);
 }
 
-.hidden{display:none!important}
+.hidden{
+display:none !important;
+}
 
 header{
-background:var(--burgundy);
+background:var(--b);
 color:white;
-padding:16px;
+padding:15px 4%;
 display:flex;
-align-items:center;
 justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:5;
 }
 
 header h1{
 margin:0;
-font-size:24px;
+font-size:22px;
 }
 
 .container{
-width:min(1000px,92%);
-margin:25px auto;
+width:min(1050px,94%);
+margin:22px auto;
 }
 
 .card{
 background:white;
-border:1px solid var(--border);
+border:1px solid var(--bd);
 border-radius:20px;
-padding:20px;
+padding:19px;
 margin-bottom:18px;
 box-shadow:0 5px 20px #0000000b;
 }
@@ -61,26 +70,29 @@ margin:70px auto;
 }
 
 h2,h3{
-color:var(--burgundy);
+color:var(--b);
 }
 
 label{
 display:block;
-margin:12px 0 6px;
+margin:11px 0 6px;
 font-weight:bold;
 }
 
-input,textarea,select{
+input,
+textarea,
+select{
 width:100%;
-padding:13px;
-border:1px solid var(--border);
+padding:12px;
+border:1px solid var(--bd);
 border-radius:12px;
 background:white;
 font:inherit;
+color:var(--t);
 }
 
 textarea{
-min-height:100px;
+min-height:95px;
 resize:vertical;
 }
 
@@ -91,20 +103,25 @@ font:inherit;
 }
 
 .btn{
-background:var(--burgundy);
+background:var(--b);
 color:white;
-padding:12px 18px;
+padding:11px 16px;
 border-radius:12px;
-margin-top:12px;
+margin-top:10px;
 }
 
 .btn:hover{
-background:var(--dark);
+background:var(--d);
+}
+
+.btn:disabled{
+opacity:.55;
+cursor:not-allowed;
 }
 
 .btn-light{
-background:var(--yellow);
-color:var(--dark);
+background:var(--y);
+color:var(--d);
 }
 
 .btn-danger{
@@ -112,121 +129,240 @@ background:#a63245;
 color:white;
 }
 
+.btn-small{
+padding:8px 11px;
+margin:4px;
+}
+
 .message{
-margin-top:14px;
-padding:12px;
+margin-top:12px;
+padding:11px;
 border-radius:10px;
-background:var(--yellow);
+background:var(--y);
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:15px;
-}
-
-.item{
-border:1px solid var(--border);
-border-radius:14px;
-padding:14px;
-margin:10px 0;
-}
-
-.item-actions{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
+gap:14px;
 }
 
 .checks{
 display:flex;
-gap:18px;
+gap:16px;
 flex-wrap:wrap;
 margin-top:14px;
 }
 
-.checks label{
+.checks label,
+.inline-check{
 display:flex;
 align-items:center;
 gap:7px;
-margin:0;
 }
 
-.checks input{
+.checks input,
+.inline-check input{
 width:auto;
 }
 
-.product-img{
-width:90px;
-height:90px;
-border-radius:12px;
-object-fit:cover;
-border:1px solid var(--border);
+.item,
+.variant{
+border:1px solid var(--bd);
+border-radius:15px;
+padding:14px;
+margin:11px 0;
+}
+
+.variant{
+background:#fffdf8;
 }
 
 .top-row{
 display:flex;
 justify-content:space-between;
-align-items:center;
+align-items:flex-start;
 gap:12px;
 }
 
+.actions{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+}
+
+.thumbs{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-top:10px;
+}
+
+.thumb-wrap{
+position:relative;
+}
+
+.thumb{
+width:78px;
+height:78px;
+object-fit:cover;
+border:1px solid var(--bd);
+border-radius:11px;
+}
+
+.remove-img{
+position:absolute;
+top:-6px;
+left:-6px;
+width:24px;
+height:24px;
+border-radius:50%;
+background:#a63245;
+color:white;
+font-weight:bold;
+}
+
+.muted,
 small{
-opacity:.75;
+color:var(--mut);
+font-size:13px;
+}
+
+.badge{
+display:inline-block;
+padding:5px 9px;
+border-radius:20px;
+background:var(--y);
+margin:3px;
+font-size:12px;
+}
+
+.search{
+margin-bottom:12px;
+}
+
+hr{
+border:0;
+border-top:1px solid var(--bd);
+margin:18px 0;
+}
+
+.section-note{
+background:#fff8d9;
+border-radius:12px;
+padding:10px;
+margin:10px 0;
 }
 
 @media(max-width:650px){
-.grid{grid-template-columns:1fr}
+.grid{
+grid-template-columns:1fr;
+}
+
+.top-row{
+flex-direction:column;
+}
+
+.container{
+width:94%;
+}
 }
 </style>
 </head>
 
 <body>
 
+<!-- تسجيل الدخول -->
+
 <section id="loginScreen">
+
 <div class="card login-card">
 
 <h2>Rimi Admin 🎀</h2>
+
 <p>تسجيل دخول الإدارة</p>
 
 <label>البريد الإلكتروني</label>
-<input id="email" type="email" autocomplete="username">
+
+<input
+id="email"
+type="email"
+autocomplete="username"
+>
 
 <label>كلمة المرور</label>
-<input id="password" type="password" autocomplete="current-password">
 
-<button id="loginBtn" class="btn">
+<input
+id="password"
+type="password"
+autocomplete="current-password"
+>
+
+<button
+id="loginBtn"
+class="btn"
+>
 دخول
 </button>
 
-<div id="loginMessage" class="message hidden"></div>
+<div
+id="loginMessage"
+class="message hidden"
+></div>
 
 </div>
+
 </section>
 
 
-<section id="adminScreen" class="hidden">
+<!-- لوحة الإدارة -->
+
+<section
+id="adminScreen"
+class="hidden"
+>
 
 <header>
+
 <h1>Rimi Admin 🎀</h1>
 
-<button id="logoutBtn" class="btn btn-light">
+<button
+id="logoutBtn"
+class="btn btn-light"
+>
 تسجيل الخروج
 </button>
+
 </header>
+
 
 <div class="container">
 
+
+<!-- الأقسام -->
+
 <div class="card">
+
 <h2>الأقسام</h2>
 
+<div class="grid">
+
+<div>
+
 <label>اسم القسم</label>
+
 <input
 id="categoryName"
 placeholder="مثال: شنط"
 >
 
+</div>
+
+
+<div>
+
 <label>ترتيب القسم</label>
+
 <input
 id="categoryOrder"
 type="number"
@@ -234,20 +370,67 @@ value="1"
 min="1"
 >
 
-<button id="addCategoryBtn" class="btn">
+</div>
+
+</div>
+
+
+<div class="checks">
+
+<label>
+
+<input
+id="categoryActive"
+type="checkbox"
+checked
+>
+
+ظاهر في المتجر
+
+</label>
+
+</div>
+
+
+<button
+id="saveCategoryBtn"
+class="btn"
+>
 إضافة القسم
 </button>
 
-<div id="categoryMessage" class="message hidden"></div>
+
+<button
+id="cancelCategoryBtn"
+class="btn btn-light hidden"
+>
+إلغاء التعديل
+</button>
+
+
+<div
+id="categoryMessage"
+class="message hidden"
+></div>
+
 
 <hr>
 
+
 <h3>الأقسام الحالية</h3>
+
+
 <div id="categoriesBox">
+
 جاري التحميل...
-</div>
+
 </div>
 
+</div>
+
+
+
+<!-- إضافة وتعديل المنتجات -->
 
 <div class="card">
 
@@ -255,122 +438,215 @@ min="1"
 إضافة منتج
 </h2>
 
+
 <div class="grid">
 
+
 <div>
+
 <label>اسم المنتج</label>
+
 <input id="productName">
+
 </div>
 
+
 <div>
+
 <label>القسم</label>
+
 <select id="productCategory">
-<option value="">اختاري القسم</option>
+
+<option value="">
+اختاري القسم
+</option>
+
 </select>
+
 </div>
 
+
 <div>
+
 <label>السعر (ر.ع)</label>
+
 <input
 id="productPrice"
 type="number"
 step="0.001"
 min="0"
 >
+
 </div>
 
-<div>
+
+<div id="generalStockBox">
+
 <label>الكمية المتوفرة</label>
+
 <input
 id="productStock"
 type="number"
 min="0"
 value="0"
 >
+
 </div>
+
 
 </div>
 
 
 <label>وصف المنتج</label>
+
 <textarea
 id="productDescription"
 placeholder="اكتبي وصف المنتج"
 ></textarea>
 
 
-<label>
-<input type="checkbox" id="productHasColors">
+
+<!-- الألوان -->
+
+<label class="inline-check">
+
+<input
+type="checkbox"
+id="productHasColors"
+>
+
 للمنتج ألوان
+
 </label>
 
-<div id="colorVariantsSection" class="hidden">
+
+<div
+id="colorVariantsSection"
+class="hidden"
+>
+
 <h3>ألوان المنتج</h3>
+
 
 <div id="colorVariants"></div>
 
-<button type="button" id="addColorBtn">
+
+<button
+type="button"
+id="addColorBtn"
+class="btn btn-light"
+>
 + إضافة لون
 </button>
 
-<small>
-أضيفي كل لون مع الكمية والصور الخاصة به.
-</small>
+
+<div class="section-note">
+
+كل لون له مخزونه وصوره الخاصة.
+ويمكنك اختيار أكثر من صورة لكل لون.
+
+</div>
+
 </div>
 
 
+
+<!-- المقاسات -->
+
 <label>المقاسات</label>
+
 <input
 id="productSizes"
 placeholder="مثال: S، M، L"
 >
+
 <small>
 إذا المنتج ما له مقاسات اتركيه فارغًا.
 </small>
 
 
+
+<!-- صور المنتج العادي -->
+
+<div id="generalImagesBox">
+
 <label>صور المنتج</label>
+
 <input
 id="productImages"
 type="file"
 accept="image/*"
 multiple
 >
-<small>يمكنك اختيار أكثر من صورة للمنتج</small>
+
+<small>
+يمكنك اختيار أكثر من صورة.
+أول صورة تكون الصورة الرئيسية.
+</small>
+
+
+<div
+id="existingGeneralImages"
+class="thumbs"
+></div>
+
+</div>
+
+
+
+<!-- حالات المنتج -->
 
 <div class="checks">
 
+
 <label>
+
 <input
 id="productActive"
 type="checkbox"
 checked
 >
-متوفر
+
+ظاهر ومتاح
+
 </label>
 
+
 <label>
+
 <input
 id="productNew"
 type="checkbox"
 >
+
 جديد
+
 </label>
 
+
 <label>
+
 <input
 id="productFeatured"
 type="checkbox"
 >
+
 مميز
+
 </label>
+
 
 </div>
 
 
-<button id="saveProductBtn" class="btn">
+
+<button
+id="saveProductBtn"
+class="btn"
+>
 حفظ المنتج
 </button>
+
 
 <button
 id="cancelEditBtn"
@@ -379,15 +655,25 @@ class="btn btn-light hidden"
 إلغاء التعديل
 </button>
 
-<div id="productMessage" class="message hidden"></div>
+
+<div
+id="productMessage"
+class="message hidden"
+></div>
 
 </div>
 
 
+
+<!-- قائمة المنتجات -->
+
 <div class="card">
 
+
 <div class="top-row">
+
 <h2>المنتجات</h2>
+
 
 <button
 id="refreshProductsBtn"
@@ -395,22 +681,49 @@ class="btn btn-light"
 >
 تحديث
 </button>
+
 </div>
+
+
+<input
+id="productSearch"
+class="search"
+placeholder="ابحثي باسم المنتج..."
+>
+
+
+<select id="productFilter">
+
+<option value="">
+كل الأقسام
+</option>
+
+</select>
+
 
 <div id="productsBox">
+
 جاري التحميل...
-</div>
 
 </div>
+
+
+</div>
+
 
 </div>
 </section>
 
 
+
 <script type="module">
 
-import { initializeApp }
+
+import {
+initializeApp
+}
 from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
 
 import {
 getAuth,
@@ -419,6 +732,7 @@ signOut,
 onAuthStateChanged
 }
 from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
 
 import {
 getFirestore,
@@ -435,393 +749,1315 @@ orderBy
 from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 
-  const firebaseConfig = {
-  apiKey: "AIzaSyAtBFy0kQdyayn1F-Fxxpd04UD7kWFXBu4",
-  authDomain: "rimi-store.firebaseapp.com",
-  projectId: "rimi-store",
-  storageBucket: "rimi-store.firebasestorage.app",
-  messagingSenderId: "1640224406",
-  appId: "1:1640224406:web:c59fd821a5e91317aed4b7"
+
+const firebaseConfig = {
+
+apiKey:
+"AIzaSyAtBFy0kQdyayn1F-Fxxpd04UD7kWFXBu4",
+
+authDomain:
+"rimi-store.firebaseapp.com",
+
+projectId:
+"rimi-store",
+
+storageBucket:
+"rimi-store.firebasestorage.app",
+
+messagingSenderId:
+"1640224406",
+
+appId:
+"1:1640224406:web:c59fd821a5e91317aed4b7"
+
 };
 
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-  const ADMIN_UID = "DgO3JmIXqtPDLi498uiS1FIuIx32";
-  
-const CLOUDINARY_CLOUD_NAME = "uovzwhia";
-const CLOUDINARY_UPLOAD_PRESET = "rimi_products";
 
-  async function uploadProductImages(files) {
-const imageUrls = [];
+const app =
+initializeApp(firebaseConfig);
 
-for (const file of files) {
-const formData = new FormData();
-formData.append("file", file);
-formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
 
-const response = await fetch(
-`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
-{
-method: "POST",
-body: formData
-}
-);
+const auth =
+getAuth(app);
 
-if (!response.ok) {
-throw new Error("فشل رفع إحدى الصور");
-}
 
-const result = await response.json();
-imageUrls.push(result.secure_url);
-}
+const db =
+getFirestore(app);
 
-return imageUrls;
-}
-const $ = id => document.getElementById(id);
-const hasColors = $("productHasColors");
-const colorVariantsSection = $("colorVariantsSection");
-const colorVariants = $("colorVariants");
-const addColorBtn = $("addColorBtn");
 
-function toggleColors(){
-colorVariantsSection.classList.toggle("hidden", !hasColors.checked);
 
-if (!hasColors.checked) {
-colorVariants.innerHTML = "";
-}
-}
+const ADMIN_UID =
+"DgO3JmIXqtPDLi498uiS1FIuIx32";
 
-hasColors.addEventListener("change", toggleColors);
-toggleColors();
 
-function addColorVariant(data = {}){
-const box = document.createElement("div");
-box.className = "color-variant";
 
-box.innerHTML = `
-<div>
-<label>اسم اللون</label>
-<input
-type="text"
-class="variantColor"
-placeholder="مثال: أصفر"
-value="${data.color || ""}"
->
-</div>
+const CLOUDINARY_CLOUD_NAME =
+"uovzwhia";
 
-<div>
-<label>كمية هذا اللون</label>
-<input
-type="number"
-class="variantStock"
-min="0"
-value="${data.stock ?? 0}"
->
-</div>
 
-<div>
-<label>صور هذا اللون</label>
-<input
-type="file"
-class="variantImages"
-accept="image/*"
-multiple
->
-<small>يمكنك اختيار أكثر من صورة لهذا اللون</small>
-</div>
+const CLOUDINARY_UPLOAD_PRESET =
+"rimi_products";
 
-<button type="button" class="removeColorBtn">
-حذف اللون
-</button>
 
-<hr>
-`;
 
-box.querySelector(".removeColorBtn").onclick = () => {
-box.remove();
-};
+const $ =
+id => document.getElementById(id);
 
-colorVariants.appendChild(box);
-}
 
-addColorBtn.addEventListener("click", () => {
-addColorVariant();
-});
+
 let categories = [];
+
 let products = [];
+
 let editingProductId = null;
 
+let editingCategoryId = null;
 
-function showMessage(element,text){
 
-element.textContent=text;
+
+function showMessage(
+element,
+text
+){
+
+element.textContent = text;
+
 element.classList.remove("hidden");
 
+
 setTimeout(()=>{
+
 element.classList.add("hidden");
-},4000);
+
+},4500);
+
 }
 
 
-$("loginBtn").onclick = async ()=>{
 
-const email=$("email").value.trim();
-const password=$("password").value;
+function escapeHtml(value=""){
+
+return String(value)
+
+.replaceAll("&","&amp;")
+
+.replaceAll("<","&lt;")
+
+.replaceAll(">","&gt;")
+
+.replaceAll('"',"&quot;")
+
+.replaceAll("'","&#039;");
+
+}
+
+
+
+function splitValues(value){
+
+return value
+
+.split(/[,،]/)
+
+.map(value=>value.trim())
+
+.filter(Boolean);
+
+}
+
+
+
+/* رفع الصور */
+
+async function uploadProductImages(files){
+
+const imageUrls = [];
+
+
+for(const file of files){
+
+
+const formData =
+new FormData();
+
+
+formData.append(
+"file",
+file
+);
+
+
+formData.append(
+"upload_preset",
+CLOUDINARY_UPLOAD_PRESET
+);
+
+
+const response =
+await fetch(
+
+`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+
+{
+
+method:"POST",
+
+body:formData
+
+}
+
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"فشل رفع إحدى الصور."
+);
+
+}
+
+
+const result =
+await response.json();
+
+
+imageUrls.push(
+result.secure_url
+);
+
+}
+
+
+return imageUrls;
+
+}
+
+
+
+/* صور مصغرة */
+
+function imageThumbs(
+urls=[],
+removable=false
+){
+
+return urls.map(
+(url,index)=>`
+
+<span class="thumb-wrap">
+
+<img
+class="thumb"
+src="${escapeHtml(url)}"
+alt=""
+>
+
+${
+removable
+
+?
+
+`
+<button
+type="button"
+class="remove-img"
+data-remove-image="${index}"
+>
+×
+</button>
+`
+
+:
+
+""
+}
+
+</span>
+
+`
+
+).join("");
+
+}
+
+
+
+/* تسجيل الدخول */
+
+$("loginBtn").onclick =
+async ()=>{
+
+
+const email =
+$("email").value.trim();
+
+
+const password =
+$("password").value;
+
 
 if(!email || !password){
+
 showMessage(
 $("loginMessage"),
 "اكتبي البريد وكلمة المرور."
 );
+
 return;
+
 }
 
-$("loginBtn").disabled=true;
-$("loginBtn").textContent="جاري الدخول...";
+
+$("loginBtn").disabled = true;
+
+$("loginBtn").textContent =
+"جاري الدخول...";
+
 
 try{
 
+
 await signInWithEmailAndPassword(
+
 auth,
+
 email,
+
 password
+
 );
+
 
 }catch(error){
 
+
 console.error(error);
 
+
 showMessage(
+
 $("loginMessage"),
-"خطأ Firebase: " + error.code
+
+"تعذر تسجيل الدخول. تأكدي من البريد وكلمة المرور."
+
 );
+
 
 }finally{
 
-$("loginBtn").disabled=false;
-$("loginBtn").textContent="دخول";
+
+$("loginBtn").disabled = false;
+
+$("loginBtn").textContent =
+"دخول";
+
 }
+
 };
 
 
-$("password").addEventListener("keydown",event=>{
 
-if(event.key==="Enter"){
+$("password").addEventListener(
+
+"keydown",
+
+event=>{
+
+if(event.key === "Enter"){
+
 $("loginBtn").click();
+
 }
 
-});
+}
+
+);
 
 
-$("logoutBtn").onclick = async ()=>{
+
+$("logoutBtn").onclick =
+async ()=>{
 
 await signOut(auth);
 
 };
 
 
-onAuthStateChanged(auth,async user=>{
 
-if(user){
+onAuthStateChanged(
 
-$("loginScreen").classList.add("hidden");
-$("adminScreen").classList.remove("hidden");
+auth,
+
+async user=>{
+
+
+if(
+user &&
+user.uid === ADMIN_UID
+){
+
+
+$("loginScreen")
+.classList.add("hidden");
+
+
+$("adminScreen")
+.classList.remove("hidden");
+
 
 await loadCategories();
+
 await loadProducts();
+
 
 }else{
 
-$("adminScreen").classList.add("hidden");
-$("loginScreen").classList.remove("hidden");
+
+$("adminScreen")
+.classList.add("hidden");
+
+
+$("loginScreen")
+.classList.remove("hidden");
+
+
+if(user){
+
+await signOut(auth);
 
 }
 
-});
+}
+
+}
+
+);
 
 
-$("addCategoryBtn").onclick = async ()=>{
 
-const name=$("categoryName").value.trim();
-const order=Number($("categoryOrder").value)||1;
+/* =========================
+إدارة الأقسام
+========================= */
+
+
+$("saveCategoryBtn").onclick =
+async ()=>{
+
+
+const name =
+$("categoryName").value.trim();
+
+
+const order =
+Math.max(
+1,
+Number(
+$("categoryOrder").value
+) || 1
+);
+
+
+const active =
+$("categoryActive").checked;
+
 
 if(!name){
 
 showMessage(
+
 $("categoryMessage"),
+
 "اكتبي اسم القسم."
+
 );
 
 return;
+
 }
+
+
+$("saveCategoryBtn").disabled =
+true;
+
 
 try{
 
-await addDoc(
-collection(db,"categories"),
-{
+
+const data = {
+
 name,
+
 order,
-active:true,
-createdAt:serverTimestamp()
+
+active,
+
+updatedAt:
+serverTimestamp()
+
+};
+
+
+if(editingCategoryId){
+
+
+await updateDoc(
+
+doc(
+db,
+"categories",
+editingCategoryId
+),
+
+data
+
+);
+
+
+}else{
+
+
+data.createdAt =
+serverTimestamp();
+
+
+await addDoc(
+
+collection(
+db,
+"categories"
+),
+
+data
+
+);
+
 }
-);
 
-$("categoryName").value="";
-$("categoryOrder").value="1";
 
-showMessage(
-$("categoryMessage"),
-"تمت إضافة القسم ✓"
-);
+resetCategoryForm();
+
 
 await loadCategories();
 
+
+showMessage(
+
+$("categoryMessage"),
+
+"تم حفظ القسم ✓"
+
+);
+
+
 }catch(error){
+
 
 console.error(error);
 
+
 showMessage(
+
 $("categoryMessage"),
-"تعذر إضافة القسم. سنراجع صلاحيات Firestore."
+
+"تعذر حفظ القسم."
+
 );
+
+
+}finally{
+
+
+$("saveCategoryBtn").disabled =
+false;
+
 }
+
 };
+
+
+
+$("cancelCategoryBtn").onclick =
+()=>{
+
+resetCategoryForm();
+
+};
+
+
+
+function resetCategoryForm(){
+
+
+editingCategoryId = null;
+
+
+$("categoryName").value = "";
+
+
+$("categoryOrder").value =
+"1";
+
+
+$("categoryActive").checked =
+true;
+
+
+$("saveCategoryBtn").textContent =
+"إضافة القسم";
+
+
+$("cancelCategoryBtn")
+.classList.add("hidden");
+
+}
+
 
 
 async function loadCategories(){
 
-categories=[];
+
+categories = [];
+
 
 try{
 
-const snap=await getDocs(
+
+const snapshot =
+await getDocs(
+
 query(
-collection(db,"categories"),
+
+collection(
+db,
+"categories"
+),
+
 orderBy("order")
+
 )
+
 );
 
-snap.forEach(d=>{
+
+snapshot.forEach(
+
+item=>{
+
 
 categories.push({
-id:d.id,
-...d.data()
-});
+
+id:item.id,
+
+...item.data()
 
 });
+
+}
+
+);
+
 
 renderCategories();
-fillCategorySelect();
+
+
+fillCategorySelects();
+
 
 }catch(error){
 
+
 console.error(error);
 
-$("categoriesBox").textContent=
+
+$("categoriesBox").textContent =
 "تعذر تحميل الأقسام.";
 
 }
+
 }
+
 
 
 function renderCategories(){
 
-const box=$("categoriesBox");
+
+const box =
+$("categoriesBox");
+
 
 if(!categories.length){
 
-box.innerHTML=
+
+box.innerHTML =
 "<p>ما فيه أقسام حتى الآن.</p>";
 
+
 return;
+
 }
 
-box.innerHTML=categories.map(cat=>`
+
+box.innerHTML =
+categories.map(
+
+category=>`
 
 <div class="item">
 
+<div class="top-row">
+
+<div>
+
 <strong>
-${escapeHtml(cat.name)}
+${escapeHtml(category.name)}
 </strong>
 
 <p>
 الترتيب:
-${Number(cat.order)||1}
+${Number(category.order) || 1}
 </p>
 
+<span class="badge">
+
+${
+category.active === false
+? "مخفي"
+: "ظاهر"
+}
+
+</span>
+
+</div>
+
+
+<div class="actions">
+
 <button
-class="btn btn-danger"
-data-delete-category="${cat.id}"
+class="btn btn-small"
+data-edit-category="${category.id}"
+>
+تعديل
+</button>
+
+
+<button
+class="btn btn-danger btn-small"
+data-delete-category="${category.id}"
 >
 حذف
 </button>
 
 </div>
 
-`).join("");
+</div>
+
+</div>
+
+`
+
+).join("");
 
 
 box
-.querySelectorAll("[data-delete-category]")
-.forEach(btn=>{
+.querySelectorAll(
+"[data-edit-category]"
+)
+.forEach(button=>{
 
-btn.onclick=async ()=>{
 
-if(!confirm("هل تريدين حذف هذا القسم؟")){
+button.onclick =
+()=>{
+
+
+const category =
+categories.find(
+
+item=>
+item.id ===
+button.dataset.editCategory
+
+);
+
+
+if(!category){
 return;
 }
 
+
+editingCategoryId =
+category.id;
+
+
+$("categoryName").value =
+category.name || "";
+
+
+$("categoryOrder").value =
+category.order || 1;
+
+
+$("categoryActive").checked =
+category.active !== false;
+
+
+$("saveCategoryBtn").textContent =
+"حفظ تعديل القسم";
+
+
+$("cancelCategoryBtn")
+.classList.remove("hidden");
+
+};
+
+});
+
+
+box
+.querySelectorAll(
+"[data-delete-category]"
+)
+.forEach(button=>{
+
+
+button.onclick =
+async ()=>{
+
+
+const categoryId =
+button.dataset.deleteCategory;
+
+
+const hasProducts =
+products.some(
+
+product=>
+product.categoryId ===
+categoryId
+
+);
+
+
+if(hasProducts){
+
+
+alert(
+"هذا القسم يحتوي على منتجات. انقلي المنتجات أولًا أو أخفي القسم بدل حذفه."
+);
+
+
+return;
+
+}
+
+
+if(
+!confirm(
+"هل تريدين حذف هذا القسم؟"
+)
+){
+
+return;
+
+}
+
+
 try{
 
+
 await deleteDoc(
+
 doc(
 db,
 "categories",
-btn.dataset.deleteCategory
+categoryId
 )
+
 );
+
 
 await loadCategories();
 
+
 }catch(error){
+
 
 console.error(error);
 
-alert("تعذر حذف القسم.");
+
+alert(
+"تعذر حذف القسم."
+);
 
 }
 
 };
 
 });
+
 }
 
 
-function fillCategorySelect(){
 
-const select=$("productCategory");
-const current=select.value;
+function fillCategorySelects(){
 
-select.innerHTML=
-'<option value="">اختاري القسم</option>'+
-categories.map(cat=>
-`<option value="${cat.id}">
-${escapeHtml(cat.name)}
-</option>`
+
+const options =
+categories.map(
+
+category=>`
+
+<option
+value="${category.id}"
+>
+
+${escapeHtml(category.name)}
+
+${
+category.active === false
+? " (مخفي)"
+: ""
+}
+
+</option>
+
+`
+
 ).join("");
 
-select.value=current;
+
+const productCurrent =
+$("productCategory").value;
+
+
+const filterCurrent =
+$("productFilter").value;
+
+
+$("productCategory").innerHTML =
+
+`
+<option value="">
+اختاري القسم
+</option>
+`
+
++ options;
+
+
+$("productFilter").innerHTML =
+
+`
+<option value="">
+كل الأقسام
+</option>
+`
+
++ options;
+
+
+$("productCategory").value =
+productCurrent;
+
+
+$("productFilter").value =
+filterCurrent;
+
 }
 
 
-$("saveProductBtn").onclick = async ()=>{
 
-const name=$("productName").value.trim();
-const categoryId=$("productCategory").value;
-const price=Number($("productPrice").value);
+/* =========================
+نظام الألوان
+========================= */
+
+
+function toggleColors(){
+
+
+const hasColors =
+$("productHasColors").checked;
+
+
+$("colorVariantsSection")
+.classList.toggle(
+"hidden",
+!hasColors
+);
+
+
+$("generalStockBox")
+.classList.toggle(
+"hidden",
+hasColors
+);
+
+
+$("generalImagesBox")
+.classList.toggle(
+"hidden",
+hasColors
+);
+
+
+if(
+hasColors &&
+!$("colorVariants").children.length
+){
+
+addColorVariant();
+
+}
+
+}
+
+
+
+$("productHasColors")
+.addEventListener(
+"change",
+toggleColors
+);
+
+
+
+$("addColorBtn").onclick =
+()=>{
+
+addColorVariant();
+
+};
+
+
+
+function addColorVariant(
+data={}
+){
+
+
+const box =
+document.createElement("div");
+
+
+box.className =
+"variant";
+
+
+box.dataset.oldImages =
+JSON.stringify(
+data.images || []
+);
+
+
+box.innerHTML = `
+
+<div class="grid">
+
+<div>
+
+<label>
+اسم اللون
+</label>
+
+<input
+class="variantColor"
+placeholder="مثال: بني"
+value="${escapeHtml(data.color || "")}"
+>
+
+</div>
+
+
+<div>
+
+<label>
+كمية هذا اللون
+</label>
+
+<input
+type="number"
+min="0"
+class="variantStock"
+value="${Number(data.stock) || 0}"
+>
+
+</div>
+
+</div>
+
+
+<label>
+صور هذا اللون
+</label>
+
+
+<input
+type="file"
+class="variantImages"
+accept="image/*"
+multiple
+>
+
+
+<small>
+يمكنك اختيار أي عدد من الصور لهذا اللون.
+</small>
+
+
+<div
+class="variantExisting thumbs"
+>
+
+${
+imageThumbs(
+data.images || [],
+true
+)
+}
+
+</div>
+
+
+<button
+type="button"
+class="btn btn-danger btn-small removeVariant"
+>
+حذف اللون
+</button>
+
+`;
+
+
+box
+.querySelector(
+".removeVariant"
+)
+.onclick =
+()=>{
+
+box.remove();
+
+};
+
+
+wireVariantImageRemoval(box);
+
+
+$("colorVariants")
+.appendChild(box);
+
+}
+
+
+
+function wireVariantImageRemoval(
+box
+){
+
+
+box
+.querySelectorAll(
+"[data-remove-image]"
+)
+.forEach(button=>{
+
+
+button.onclick =
+()=>{
+
+
+const images =
+JSON.parse(
+box.dataset.oldImages ||
+"[]"
+);
+
+
+images.splice(
+
+Number(
+button.dataset.removeImage
+),
+
+1
+
+);
+
+
+box.dataset.oldImages =
+JSON.stringify(images);
+
+
+box
+.querySelector(
+".variantExisting"
+)
+.innerHTML =
+imageThumbs(
+images,
+true
+);
+
+
+wireVariantImageRemoval(
+box
+);
+
+};
+
+});
+
+}
+
+
+
+/* جمع الألوان قبل الحفظ */
+
+async function collectColorVariants(){
+
+
+const result = [];
+
+
+const boxes =
+[
+...$("colorVariants").children
+];
+
+
+if(!boxes.length){
+
+throw new Error(
+"أضيفي لونًا واحدًا على الأقل."
+);
+
+}
+
+
+for(
+const box of boxes
+){
+
+
+const color =
+box
+.querySelector(
+".variantColor"
+)
+.value
+.trim();
+
+
+if(!color){
+
+throw new Error(
+"اكتبي اسم كل لون."
+);
+
+}
+
+
+const stock =
+Math.max(
+
+0,
+
+Number(
+
+box
+.querySelector(
+".variantStock"
+)
+.value
+
+) || 0
+
+);
+
+
+let images =
+JSON.parse(
+
+box.dataset.oldImages ||
+"[]"
+
+);
+
+
+const files =
+box
+.querySelector(
+".variantImages"
+)
+.files;
+
+
+if(files.length){
+
+
+const uploaded =
+await uploadProductImages(
+files
+);
+
+
+images.push(
+...uploaded
+);
+
+}
+
+
+if(!images.length){
+
+
+throw new Error(
+
+`أضيفي صورة واحدة على الأقل للون ${color}.`
+
+);
+
+}
+
+
+result.push({
+
+color,
+
+stock,
+
+images
+
+});
+
+}
+
+
+return result;
+
+}
+  /* =========================
+حفظ المنتجات
+========================= */
+
+$("saveProductBtn").onclick =
+async ()=>{
+
+const name =
+$("productName").value.trim();
+
+const categoryId =
+$("productCategory").value;
+
+const price =
+Number(
+$("productPrice").value
+);
+
+const hasColors =
+$("productHasColors").checked;
+
 
 if(!name){
 
@@ -833,6 +2069,7 @@ $("productMessage"),
 return;
 }
 
+
 if(!categoryId){
 
 showMessage(
@@ -843,37 +2080,153 @@ $("productMessage"),
 return;
 }
 
-if(Number.isNaN(price)){
+
+if(
+Number.isNaN(price) ||
+price < 0
+){
 
 showMessage(
 $("productMessage"),
-"اكتبي السعر."
+"اكتبي سعرًا صحيحًا."
 );
 
 return;
 }
 
-const files = $("productImages").files;
-const imageUrls = files.length ? await uploadProductImages(files) : [];
-const data={
+
+const saveButton =
+$("saveProductBtn");
+
+
+saveButton.disabled =
+true;
+
+
+saveButton.textContent =
+"جاري الحفظ...";
+
+
+try{
+
+
+let variants = [];
+
+let images = [];
+
+let stock = 0;
+
+
+if(hasColors){
+
+
+variants =
+await collectColorVariants();
+
+
+stock =
+variants.reduce(
+
+(total,variant)=>
+total +
+Number(variant.stock || 0),
+
+0
+
+);
+
+
+}else{
+
+
+if(editingProductId){
+
+
+images =
+JSON.parse(
+
+$("existingGeneralImages")
+.dataset.oldImages ||
+"[]"
+
+);
+
+}
+
+
+const files =
+$("productImages").files;
+
+
+if(files.length){
+
+
+const uploadedImages =
+await uploadProductImages(
+files
+);
+
+
+images.push(
+...uploadedImages
+);
+
+}
+
+
+stock =
+Math.max(
+
+0,
+
+Number(
+$("productStock").value
+) || 0
+
+);
+
+
+if(!images.length){
+
+
+throw new Error(
+"أضيفي صورة واحدة على الأقل للمنتج."
+);
+
+}
+
+}
+
+
+const sizes =
+splitValues(
+$("productSizes").value
+);
+
+
+const productData = {
 
 name,
+
 categoryId,
+
 price,
 
-stock:
-Number($("productStock").value)||0,
-
 description:
-$("productDescription").value.trim(),
+$("productDescription")
+.value
+.trim(),
 
-colors:
-splitValues($("productColors").value),
+hasColors,
 
-sizes:
-splitValues($("productSizes").value),
+variants,
 
-images: imageUrls,
+images,
+
+stock,
+
+sizes,
+
 active:
 $("productActive").checked,
 
@@ -889,189 +2242,563 @@ serverTimestamp()
 };
 
 
-try{
+const wasEditing =
+Boolean(editingProductId);
+
 
 if(editingProductId){
 
+
 await updateDoc(
+
 doc(
 db,
 "products",
 editingProductId
 ),
-data
+
+productData
+
 );
 
-showMessage(
-$("productMessage"),
-"تم تعديل المنتج ✓"
-);
 
 }else{
 
-data.createdAt=serverTimestamp();
+
+productData.createdAt =
+serverTimestamp();
+
 
 await addDoc(
-collection(db,"products"),
-data
-);
 
-showMessage(
-$("productMessage"),
-"تمت إضافة المنتج ✓"
+collection(
+db,
+"products"
+),
+
+productData
+
 );
 
 }
+
 
 resetProductForm();
 
+
 await loadProducts();
+
+
+showMessage(
+
+$("productMessage"),
+
+wasEditing
+
+? "تم تعديل المنتج ✓"
+
+: "تمت إضافة المنتج ✓"
+
+);
+
 
 }catch(error){
 
+
 console.error(error);
 
+
 showMessage(
+
 $("productMessage"),
-"تعذر حفظ المنتج. سنراجع صلاحيات Firestore."
+
+error.message ||
+"تعذر حفظ المنتج."
+
 );
 
+
+}finally{
+
+
+saveButton.disabled =
+false;
+
+
+saveButton.textContent =
+
+editingProductId
+
+? "حفظ التعديلات"
+
+: "حفظ المنتج";
+
 }
+
 };
 
 
+
+/* =========================
+تحميل المنتجات
+========================= */
+
 async function loadProducts(){
 
-products=[];
+
+products = [];
+
 
 try{
 
-const snap=await getDocs(
-collection(db,"products")
+
+const snapshot =
+await getDocs(
+
+collection(
+db,
+"products"
+)
+
 );
 
-snap.forEach(d=>{
+
+snapshot.forEach(
+
+item=>{
+
 
 products.push({
-id:d.id,
-...d.data()
-});
+
+id:item.id,
+
+...item.data()
 
 });
+
+}
+
+);
+
 
 renderProducts();
 
+
 }catch(error){
+
 
 console.error(error);
 
-$("productsBox").textContent=
+
+$("productsBox").textContent =
 "تعذر تحميل المنتجات.";
 
 }
+
 }
 
+
+
+/* =========================
+عرض المنتجات
+========================= */
 
 function renderProducts(){
 
-const box=$("productsBox");
 
-if(!products.length){
+const searchText =
+$("productSearch")
+.value
+.trim()
+.toLowerCase();
 
-box.innerHTML=
-"<p>ما فيه منتجات حتى الآن.</p>";
+
+const categoryFilter =
+$("productFilter").value;
+
+
+const filteredProducts =
+products.filter(
+
+product=>{
+
+
+const matchesSearch =
+
+!searchText ||
+
+String(
+product.name || ""
+)
+.toLowerCase()
+.includes(searchText);
+
+
+const matchesCategory =
+
+!categoryFilter ||
+
+product.categoryId ===
+categoryFilter;
+
+
+return (
+matchesSearch &&
+matchesCategory
+);
+
+}
+
+);
+
+
+const box =
+$("productsBox");
+
+
+if(!filteredProducts.length){
+
+
+box.innerHTML =
+"<p>ما فيه منتجات مطابقة.</p>";
+
 
 return;
+
 }
 
 
-box.innerHTML=products.map(product=>{
+box.innerHTML =
+filteredProducts.map(
 
-const category=
+product=>{
+
+
+const category =
 categories.find(
-cat=>cat.id===product.categoryId
+
+item=>
+item.id ===
+product.categoryId
+
 );
+
+
+let productImages = [];
+
+
+if(product.hasColors){
+
+
+productImages =
+(
+product.variants || []
+)
+.flatMap(
+
+variant=>
+variant.images || []
+
+);
+
+
+}else{
+
+
+productImages =
+product.images || [];
+
+
+/* توافق مع أي منتج قديم */
+
+if(
+!productImages.length &&
+product.image
+){
+
+productImages =
+[product.image];
+
+}
+
+}
+
+
+let totalStock = 0;
+
+
+if(product.hasColors){
+
+
+totalStock =
+(
+product.variants || []
+)
+.reduce(
+
+(total,variant)=>
+
+total +
+Number(
+variant.stock || 0
+),
+
+0
+
+);
+
+
+}else{
+
+
+totalStock =
+Number(
+product.stock || 0
+);
+
+}
+
 
 return `
 
 <div class="item">
 
+
 <div class="top-row">
+
 
 <div>
 
+
 <strong>
-${escapeHtml(product.name)}
+${escapeHtml(
+product.name
+)}
 </strong>
 
+
 <p>
+
 القسم:
+
 ${escapeHtml(
-category?.name || "غير محدد"
+category?.name ||
+"غير محدد"
 )}
+
 </p>
 
+
 <p>
+
 السعر:
-${Number(product.price || 0).toFixed(3)}
+
+${Number(
+product.price || 0
+).toFixed(3)}
+
 ر.ع
+
 </p>
+
 
 <p>
+
 المخزون:
-${Number(product.stock || 0)}
+
+${totalStock}
+
 </p>
 
-</div>
+
+<div>
+
 
 ${
-product.image
+totalStock === 0
+
 ?
-`<img
-class="product-img"
-src="${escapeHtml(product.image)}"
-alt=""
->`
+
+`
+<span class="badge">
+نفد المخزون
+</span>
+`
+
 :
+
 ""
 }
 
+
+${
+product.active === false
+
+?
+
+`
+<span class="badge">
+مخفي
+</span>
+`
+
+:
+
+`
+<span class="badge">
+ظاهر
+</span>
+`
+}
+
+
+${
+product.isNew
+
+?
+
+`
+<span class="badge">
+جديد
+</span>
+`
+
+:
+
+""
+}
+
+
+${
+product.featured
+
+?
+
+`
+<span class="badge">
+مميز
+</span>
+`
+
+:
+
+""
+}
+
+
+${
+product.hasColors
+
+?
+
+`
+<span class="badge">
+
+${
+(
+product.variants ||
+[]
+).length
+}
+
+ألوان
+
+</span>
+`
+
+:
+
+""
+}
+
+
 </div>
 
 
-<div class="item-actions">
+</div>
+
+
+${
+productImages[0]
+
+?
+
+`
+<img
+class="thumb"
+src="${escapeHtml(
+productImages[0]
+)}"
+alt=""
+>
+`
+
+:
+
+""
+}
+
+
+</div>
+
+
+<div class="actions">
+
 
 <button
-class="btn"
+class="btn btn-small"
 data-edit-product="${product.id}"
 >
 تعديل
 </button>
 
+
 <button
-class="btn btn-danger"
+class="btn btn-light btn-small"
+data-copy-product="${product.id}"
+>
+نسخ المنتج
+</button>
+
+
+<button
+class="btn btn-danger btn-small"
 data-delete-product="${product.id}"
 >
 حذف
 </button>
 
+
 </div>
+
 
 </div>
 
 `;
 
-}).join("");
+}
+
+).join("");
+
 
 
 box
-.querySelectorAll("[data-edit-product]")
-.forEach(btn=>{
+.querySelectorAll(
+"[data-edit-product]"
+)
+.forEach(button=>{
 
-btn.onclick=()=>{
+
+button.onclick =
+()=>{
+
 
 startProductEdit(
-btn.dataset.editProduct
+
+button.dataset.editProduct,
+
+false
+
 );
 
 };
@@ -1079,162 +2806,485 @@ btn.dataset.editProduct
 });
 
 
+
 box
-.querySelectorAll("[data-delete-product]")
-.forEach(btn=>{
+.querySelectorAll(
+"[data-copy-product]"
+)
+.forEach(button=>{
 
-btn.onclick=async ()=>{
 
-if(!confirm("هل تريدين حذف هذا المنتج؟")){
+button.onclick =
+()=>{
+
+
+startProductEdit(
+
+button.dataset.copyProduct,
+
+true
+
+);
+
+};
+
+});
+
+
+
+box
+.querySelectorAll(
+"[data-delete-product]"
+)
+.forEach(button=>{
+
+
+button.onclick =
+async ()=>{
+
+
+if(
+!confirm(
+"هل تريدين حذف هذا المنتج نهائيًا؟"
+)
+){
+
 return;
+
 }
+
 
 try{
 
+
 await deleteDoc(
+
 doc(
 db,
 "products",
-btn.dataset.deleteProduct
+button.dataset.deleteProduct
 )
+
 );
+
 
 await loadProducts();
 
+
 }catch(error){
 
+
 console.error(error);
-alert("تعذر حذف المنتج.");
+
+
+alert(
+"تعذر حذف المنتج."
+);
 
 }
 
 };
 
 });
+
 }
 
 
-function startProductEdit(id){
 
-const product=
-products.find(p=>p.id===id);
+/* =========================
+البحث والفلترة
+========================= */
 
-if(!product){
-return;
-}
+$("productSearch")
+.addEventListener(
 
-editingProductId=id;
+"input",
 
-$("productFormTitle").textContent=
-"تعديل المنتج";
+renderProducts
 
-$("productName").value=
-product.name || "";
-
-$("productCategory").value=
-product.categoryId || "";
-
-$("productPrice").value=
-product.price ?? "";
-
-$("productStock").value=
-product.stock ?? 0;
-
-$("productDescription").value=
-product.description || "";
-
-$("productColors").value=
-(product.colors || []).join("، ");
-
-$("productSizes").value=
-(product.sizes || []).join("، ");
-
-$("productImage").value=
-product.image || "";
-
-$("productActive").checked=
-product.active !== false;
-
-$("productNew").checked=
-!!product.isNew;
-
-$("productFeatured").checked=
-!!product.featured;
-
-$("saveProductBtn").textContent=
-"حفظ التعديلات";
-
-$("cancelEditBtn").classList.remove(
-"hidden"
 );
 
-window.scrollTo({
-top:document.body.scrollHeight/3,
-behavior:"smooth"
-});
+
+$("productFilter")
+.addEventListener(
+
+"change",
+
+renderProducts
+
+);
+
+
+$("refreshProductsBtn").onclick =
+async ()=>{
+
+await loadProducts();
+
+};
+
+
+
+/* =========================
+تعديل / نسخ المنتج
+========================= */
+
+function startProductEdit(
+id,
+copyProduct=false
+){
+
+
+const product =
+products.find(
+
+item=>
+item.id === id
+
+);
+
+
+if(!product){
+
+return;
+
 }
 
 
-$("cancelEditBtn").onclick=()=>{
+editingProductId =
+
+copyProduct
+
+? null
+
+: id;
+
+
+$("productFormTitle")
+.textContent =
+
+copyProduct
+
+? "نسخ منتج"
+
+: "تعديل المنتج";
+
+
+
+$("productName").value =
+
+copyProduct
+
+? `${product.name || ""} - نسخة`
+
+: product.name || "";
+
+
+
+$("productCategory").value =
+product.categoryId || "";
+
+
+
+$("productPrice").value =
+product.price ?? "";
+
+
+
+$("productStock").value =
+product.stock ?? 0;
+
+
+
+$("productDescription").value =
+product.description || "";
+
+
+
+$("productSizes").value =
+(
+product.sizes || []
+)
+.join("، ");
+
+
+
+$("productActive").checked =
+product.active !== false;
+
+
+
+$("productNew").checked =
+Boolean(
+product.isNew
+);
+
+
+
+$("productFeatured").checked =
+Boolean(
+product.featured
+);
+
+
+
+$("productHasColors").checked =
+Boolean(
+product.hasColors
+);
+
+
+
+$("colorVariants").innerHTML =
+"";
+
+
+
+if(product.hasColors){
+
+
+(
+product.variants || []
+)
+.forEach(
+
+variant=>{
+
+addColorVariant(
+variant
+);
+
+}
+
+);
+
+}
+
+
+
+let existingImages =
+product.images || [];
+
+
+if(
+!existingImages.length &&
+product.image
+){
+
+existingImages =
+[product.image];
+
+}
+
+
+
+$("existingGeneralImages")
+.dataset.oldImages =
+JSON.stringify(
+existingImages
+);
+
+
+renderGeneralExistingImages();
+
+
+toggleColors();
+
+
+
+$("saveProductBtn").textContent =
+
+copyProduct
+
+? "حفظ كمنتج جديد"
+
+: "حفظ التعديلات";
+
+
+
+$("cancelEditBtn")
+.classList.remove("hidden");
+
+
+
+window.scrollTo({
+
+top:
+$("productFormTitle")
+.offsetTop - 80,
+
+behavior:"smooth"
+
+});
+
+}
+
+
+
+/* =========================
+حذف الصور القديمة
+========================= */
+
+function renderGeneralExistingImages(){
+
+
+const container =
+$("existingGeneralImages");
+
+
+let images =
+JSON.parse(
+
+container.dataset.oldImages ||
+"[]"
+
+);
+
+
+container.innerHTML =
+imageThumbs(
+images,
+true
+);
+
+
+container
+.querySelectorAll(
+"[data-remove-image]"
+)
+.forEach(button=>{
+
+
+button.onclick =
+()=>{
+
+
+images.splice(
+
+Number(
+button.dataset.removeImage
+),
+
+1
+
+);
+
+
+container.dataset.oldImages =
+JSON.stringify(images);
+
+
+renderGeneralExistingImages();
+
+};
+
+});
+
+}
+
+
+
+/* =========================
+إلغاء / تنظيف نموذج المنتج
+========================= */
+
+$("cancelEditBtn").onclick =
+()=>{
 
 resetProductForm();
 
 };
 
 
+
 function resetProductForm(){
 
-editingProductId=null;
 
-$("productFormTitle").textContent=
+editingProductId =
+null;
+
+
+$("productFormTitle")
+.textContent =
 "إضافة منتج";
 
-$("productName").value="";
-$("productCategory").value="";
-$("productPrice").value="";
-$("productStock").value="0";
-$("productDescription").value="";
-$("productColors").value="";
-$("productSizes").value="";
-$("productImage").value="";
 
-$("productActive").checked=true;
-$("productNew").checked=false;
-$("productFeatured").checked=false;
+$("productName").value =
+"";
 
-$("saveProductBtn").textContent=
+
+$("productCategory").value =
+"";
+
+
+$("productPrice").value =
+"";
+
+
+$("productStock").value =
+"0";
+
+
+$("productDescription").value =
+"";
+
+
+$("productSizes").value =
+"";
+
+
+$("productImages").value =
+"";
+
+
+$("productActive").checked =
+true;
+
+
+$("productNew").checked =
+false;
+
+
+$("productFeatured").checked =
+false;
+
+
+$("productHasColors").checked =
+false;
+
+
+$("colorVariants").innerHTML =
+"";
+
+
+$("existingGeneralImages")
+.dataset.oldImages =
+"[]";
+
+
+$("existingGeneralImages")
+.innerHTML =
+"";
+
+
+$("saveProductBtn")
+.textContent =
 "حفظ المنتج";
 
-$("cancelEditBtn").classList.add(
-"hidden"
-);
-}
+
+$("cancelEditBtn")
+.classList.add("hidden");
 
 
-$("refreshProductsBtn").onclick=
-loadProducts;
-
-
-function splitValues(value){
-
-return value
-.split(/[,،]/)
-.map(x=>x.trim())
-.filter(Boolean);
+toggleColors();
 
 }
 
 
-function escapeHtml(value=""){
 
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+/* تشغيل حالة الألوان عند فتح الصفحة */
 
-}
+toggleColors();
+
 
 </script>
 
