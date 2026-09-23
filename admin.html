@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rimi Admin</title>
+
+<style>
+:root{
+--burgundy:#741b35;
+--dark:#541024;
+--cream:#fffaf0;
+--yellow:#fff3bd;
+--white:#fff;
+--text:#4c2730;
+--border:#ead9b9;
+}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,Tahoma,sans-serif;
+background:var(--cream);
+color:var(--text);
+}
+
+button,input,textarea,select{font:inherit}
+
+button{
+cursor:pointer;
+border:0;
+}
+
+.hidden{display:none!important}
+
+header{
+background:var(--burgundy);
+color:white;
+padding:18px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+header h1{
+margin:0;
+font-size:24px;
+}
+
+.container{
+width:min(1000px,92%);
+margin:25px auto;
+}
+
+.card{
+background:white;
+border:1px solid var(--border);
+border-radius:20px;
+padding:20px;
+margin-bottom:18px;
+box-shadow:0 5px 20px #0000000b;
+}
+
+.login-card{
+width:min(430px,92%);
+margin:70px auto;
+}
+
+h2,h3{color:var(--burgundy)}
+
+label{
+display:block;
+margin:12px 0 6px;
+font-weight:bold;
+}
+
+input,textarea,select{
+width:100%;
+padding:13px;
+border:1px solid var(--border);
+border-radius:12px;
+background:white;
+}
+
+textarea{
+min-height:100px;
+resize:vertical;
+}
+
+.btn{
+background:var(--burgundy);
+color:white;
+padding:12px 18px;
+border-radius:12px;
+margin-top:12px;
+}
+
+.btn:hover{background:var(--dark)}
+
+.btn-light{
+background:var(--yellow);
+color:var(--dark);
+}
+
+.btn-danger{
+background:#a8324b;
+color:white;
+}
+
+.top-actions{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+}
+
+.item{
+border:1px solid var(--border);
+border-radius:15px;
+padding:15px;
+margin-top:12px;
+}
+
+.item-actions{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.small{
+font-size:13px;
+opacity:.75;
+}
+
+.status{
+padding:10px;
+border-radius:10px;
+background:var(--yellow);
+margin-top:12px;
+}
+
+.checkrow{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+margin-top:15px;
+}
+
+.checkrow label{
+display:flex;
+gap:7px;
+align-items:center;
+margin:0;
+}
+
+.checkrow input{
+width:auto;
+}
+
+@media(max-width:650px){
+.grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<section id="loginScreen" class="login-card card">
+<h2>🎀 Rimi Admin</h2>
+<p>تسجيل دخول الإدارة</p>
+
+<label>البريد الإلكتروني</label>
+<input id="email" type="email" autocomplete="username">
+
+<label>كلمة المرور</label>
+<input id="password" type="password" autocomplete="current-password">
+
+<button class="btn" id="loginBtn">دخول</button>
+<div id="loginMessage" class="status hidden"></div>
+</section>
+
+<section id="adminScreen" class="hidden">
+
+<header>
+<h1>Rimi Admin 🎀</h1>
+<button class="btn btn-light" id="logoutBtn">تسجيل الخروج</button>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>الأقسام</h2>
+<p class="small">أضيفي أي قسم وقت ما تحتاجينه.</p>
+
+<div class="grid">
+<div>
+<label>اسم القسم</label>
+<input id="categoryName" placeholder="مثال: شنط">
+</div>
+
+<div>
+<label>ترتيب القسم</label>
+<input id="categoryOrder" type="number" value="1">
+</div>
+</div>
+
+<button class="btn" id="addCategoryBtn">+ إضافة قسم</button>
+
+<div id="categoriesList"></div>
+</div>
+
+<div class="card">
+<h2 id="productFormTitle">إضافة منتج جديد</h2>
+
+<input id="editingProductId" type="hidden">
+
+<div class="grid">
+
+<div>
+<label>اسم المنتج</label>
+<input id="productName" placeholder="اسم المنتج">
+</div>
+
+<div>
+<label>القسم</label>
+<select id="productCategory">
+<option value="">اختاري القسم</option>
+</select>
+</div>
+
+<div>
+<label>السعر (ر.ع)</label>
+<input id="productPrice" type="number" step="0.001" min="0">
+</div>
+
+<div>
+<label>الكمية المتوفرة</label>
+<input id="productStock" type="number" min="0" value="0">
+</div>
+
+</div>
+
+<label>الوصف</label>
+<textarea id="productDescription" placeholder="وصف المنتج"></textarea>
+
+<label>الألوان</label>
+<input id="productColors" placeholder="مثال: بني، أسود، أزرق">
+
+<label>المقاسات</label>
+<input id="productSizes" placeholder="مثال: S، M، L">
+
+<label>رابط الصورة مؤقتًا</label>
+<input id="productImage" placeholder="سنحوّل هذا لاحقًا إلى زر رفع صورة">
+
+<div class="checkrow">
+<label>
+<input id="productActive" type="checkbox" checked>
+متوفر في المتجر
+</label>
+
+<label>
+<input id="productNew" type="checkbox">
+منتج جديد
+</label>
+
+<label>
+<input id="productFeatured" type="checkbox">
+مميز
+</label>
+</div>
+
+<div class="top-actions">
+<button class="btn" id="saveProductBtn">حفظ المنتج</button>
+<button class="btn btn-light hidden" id="cancelEditBtn">إلغاء التعديل</button>
+</div>
+
+<div id="productMessage" class="status hidden"></div>
+</div>
+
+<div class="card">
+<h2>المنتجات</h2>
+<div id="productsList">
+<p>لا توجد منتجات حاليًا.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+import {
+getAuth,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+doc,
+deleteDoc,
+updateDoc,
+serverTimestamp,
+query,
+orderBy
+}
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+apiKey: "AIzaSyAtBFypkQdyayn1F-Fxxpd04UD7kWFXBu4",
+authDomain: "rimi-store.firebaseapp.com",
+projectId: "rimi-store",
+storageBucket: "rimi-store.firebasestorage.app",
+messagingSenderId: "1640224406",
+appId: "1:1640224406:web:c59fd821a5e91317aed4b7"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const $ = id => document.getElementById(id);
+
+let categories = [];
+let products = [];
+
+function showMessage(element,text){
+element.textContent=text;
+element.classList.remove("hidden");
+
+setTimeout(()=>{
+element.classList.add("hidden");
+},3500);
+}
+
+$("loginBtn").onclick = async () => {
+
+const email=$("email").value.trim();
+const password=$("password").value;
+
+if(!email || !password){
+showMessage($("loginMessage"),"اكتبي البريد وكلمة المرور.");
+return;
+}
+
+try{
+await signInWithEmailAndPassword(auth,email,password);
+}catch(error){
+showMessage($("loginMessage"),"تعذر تسجيل الدخول. تأكدي من البيانات.");
+}
+};
+
+$("logoutBtn").onclick = async()=>{
+await signOut(auth);
+};
+
+onAuthStateChanged(auth,async user=>{
+
+if(user){
+$("loginScreen").classList.add("hidden");
+$("adminScreen").classList.remove("hidden");
+
+await loadCategories();
+await loadProducts();
+
+}else{
+$("adminScreen").classList.add("hidden");
+$("loginScreen").classList.remove("hidden");
+}
+
+});
+
+
+$("addCategoryBtn").onclick = async()=>{
+
+const name=$("categoryName").value.trim();
+const order=Number($("categoryOrder").value)||1;
+
+if(!name){
+alert("اكتبي اسم القسم.");
+return;
+}
+
+try{
+
+await addDoc(collection(db,"categories"),{
+name,
+order,
+active:true,
+createdAt:serverTimestamp()
+});
+
+$("categoryName").value="";
+$("categoryOrder").value=1;
+
+await loadCategories();
+
+}catch(error){
+alert("تعذر إضافة القسم. سنضبط صلاحيات Firestore في الخطوة التالية.");
+}
+};
+
+
+async function loadCategories(){
+
+categories=[];
+
+try{
+
+const snap=await getDocs(
+query(collection(db,"categories"),orderBy("order"))
+);
+
+snap.forEach(d=>{
+categories.push({
+id:d.id,
+...d.data()
+});
+});
+
+}catch(error){
+console.log(error);
+}
+
+renderCategories();
+fillCategorySelect();
+}
+
+
+function renderCategories(){
+
+const box=$("categoriesList");
+
+if(!categories.length){
+box.innerHTML="<p class='small'>لا توجد أقسام حتى الآن.</p>";
+return;
+}
+
+box.innerHTML=categories.map(cat=>`
+<div class="item">
+<strong>${escapeHtml(cat.name)}</strong>
+
+<div class="item-actions">
+<button
+class="btn btn-danger"
+data-delete-category="${cat.id}">
+حذف
+</button>
+</div>
+</div>
+`).join("");
+
+box.querySelectorAll("[data-delete-category]")
+.forEach(btn=>{
+
+btn.onclick=async()=>{
+
+if(!confirm("هل تريدين حذف هذا القسم؟")) return;
+
+try{
+await deleteDoc(
+doc(db,"categories",btn.dataset.deleteCategory)
+);
+
+await loadCategories();
+
+}catch(error){
+alert("تعذر الحذف.");
+}
+};
+});
+}
+
+
+function fillCategorySelect(){
+
+const select=$("productCategory");
+const current=select.value;
+
+select.innerHTML=
+`<option value="">اختاري القسم</option>`+
+categories.map(cat=>
+`<option value="${cat.id}">
+${escapeHtml(cat.name)}
+</option>`
+).join("");
+
+select.value=current;
+}
+
+
+$("saveProductBtn").onclick=async()=>{
+
+const name=$("productName").value.trim();
+const categoryId=$("productCategory").value;
+const price=Number($("productPrice").value);
+
+if(!name){
+showMessage($("productMessage"),"اكتبي اسم المنتج.");
+return;
+}
+
+if(!categoryId){
+showMessage($("productMessage"),"اختاري القسم.");
+return;
+}
+
+if(Number.isNaN(price)){
+showMessage($("productMessage"),"اكتبي السعر.");
+return;
+}
+
+const data={
+name,
+categoryId,
+price,
+stock:Number($("productStock").value)||0,
+description:$("productDescription").value.trim(),
+
+colors:splitValues($("productColors").value),
+sizes:splitValues($("productSizes").value),
+
+image:$("productImage").value.trim(),
+
+active:$("productActive").checked,
+isNew:$("productNew").checked,
+featured:$("productFeatured").checked,
+
+updatedAt:serverTimestamp()
+};
+
+const editingId=$("editingProductId").value;
+
+try{
+
+if(editingId){
+
+await updateDoc(
+doc(db,"products",editingId),
+data
+);
+
+showMessage($("productMessage"),"تم تعديل المنتج ✓");
+
+}else{
+
+data.createdAt=serverTimestamp();
+
+await addDoc(
+collection(db,"products"),
+data
+);
+
+showMessage($("productMessage"),"تمت إضافة المنتج ✓");
+}
+
+resetProductForm();
+await loadProducts();
+
+}catch(error){
+
+showMessage(
+$("productMessage"),
+"تعذر الحفظ. سنضبط صلاحيات Firestore في الخطوة التالية."
+);
+}
+};
+
+
+async function loadProducts(){
+
+products=[];
+
+try{
+
+const snap=await getDocs(collection(db,"products"));
+
+snap.forEach(d=>{
+products.push({
+id:d.id,
+...d.data()
+});
+});
+
+}catch(error){
+console.log(error);
+}
+
+renderProducts();
+}
+
+
+function renderProducts(){
+
+const box=$("productsList");
+
+if(!products.length){
+box.innerHTML="<p>لا توجد منتجات حاليًا.</p>";
+return;
+}
+
+box.innerHTML=products.map(product=>{
+
+const category=
+categories.find(c=>c.id===product.categoryId);
+
+return `
+<div class="item">
+
+<h3>${escapeHtml(product.name)}</h3>
+
+<p>
+القسم:
+${category ? escapeHtml(category.name) : "غير محدد"}
+</p>
+
+<p>
+السعر:
+${Number(product.price||0).toFixed(3)} ر.ع
+</p>
+
+<p>
+الكمية:
+${product.stock ?? 0}
+</p>
+
+<p>
+الحالة:
+${product.active ? "متوفر" : "مخفي"}
+</p>
+
+<div class="item-actions">
+
+<button
+class="btn"
+data-edit-product="${product.id}">
+تعديل
+</button>
+
+<button
+class="btn btn-danger"
+data-delete-product="${product.id}">
+حذف
+</button>
+
+</div>
+</div>
+`;
+
+}).join("");
+
+
+box.querySelectorAll("[data-edit-product]")
+.forEach(btn=>{
+
+btn.onclick=()=>{
+editProduct(btn.dataset.editProduct);
+};
+});
+
+
+box.querySelectorAll("[data-delete-product]")
+.forEach(btn=>{
+
+btn.onclick=async()=>{
+
+if(!confirm("هل تريدين حذف هذا المنتج؟")) return;
+
+try{
+
+await deleteDoc(
+doc(db,"products",btn.dataset.deleteProduct)
+);
+
+await loadProducts();
+
+}catch(error){
+alert("تعذر حذف المنتج.");
+}
+};
+});
+}
+
+
+function editProduct(id){
+
+const p=products.find(x=>x.id===id);
+
+if(!p) return;
+
+$("editingProductId").value=p.id;
+$("productName").value=p.name||"";
+$("productCategory").value=p.categoryId||"";
+$("productPrice").value=p.price??"";
+$("productStock").value=p.stock??0;
+$("productDescription").value=p.description||"";
+$("productColors").value=(p.colors||[]).join("، ");
+$("productSizes").value=(p.sizes||[]).join("، ");
+$("productImage").value=p.image||"";
+$("productActive").checked=p.active!==false;
+$("productNew").checked=!!p.isNew;
+$("productFeatured").checked=!!p.featured;
+
+$("productFormTitle").textContent="تعديل المنتج";
+$("saveProductBtn").textContent="حفظ التعديلات";
+$("cancelEditBtn").classList.remove("hidden");
+
+window.scrollTo({
+top:$("productFormTitle").offsetTop-30,
+behavior:"smooth"
+});
+}
+
+
+$("cancelEditBtn").onclick=resetProductForm;
+
+
+function resetProductForm(){
+
+$("editingProductId").value="";
+$("productName").value="";
+$("productCategory").value="";
+$("productPrice").value="";
+$("productStock").value=0;
+$("productDescription").value="";
+$("productColors").value="";
+$("productSizes").value="";
+$("productImage").value="";
+$("productActive").checked=true;
+$("productNew").checked=false;
+$("productFeatured").checked=false;
+
+$("productFormTitle").textContent="إضافة منتج جديد";
+$("saveProductBtn").textContent="حفظ المنتج";
+$("cancelEditBtn").classList.add("hidden");
+}
+
+
+function splitValues(value){
+
+return value
+.split(/[،,]/)
+.map(x=>x.trim())
+.filter(Boolean);
+}
+
+
+function escapeHtml(value=""){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+}
+
+</script>
+
+</body>
+</html>
