@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <meta name="theme-color" content="#741b35">
 
 <title>Rimi | من أجلك نختار أجمل التفاصيل</title>
 
 <style>
+
 :root{
 --burgundy:#741b35;
 --burgundy-dark:#541024;
+--burgundy-soft:#9b3854;
+
 --cream:#fffdf6;
 --yellow:#fff3bd;
---soft:#fff9e9;
+--yellow-soft:#fff9df;
+
 --text:#4c2730;
+--muted:#87636c;
+
 --border:#ead9b9;
 --white:#ffffff;
+
+--green:#397451;
+--red:#a7374b;
 }
 
-*{box-sizing:border-box}
 
-html{scroll-behavior:smooth}
+/* ===============================
+الأساس
+================================ */
+
+*{
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
 
 body{
 margin:0;
@@ -30,11 +50,38 @@ color:var(--text);
 background:var(--cream);
 }
 
-button,input,select,textarea{
+body.no-scroll{
+overflow:hidden;
+}
+
+button,
+input,
+select,
+textarea{
 font:inherit;
 }
 
-button{cursor:pointer}
+button{
+cursor:pointer;
+}
+
+button:disabled{
+cursor:not-allowed;
+opacity:.55;
+}
+
+img{
+max-width:100%;
+}
+
+.hidden{
+display:none !important;
+}
+
+
+/* ===============================
+الشريط العلوي
+================================ */
 
 .topbar{
 background:var(--burgundy);
@@ -42,32 +89,70 @@ color:white;
 text-align:center;
 padding:9px 15px;
 font-size:13px;
+line-height:1.6;
 }
+
+
+/* ===============================
+الهيدر
+================================ */
 
 header{
 position:sticky;
 top:0;
 z-index:50;
+
 background:rgba(255,253,246,.96);
-border-bottom:1px solid var(--border);
-backdrop-filter:blur(10px);
+
+border-bottom:
+1px solid var(--border);
+
+backdrop-filter:
+blur(12px);
 }
 
 .nav{
-max-width:1150px;
+width:min(1180px,94%);
 margin:auto;
-padding:13px 18px;
+
+padding:12px 5px;
+
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:15px;
+
+gap:12px;
 }
 
 .logo{
-font-family:Georgia,serif;
 color:var(--burgundy);
-font-size:34px;
+
+font-family:
+Georgia,
+"Times New Roman",
+serif;
+
+font-size:35px;
 font-weight:bold;
+
+letter-spacing:.5px;
+
+position:relative;
+}
+
+.logo::after{
+content:"♡";
+
+font-family:Arial;
+
+font-size:12px;
+
+position:absolute;
+
+bottom:-2px;
+left:-14px;
+
+color:var(--burgundy);
 }
 
 .nav-buttons{
@@ -76,172 +161,454 @@ gap:8px;
 }
 
 .icon-btn{
-border:1px solid var(--border);
+border:
+1px solid var(--border);
+
 background:white;
-color:var(--burgundy);
+
+color:
+var(--burgundy);
+
 border-radius:50px;
-padding:10px 14px;
+
+padding:
+10px 14px;
+
+box-shadow:
+0 4px 15px
+rgba(80,30,40,.04);
 }
 
 .cart-count{
-background:var(--burgundy);
+background:
+var(--burgundy);
+
 color:white;
+
 min-width:20px;
 height:20px;
+
 padding:0 5px;
+
 display:inline-flex;
 align-items:center;
 justify-content:center;
+
 border-radius:50%;
+
 font-size:11px;
+
+margin-right:4px;
 }
 
+
+/* ===============================
+واجهة Rimi
+================================ */
+
 .hero{
-min-height:440px;
+min-height:520px;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
 text-align:center;
-padding:65px 20px;
+
+padding:
+65px 20px;
+
 background:
-linear-gradient(rgba(255,253,246,.25),rgba(255,253,246,.75)),
+
+linear-gradient(
+rgba(255,253,246,.18),
+rgba(255,253,246,.58)
+),
+
 repeating-linear-gradient(
 90deg,
+
 #fffdf6 0,
-#fffdf6 75px,
-#fff2b9 75px,
-#fff2b9 150px
+#fffdf6 74px,
+
+#fff2b9 74px,
+#fff2b9 148px
 );
 }
 
 .hero-box{
-max-width:700px;
-background:rgba(255,255,255,.88);
-border:1px solid rgba(116,27,53,.12);
-padding:45px 25px;
-border-radius:35px;
-box-shadow:0 15px 45px rgba(80,30,40,.10);
+width:min(720px,94%);
+
+background:
+rgba(255,255,255,.91);
+
+border:
+1px solid
+rgba(116,27,53,.13);
+
+padding:
+42px 25px;
+
+border-radius:38px;
+
+box-shadow:
+0 18px 55px
+rgba(80,30,40,.12);
+
+position:relative;
+overflow:hidden;
 }
 
-.hero .mini{
-font-size:25px;
+.hero-box::before,
+.hero-box::after{
+content:"";
+
+position:absolute;
+
+width:115px;
+height:115px;
+
+border-radius:50%;
+
+background:
+rgba(255,243,189,.55);
 }
 
-.hero h1{
-font-family:Georgia,serif;
-color:var(--burgundy);
-font-size:70px;
-margin:4px 0 8px;
+.hero-box::before{
+top:-55px;
+right:-45px;
+}
+
+.hero-box::after{
+bottom:-60px;
+left:-45px;
+}
+
+.hero-bow{
+font-size:36px;
+line-height:1;
+}
+
+.hero-logo{
+font-family:
+Georgia,
+"Times New Roman",
+serif;
+
+color:
+var(--burgundy);
+
+font-size:
+clamp(62px,10vw,92px);
+
+margin:
+5px 0 8px;
+
+line-height:1;
+
+position:relative;
+z-index:2;
+}
+
+.hero-heart{
+color:
+var(--burgundy);
+
+font-size:20px;
+
+margin:
+5px 0;
 }
 
 .hero p{
 font-size:18px;
-line-height:1.9;
+
+line-height:2;
+
+margin:
+10px auto 18px;
+
+position:relative;
+z-index:2;
 }
 
 .main-btn{
 display:inline-block;
+
 border:0;
+
 text-decoration:none;
-background:var(--burgundy);
+
+background:
+var(--burgundy);
+
 color:white;
-padding:13px 27px;
+
+padding:
+13px 29px;
+
 border-radius:50px;
-margin-top:10px;
+
+box-shadow:
+0 7px 20px
+rgba(116,27,53,.18);
+
+position:relative;
+z-index:2;
 }
 
+
+/* ===============================
+المحتوى
+================================ */
+
 .container{
-width:min(1150px,92%);
+width:min(1180px,92%);
 margin:auto;
 }
 
 .section{
-padding:55px 0;
+padding:58px 0;
 }
 
 .title{
 text-align:center;
-color:var(--burgundy);
-font-size:30px;
-margin:0 0 8px;
+
+color:
+var(--burgundy);
+
+font-size:31px;
+
+margin:
+0 0 8px;
 }
 
 .subtitle{
 text-align:center;
-color:#87636c;
-margin-bottom:30px;
+
+color:
+var(--muted);
+
+margin:
+0 0 30px;
+
+line-height:1.8;
 }
 
+
+/* ===============================
+البحث
+================================ */
+
 .search{
-max-width:650px;
-margin:0 auto 25px;
-position:relative;
+max-width:680px;
+
+margin:
+0 auto 25px;
 }
 
 .search input{
 width:100%;
-padding:15px 18px;
-border:1px solid var(--border);
+
+padding:
+15px 19px;
+
+border:
+1px solid
+var(--border);
+
 border-radius:50px;
+
 background:white;
+
+color:
+var(--text);
+
 outline:none;
 }
 
+.search input:focus{
+border-color:
+var(--burgundy-soft);
+
+box-shadow:
+0 0 0 3px
+rgba(116,27,53,.06);
+}
+
+
+/* ===============================
+الأقسام
+================================ */
+
 .categories{
 display:flex;
+
 justify-content:center;
+
 flex-wrap:wrap;
+
 gap:9px;
+
 margin-bottom:30px;
 }
 
 .category{
-border:1px solid var(--border);
+border:
+1px solid
+var(--border);
+
 background:white;
-color:var(--burgundy);
+
+color:
+var(--burgundy);
+
 border-radius:50px;
-padding:10px 18px;
+
+padding:
+10px 18px;
 }
 
 .category.active{
-background:var(--burgundy);
+background:
+var(--burgundy);
+
 color:white;
-border-color:var(--burgundy);
+
+border-color:
+var(--burgundy);
 }
+
+
+/* ===============================
+المنتجات
+================================ */
 
 .products{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+
+grid-template-columns:
+repeat(3,1fr);
+
 gap:20px;
 }
 
 .product{
 background:white;
-border:1px solid var(--border);
+
+border:
+1px solid
+var(--border);
+
 border-radius:25px;
+
 overflow:hidden;
-box-shadow:0 7px 25px rgba(80,30,40,.06);
+
+box-shadow:
+0 7px 25px
+rgba(80,30,40,.06);
+
+transition:
+transform .2s,
+box-shadow .2s;
+}
+
+.product:hover{
+transform:
+translateY(-3px);
+
+box-shadow:
+0 12px 30px
+rgba(80,30,40,.10);
 }
 
 .product-image{
-height:230px;
-background:linear-gradient(135deg,#fff8da,#fffdf8);
+height:280px;
+
+background:
+linear-gradient(
+135deg,
+#fff8da,
+#fffdf8
+);
+
+position:relative;
+
+overflow:hidden;
+
+cursor:pointer;
+}
+
+.product-image img{
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+display:block;
+}
+
+.product-placeholder{
+width:100%;
+height:100%;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
 font-size:65px;
-position:relative;
 }
 
 .badge{
 position:absolute;
+
 top:13px;
 right:13px;
-background:var(--burgundy);
+
+z-index:2;
+
+background:
+var(--burgundy);
+
 color:white;
+
 border-radius:50px;
-padding:6px 10px;
+
+padding:
+6px 10px;
+
 font-size:11px;
+}
+
+.stock-badge{
+position:absolute;
+
+bottom:12px;
+right:12px;
+
+z-index:2;
+
+border-radius:50px;
+
+padding:
+6px 10px;
+
+font-size:11px;
+
+background:
+rgba(255,255,255,.94);
+
+color:
+var(--burgundy);
+
+border:
+1px solid
+var(--border);
+}
+
+.stock-badge.out{
+color:
+var(--red);
 }
 
 .product-info{
@@ -249,14 +616,36 @@ padding:18px;
 }
 
 .product-name{
-color:var(--burgundy);
-margin:0 0 8px;
+color:
+var(--burgundy);
+
+margin:
+0 0 8px;
+
 font-size:19px;
+}
+
+.product-description{
+color:
+var(--muted);
+
+font-size:13px;
+
+line-height:1.7;
+
+min-height:22px;
+
+margin:
+0 0 8px;
 }
 
 .price{
 font-weight:bold;
-margin:10px 0;
+
+margin:
+10px 0;
+
+font-size:17px;
 }
 
 .product-actions{
@@ -264,706 +653,5634 @@ display:flex;
 gap:8px;
 }
 
+.add-btn,
+.details-btn{
+border:0;
+
+padding:
+11px 12px;
+
+border-radius:50px;
+}
+
 .add-btn{
 flex:1;
-border:0;
-background:var(--burgundy);
+
+background:
+var(--burgundy);
+
 color:white;
-padding:11px;
-border-radius:50px;
+}
+
+.details-btn{
+background:
+var(--yellow-soft);
+
+color:
+var(--burgundy);
+
+border:
+1px solid
+var(--border);
 }
 
 .empty{
 grid-column:1/-1;
+
 text-align:center;
-padding:40px;
-color:#96747d;
+
+padding:45px 15px;
+
+color:
+#96747d;
 }
 
+
+/* ===============================
+نافذة تفاصيل المنتج
+================================ */
+
+.modal-overlay{
+position:fixed;
+
+inset:0;
+
+z-index:150;
+
+background:
+rgba(35,15,20,.45);
+
+display:none;
+
+padding:
+20px;
+
+overflow:auto;
+}
+
+.modal-overlay.show{
+display:flex;
+
+align-items:center;
+justify-content:center;
+}
+
+.product-modal{
+width:min(900px,100%);
+
+max-height:
+calc(100vh - 40px);
+
+overflow:auto;
+
+background:white;
+
+border-radius:28px;
+
+padding:20px;
+
+position:relative;
+
+box-shadow:
+0 20px 70px
+rgba(0,0,0,.22);
+}
+
+.modal-close{
+position:absolute;
+
+top:12px;
+left:12px;
+
+z-index:5;
+
+width:40px;
+height:40px;
+
+border:0;
+
+border-radius:50%;
+
+background:
+#f8edf0;
+
+color:
+var(--burgundy);
+
+font-size:18px;
+}
+
+.product-modal-grid{
+display:grid;
+
+grid-template-columns:
+1.05fr .95fr;
+
+gap:25px;
+}
+
+.gallery-main{
+height:440px;
+
+border-radius:22px;
+
+overflow:hidden;
+
+background:
+var(--yellow-soft);
+
+border:
+1px solid
+var(--border);
+}
+
+.gallery-main img{
+width:100%;
+height:100%;
+
+object-fit:cover;
+}
+
+.gallery-thumbs{
+display:flex;
+
+gap:8px;
+
+overflow-x:auto;
+
+padding-top:10px;
+}
+
+.gallery-thumb{
+width:72px;
+height:72px;
+
+flex:0 0 72px;
+
+border:
+2px solid transparent;
+
+border-radius:12px;
+
+overflow:hidden;
+
+padding:0;
+
+background:white;
+}
+
+.gallery-thumb.active{
+border-color:
+var(--burgundy);
+}
+
+.gallery-thumb img{
+width:100%;
+height:100%;
+
+object-fit:cover;
+}
+
+.modal-info{
+padding:
+15px 5px;
+}
+
+.modal-info h2{
+color:
+var(--burgundy);
+
+margin-top:0;
+}
+
+.modal-description{
+color:
+var(--muted);
+
+line-height:1.9;
+}
+
+.option-title{
+margin:
+20px 0 8px;
+
+font-weight:bold;
+}
+
+.option-list{
+display:flex;
+
+gap:8px;
+
+flex-wrap:wrap;
+}
+
+.option-btn{
+border:
+1px solid
+var(--border);
+
+background:white;
+
+color:
+var(--burgundy);
+
+padding:
+9px 14px;
+
+border-radius:50px;
+}
+
+.option-btn.selected{
+background:
+var(--burgundy);
+
+color:white;
+
+border-color:
+var(--burgundy);
+}
+
+.option-btn:disabled{
+text-decoration:
+line-through;
+
+opacity:.45;
+}
+
+.product-stock-text{
+margin-top:14px;
+
+color:
+var(--muted);
+
+font-size:13px;
+}
+
+.modal-add{
+width:100%;
+
+margin-top:20px;
+
+border:0;
+
+background:
+var(--burgundy);
+
+color:white;
+
+padding:14px;
+
+border-radius:50px;
+
+font-weight:bold;
+}
+
+
+/* ===============================
+مميزات Rimi
+================================ */
+
 .features{
-background:var(--soft);
+background:
+var(--yellow-soft);
 }
 
 .feature-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+
+grid-template-columns:
+repeat(3,1fr);
+
 gap:15px;
 }
 
 .feature{
 text-align:center;
+
 background:white;
-padding:25px 15px;
-border:1px solid var(--border);
-border-radius:20px;
+
+padding:
+27px 15px;
+
+border:
+1px solid
+var(--border);
+
+border-radius:22px;
 }
 
 .feature span{
-font-size:30px;
+font-size:31px;
 }
 
+.feature h3{
+color:
+var(--burgundy);
+}
+
+
+/* ===============================
+الفوتر
+================================ */
+
 footer{
-background:var(--burgundy-dark);
+background:
+var(--burgundy-dark);
+
 color:white;
-padding:40px 20px;
+
+padding:
+42px 20px;
+
 text-align:center;
 }
 
 .footer-logo{
-font-family:Georgia,serif;
-font-size:38px;
+font-family:
+Georgia,
+"Times New Roman",
+serif;
+
+font-size:40px;
+}
+
+.footer-links{
+margin-top:15px;
 }
 
 .footer-links a{
 color:white;
-margin:0 8px;
+
+margin:
+0 8px;
+
 text-decoration:none;
 }
 
-/* السلة */
+
+/* ===============================
+خلفية السلة
+================================ */
 
 .overlay{
 position:fixed;
+
 inset:0;
-background:rgba(0,0,0,.35);
+
+background:
+rgba(0,0,0,.38);
+
 z-index:90;
+
 display:none;
 }
 
-.overlay.show{display:block}
+.overlay.show{
+display:block;
+}
+
+
+/* ===============================
+السلة
+================================ */
 
 .cart{
 position:fixed;
+
 z-index:100;
+
 top:0;
 right:-100%;
-width:min(440px,100%);
+
+width:
+min(470px,100%);
+
 height:100%;
+
 background:white;
+
 transition:.3s;
+
 padding:20px;
+
 overflow:auto;
-box-shadow:-10px 0 35px rgba(0,0,0,.15);
+
+box-shadow:
+-10px 0 35px
+rgba(0,0,0,.15);
 }
 
-.cart.open{right:0}
+.cart.open{
+right:0;
+}
 
 .cart-head{
 display:flex;
-justify-content:space-between;
+
+justify-content:
+space-between;
+
 align-items:center;
-border-bottom:1px solid var(--border);
+
+border-bottom:
+1px solid
+var(--border);
+
 padding-bottom:12px;
 }
 
 .close{
 border:0;
-background:#f8edf0;
-color:var(--burgundy);
+
+background:
+#f8edf0;
+
+color:
+var(--burgundy);
+
 width:38px;
 height:38px;
+
 border-radius:50%;
 }
 
 .cart-item{
 display:grid;
-grid-template-columns:1fr auto;
+
+grid-template-columns:
+70px 1fr auto;
+
 gap:10px;
-padding:15px 0;
-border-bottom:1px solid #eee;
+
+align-items:start;
+
+padding:
+15px 0;
+
+border-bottom:
+1px solid #eee;
+}
+
+.cart-item-image{
+width:70px;
+height:70px;
+
+border-radius:12px;
+
+object-fit:cover;
+
+background:
+var(--yellow-soft);
+}
+
+.cart-item-options{
+font-size:12px;
+
+color:
+var(--muted);
+
+line-height:1.7;
+
+margin-top:4px;
 }
 
 .qty{
 display:flex;
+
 align-items:center;
+
 gap:8px;
+
 margin-top:8px;
 }
 
 .qty button{
 width:29px;
 height:29px;
-border:1px solid var(--border);
+
+border:
+1px solid
+var(--border);
+
 background:white;
+
 border-radius:50%;
 }
 
 .remove{
 border:0;
+
 background:none;
-color:#a33;
+
+color:
+var(--red);
 }
 
-.total{
-display:flex;
-justify-content:space-between;
-font-size:20px;
-font-weight:bold;
-padding:20px 0;
-color:var(--burgundy);
+
+/* ===============================
+حساب السلة
+================================ */
+
+.cart-summary{
+border-top:
+1px solid
+var(--border);
+
+margin-top:8px;
+
+padding-top:12px;
 }
+
+.summary-line{
+display:flex;
+
+justify-content:
+space-between;
+
+gap:15px;
+
+padding:
+7px 0;
+}
+
+.summary-line.final{
+color:
+var(--burgundy);
+
+font-size:20px;
+
+font-weight:bold;
+
+border-top:
+1px solid
+var(--border);
+
+margin-top:8px;
+
+padding-top:15px;
+}
+
+
+/* ===============================
+إتمام الطلب
+================================ */
 
 .checkout{
-border-top:1px solid var(--border);
+border-top:
+1px solid
+var(--border);
+
 padding-top:20px;
+
+margin-top:15px;
 }
 
 .checkout h3{
-color:var(--burgundy);
+color:
+var(--burgundy);
+}
+
+.checkout-section-title{
+color:
+var(--burgundy);
+
+font-weight:bold;
+
+margin:
+20px 0 10px;
 }
 
 .field{
 margin-bottom:12px;
+
 text-align:right;
 }
 
 .field label{
 display:block;
+
 margin-bottom:6px;
+
 font-size:14px;
+
+font-weight:bold;
 }
 
 .field input,
 .field select,
 .field textarea{
 width:100%;
-border:1px solid var(--border);
+
+border:
+1px solid
+var(--border);
+
 border-radius:13px;
+
 padding:12px;
+
 outline:none;
+
 background:white;
+
+color:
+var(--text);
 }
 
 .field textarea{
 min-height:90px;
+
 resize:vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+border-color:
+var(--burgundy-soft);
+}
+
+.radio-box{
+display:grid;
+
+grid-template-columns:
+1fr 1fr;
+
+gap:9px;
+}
+
+.radio-option{
+border:
+1px solid
+var(--border);
+
+border-radius:15px;
+
+padding:11px;
+
+background:
+var(--cream);
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+}
+
+.radio-option input{
+width:auto;
+}
+
+.delivery-info{
+background:
+var(--yellow-soft);
+
+border:
+1px solid
+var(--border);
+
+border-radius:15px;
+
+padding:12px;
+
+line-height:1.8;
+
+font-size:13px;
+
+margin-bottom:13px;
+}
+
+.zajel-box{
+background:
+#fffaf0;
+
+border:
+1px solid
+var(--border);
+
+border-radius:18px;
+
+padding:14px;
+
+margin-top:10px;
+}
+
+.payment-notice{
+background:
+#fff5d5;
+
+color:
+var(--burgundy-dark);
+
+border:
+1px solid
+#ead9a8;
+
+padding:13px;
+
+border-radius:15px;
+
+line-height:1.8;
+
+margin:
+15px 0;
+
+font-weight:bold;
 }
 
 .order-btn{
 width:100%;
+
 border:0;
-background:var(--burgundy);
+
+background:
+var(--burgundy);
+
 color:white;
+
 padding:14px;
+
 border-radius:50px;
+
 font-weight:bold;
 }
 
 .note{
 font-size:12px;
-color:#87636c;
-line-height:1.7;
+
+color:
+var(--muted);
+
+line-height:1.8;
+
 margin-top:12px;
 }
 
+
+/* ===============================
+رسالة صغيرة
+================================ */
+
 .toast{
 position:fixed;
+
 bottom:20px;
 left:50%;
-transform:translateX(-50%) translateY(100px);
-background:var(--burgundy-dark);
+
+transform:
+translateX(-50%)
+translateY(100px);
+
+background:
+var(--burgundy-dark);
+
 color:white;
-padding:12px 20px;
+
+padding:
+12px 20px;
+
 border-radius:50px;
-z-index:200;
+
+z-index:250;
+
 transition:.3s;
+
+text-align:center;
 }
 
 .toast.show{
-transform:translateX(-50%) translateY(0);
+transform:
+translateX(-50%)
+translateY(0);
 }
+
+
+/* ===============================
+التحميل
+================================ */
+
+.loading{
+grid-column:1/-1;
+
+text-align:center;
+
+padding:45px;
+
+color:
+var(--muted);
+}
+
+
+/* ===============================
+الجوال والآيباد
+================================ */
 
 @media(max-width:850px){
-.products{grid-template-columns:repeat(2,1fr)}
-.feature-grid{grid-template-columns:1fr}
+
+.products{
+grid-template-columns:
+repeat(2,1fr);
 }
 
-@media(max-width:560px){
-.hero{min-height:380px}
-.hero h1{font-size:55px}
-.products{grid-template-columns:1fr 1fr;gap:10px}
-.product-image{height:160px;font-size:48px}
-.product-info{padding:13px}
-.product-name{font-size:16px}
-.nav{padding:10px 14px}
+.feature-grid{
+grid-template-columns:1fr;
 }
+
+.product-modal-grid{
+grid-template-columns:1fr;
+}
+
+.gallery-main{
+height:360px;
+}
+
+}
+
+
+@media(max-width:560px){
+
+.hero{
+min-height:420px;
+
+padding:
+45px 12px;
+}
+
+.hero-box{
+padding:
+35px 17px;
+
+border-radius:28px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.products{
+grid-template-columns:
+1fr 1fr;
+
+gap:10px;
+}
+
+.product-image{
+height:190px;
+}
+
+.product-info{
+padding:13px;
+}
+
+.product-name{
+font-size:16px;
+}
+
+.product-description{
+display:none;
+}
+
+.product-actions{
+flex-direction:column;
+}
+
+.nav{
+padding:
+10px 5px;
+}
+
+.logo{
+font-size:30px;
+}
+
+.icon-btn{
+padding:
+9px 11px;
+
+font-size:13px;
+}
+
+.gallery-main{
+height:300px;
+}
+
+.product-modal{
+padding:14px;
+
+border-radius:22px;
+}
+
+.radio-box{
+grid-template-columns:1fr;
+}
+
+.cart-item{
+grid-template-columns:
+58px 1fr auto;
+}
+
+.cart-item-image{
+width:58px;
+height:58px;
+}
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- ===============================
+الشريط العلوي
+================================ -->
+
 <div class="topbar">
-أهلاً بكِ في Rimi ♡ اختيارات جميلة صُنعت لتضيف لمستك الخاصة
+
+أهلاً بكِ في Rimi ♡
+من أجلك .. نختار أجمل التفاصيل
+
 </div>
 
+
+<!-- ===============================
+الهيدر
+================================ -->
+
 <header>
+
 <div class="nav">
-<div class="logo">Rimi</div>
+
+<div class="logo">
+Rimi
+</div>
+
 
 <div class="nav-buttons">
-<button class="icon-btn" onclick="document.getElementById('shop').scrollIntoView()">
+
+<button
+class="icon-btn"
+id="shopButton"
+type="button"
+>
 تسوّقي
 </button>
 
-<button class="icon-btn" onclick="openCart()">
+
+<button
+class="icon-btn"
+id="cartButton"
+type="button"
+>
+
 السلة 🛍️
-<span class="cart-count" id="cartCount">0</span>
+
+<span
+class="cart-count"
+id="cartCount"
+>
+0
+</span>
+
 </button>
+
 </div>
+
 </div>
+
 </header>
 
+
+<!-- ===============================
+الواجهة الرئيسية
+================================ -->
+
 <section class="hero">
+
 <div class="hero-box">
-<div class="mini">🎀</div>
-<h1>Rimi</h1>
-<p>
-من أجلك .. نختار أجمل التفاصيل
-<br>
-اكتشفي مختارات Rimi المتنوعة والمميزة
-</p>
-<a href="#shop" class="main-btn">تسوّقي الآن</a>
+
+<div class="hero-bow">
+🎀
 </div>
+
+<h1 class="hero-logo">
+Rimi
+</h1>
+
+<div class="hero-heart">
+♡
+</div>
+
+<p>
+
+<strong>
+من أجلك .. نختار أجمل التفاصيل
+</strong>
+
+<br>
+
+اكتشفي مختارات Rimi
+بعناية ولمسة جميلة خاصة بكِ
+
+</p>
+
+
+<a
+href="#shop"
+class="main-btn"
+>
+تسوّقي الآن
+</a>
+
+</div>
+
 </section>
 
-<main id="shop" class="section">
+
+<!-- ===============================
+المتجر
+================================ -->
+
+<main
+id="shop"
+class="section"
+>
+
 <div class="container">
 
-<h2 class="title">اكتشفي Rimi</h2>
-<p class="subtitle">كل ما تحبينه في مكان واحد ♡</p>
+<h2 class="title">
+اكتشفي Rimi
+</h2>
+
+<p class="subtitle">
+كل ما تحبينه في مكان واحد ♡
+</p>
+
 
 <div class="search">
+
 <input
 id="searchInput"
 type="search"
 placeholder="ابحثي عن منتج..."
-oninput="renderProducts()"
+>
+
+</div>
+
+
+<div
+class="categories"
+id="categories"
+>
+
+<button
+class="category active"
+type="button"
+>
+الكل
+</button>
+
+</div>
+
+
+<div
+class="products"
+id="products"
+>
+
+<div class="loading">
+جاري تحميل منتجات Rimi...
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<!-- ===============================
+تجربة Rimi
+================================ -->
+
+<section class="features section">
+
+<div class="container">
+
+<h2 class="title">
+تجربة Rimi
+</h2>
+
+<p class="subtitle">
+نهتم بالتفاصيل من اختيارك
+وحتى استلام طلبك
+</p>
+
+
+<div class="feature-grid">
+
+
+<div class="feature">
+
+<span>
+🎀
+</span>
+
+<h3>
+اختيارات مميزة
+</h3>
+
+<p>
+منتجات متنوعة
+نختارها بعناية.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<span>
+🎁
+</span>
+
+<h3>
+تغليف جميل
+</h3>
+
+<p>
+لمسة Rimi
+في كل طلب.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<span>
+💌
+</span>
+
+<h3>
+زاجل لشخص تحبينه
+</h3>
+
+<p>
+يمكنكِ اختيار الزاجل
+وكتابة رسالتك الخاصة.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ===============================
+الفوتر
+================================ -->
+
+<footer>
+
+<div class="footer-logo">
+Rimi
+</div>
+
+<p>
+من أجلك .. نختار أجمل التفاصيل
+</p>
+
+
+<div class="footer-links">
+
+<a
+href="https://www.instagram.com/rimi.world0"
+target="_blank"
+rel="noopener"
+>
+Instagram
+</a>
+
+|
+
+<a
+href="https://api.whatsapp.com/send?phone=96896547355"
+target="_blank"
+rel="noopener"
+>
+WhatsApp
+</a>
+
+</div>
+
+
+<p
+style="
+font-size:12px;
+margin-top:25px;
+opacity:.85;
+"
+>
+© Rimi
+</p>
+
+</footer>
+
+
+<!-- ===============================
+نافذة تفاصيل المنتج
+================================ -->
+
+<div
+class="modal-overlay"
+id="productModalOverlay"
+>
+
+<div
+class="product-modal"
+id="productModal"
+>
+
+<button
+class="modal-close"
+id="closeProductModal"
+type="button"
+>
+✕
+</button>
+
+
+<div class="product-modal-grid">
+
+
+<div>
+
+<div
+class="gallery-main"
+id="modalMainImage"
 >
 </div>
 
-<div class="categories" id="categories"></div>
 
-<div class="products" id="products"></div>
-
-</div>
-</main>
-
-<section class="features section">
-<div class="container">
-<h2 class="title">تجربة Rimi</h2>
-<p class="subtitle">نهتم بالتفاصيل من اختيارك وحتى استلام طلبك</p>
-
-<div class="feature-grid">
-<div class="feature">
-<span>🎀</span>
-<h3>اختيارات مميزة</h3>
-<p>منتجات متنوعة نختارها بعناية.</p>
+<div
+class="gallery-thumbs"
+id="modalGallery"
+>
 </div>
 
-<div class="feature">
-<span>🎁</span>
-<h3>تغليف جميل</h3>
-<p>لمسة Rimi في كل طلب.</p>
 </div>
 
-<div class="feature">
-<span>💌</span>
-<h3>طلب سهل</h3>
-<p>أضيفي للسلة وأرسلي طلبك مباشرة.</p>
-</div>
-</div>
-</div>
-</section>
 
-<footer>
-<div class="footer-logo">Rimi</div>
-<p>من أجلك .. نختار أجمل التفاصيل</p>
+<div class="modal-info">
 
-<div class="footer-links">
-<a href="https://www.instagram.com/rimi.world0" target="_blank">
-Instagram
-</a>
-|
-<a href="https://wa.me/96896547355" target="_blank">
-WhatsApp
-</a>
+<h2 id="modalProductName">
+</h2>
+
+
+<div
+class="price"
+id="modalProductPrice"
+>
 </div>
 
-<p style="font-size:12px;margin-top:25px">
-© Rimi
-</p>
-</footer>
 
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
-
-<aside class="cart" id="cart">
-
-<div class="cart-head">
-<h2>سلة Rimi 🛍️</h2>
-<button class="close" onclick="closeCart()">✕</button>
+<div
+class="modal-description"
+id="modalProductDescription"
+>
 </div>
 
-<div id="cartItems"></div>
 
-<div class="total">
-<span>الإجمالي</span>
-<span id="total">0.000 ر.ع</span>
+<div
+id="modalColorsSection"
+class="hidden"
+>
+
+<div class="option-title">
+اختاري اللون
 </div>
 
-<div class="checkout">
-<h3>إتمام الطلب</h3>
-
-<div class="field">
-<label>الاسم *</label>
-<input id="customerName" placeholder="اكتبي اسمك">
+<div
+class="option-list"
+id="modalColors"
+>
 </div>
 
-<div class="field">
-<label>رقم الهاتف *</label>
-<input id="customerPhone" type="tel" placeholder="رقم التواصل">
 </div>
 
-<div class="field">
-<label>المحافظة / المنطقة *</label>
-<input id="customerArea" placeholder="مثال: مسقط - الخوض">
+
+<div
+id="modalSizesSection"
+class="hidden"
+>
+
+<div class="option-title">
+اختاري المقاس
 </div>
 
-<div class="field">
-<label>العنوان / تفاصيل التوصيل</label>
-<textarea id="customerAddress" placeholder="اكتبي تفاصيل العنوان"></textarea>
+<div
+class="option-list"
+id="modalSizes"
+>
 </div>
 
-<div class="field">
-<label>طريقة الاستلام</label>
-<select id="deliveryMethod">
-<option>التوصيل</option>
-<option>سيتم الاتفاق عبر واتساب</option>
-</select>
 </div>
 
-<div class="field">
-<label>ملاحظات الطلب</label>
-<textarea
-id="customerNotes"
-placeholder="لون معين، مقاس، تغليف هدية، أو أي ملاحظة أخرى..."
-></textarea>
+
+<div
+class="product-stock-text"
+id="modalStock"
+>
 </div>
 
-<button class="order-btn" onclick="sendOrder()">
-تأكيد وإرسال الطلب عبر واتساب
+
+<button
+class="modal-add"
+id="modalAddButton"
+type="button"
+>
+أضيفي للسلة
 </button>
 
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ===============================
+خلفية السلة
+================================ -->
+
+<div
+class="overlay"
+id="overlay"
+>
+</div>
+
+
+<!-- ===============================
+السلة
+================================ -->
+
+<aside
+class="cart"
+id="cart"
+>
+
+<div class="cart-head">
+
+<h2>
+سلة Rimi 🛍️
+</h2>
+
+
+<button
+class="close"
+id="closeCartButton"
+type="button"
+>
+✕
+</button>
+
+</div>
+
+
+<div id="cartItems">
+</div>
+
+
+<!-- الحساب -->
+
+<div class="cart-summary">
+
+<div class="summary-line">
+
+<span>
+مجموع المنتجات
+</span>
+
+<span id="subtotal">
+0.000 ر.ع
+</span>
+
+</div>
+
+
+<div class="summary-line">
+
+<span>
+رسوم التوصيل
+</span>
+
+<span id="deliveryFee">
+0.000 ر.ع
+</span>
+
+</div>
+
+
+<div class="summary-line final">
+
+<span>
+الإجمالي
+</span>
+
+<span id="total">
+0.000 ر.ع
+</span>
+
+</div>
+
+</div>
+
+
+<!-- ===============================
+إتمام الطلب
+================================= -->
+
+<div class="checkout">
+
+<h3>
+إتمام الطلب
+</h3>
+
+
+<div class="checkout-section-title">
+بياناتك
+</div>
+
+
+<div class="field">
+
+<label>
+الاسم *
+</label>
+
+<input
+id="customerName"
+autocomplete="name"
+placeholder="اكتبي اسمك"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+رقم الهاتف *
+</label>
+
+<input
+id="customerPhone"
+type="tel"
+inputmode="tel"
+autocomplete="tel"
+placeholder="رقم التواصل"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+الولاية *
+</label>
+
+<select id="customerWilaya">
+
+<option value="">
+اختاري الولاية
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+المنطقة *
+</label>
+
+<select
+id="customerArea"
+disabled
+>
+
+<option value="">
+اختاري الولاية أولًا
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+تفاصيل العنوان *
+</label>
+
+<textarea
+id="customerAddress"
+placeholder="اكتبي تفاصيل العنوان بشكل واضح"
+></textarea>
+
+</div>
+
+
+<!-- طريقة التوصيل -->
+
+<div class="checkout-section-title">
+طريقة الاستلام
+</div>
+
+
+<div class="radio-box">
+
+
+<label class="radio-option">
+
+<input
+type="radio"
+name="deliveryMethod"
+value="office"
+checked
+>
+
+<span>
+المكتب
+<br>
+<small id="officeFeeLabel">
+1.000 ر.ع
+</small>
+</span>
+
+</label>
+
+
+<label class="radio-option">
+
+<input
+type="radio"
+name="deliveryMethod"
+value="courier"
+>
+
+<span>
+مندوب
+<br>
+<small id="courierFeeLabel">
+2.000 ر.ع
+</small>
+</span>
+
+</label>
+
+
+</div>
+
+
+<div class="delivery-info">
+
+يتم احتساب رسوم الاستلام
+تلقائيًا وإضافتها إلى إجمالي الطلب.
+
+</div>
+
+
+<!-- الزاجل -->
+
+<div class="checkout-section-title">
+الزاجل
+</div>
+
+
+<div class="field">
+
+<label>
+هل تريدين الطلب كزاجل لشخص؟
+</label>
+
+
+<select id="isZajel">
+
+<option value="no">
+لا
+</option>
+
+<option value="yes">
+نعم
+</option>
+
+</select>
+
+</div>
+
+
+<div
+id="zajelFields"
+class="zajel-box hidden"
+>
+
+
+<div class="field">
+
+<label>
+اسم الشخص المستلم *
+</label>
+
+<input
+id="recipientName"
+placeholder="اسم المستلم"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+رقم الشخص المستلم *
+</label>
+
+<input
+id="recipientPhone"
+type="tel"
+inputmode="tel"
+placeholder="رقم المستلم"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+ولاية المستلم *
+</label>
+
+<select id="recipientWilaya">
+
+<option value="">
+اختاري الولاية
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+منطقة المستلم *
+</label>
+
+<select
+id="recipientArea"
+disabled
+>
+
+<option value="">
+اختاري الولاية أولًا
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+تفاصيل عنوان المستلم *
+</label>
+
+<textarea
+id="recipientAddress"
+placeholder="اكتبي عنوان الشخص المستلم"
+></textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>
+ما هي الرسالة التي تودين كتابتها في الزاجل؟
+</label>
+
+<textarea
+id="zajelMessage"
+placeholder="اكتبي رسالة الزاجل هنا..."
+></textarea>
+
+</div>
+
+
+</div>
+
+
+<!-- الملاحظات -->
+
+<div class="field">
+
+<label>
+ملاحظات الطلب
+</label>
+
+<textarea
+id="customerNotes"
+placeholder="أي ملاحظة إضافية للطلب..."
+></textarea>
+
+</div>
+
+
+<div
+class="payment-notice"
+id="paymentNotice"
+>
+
+يتم تثبيت الطلب بعد تحويل المبلغ
+والتأكد من استلامه.
+
+</div>
+
+
+<button
+class="order-btn"
+id="sendOrderButton"
+type="button"
+>
+
+تأكيد وإرسال الطلب عبر واتساب
+
+</button>
+
+
 <p class="note">
-سيتم فتح واتساب برسالة تحتوي على تفاصيل طلبك. لا يتم تأكيد الطلب
-نهائيًا إلا بعد التواصل مع Rimi.
+
+سيتم حفظ طلبك لدى Rimi،
+ثم فتح واتساب برسالة مرتبة
+تحتوي على جميع تفاصيل الطلب.
+
 </p>
+
 </div>
 
 </aside>
 
-<div class="toast" id="toast">تمت الإضافة إلى السلة ♡</div>
 
-<script>
+<!-- ===============================
+التنبيه
+================================ -->
 
-/*
-المنتجات الحالية تجريبية.
-لاحقًا سنبدلها بصورك ومنتجاتك وأسعارك الحقيقية.
-*/
+<div
+class="toast"
+id="toast"
+>
+تمت الإضافة إلى السلة ♡
+</div>
 
-const products = [
-{
-id:1,
-name:"شنطة Rimi",
-category:"شنط",
-price:12.500,
-icon:"👜",
-badge:"مختارات Rimi"
-},
-{
-id:2,
-name:"عطر Rimi",
-category:"عطور",
-price:8.000,
-icon:"🌷",
-badge:"جديد"
-},
-{
-id:3,
-name:"بجامة ناعمة",
-category:"بجامات",
-price:10.000,
-icon:"🎀",
-badge:"جديد"
-},
-{
-id:4,
-name:"هدية Rimi",
-category:"هدايا",
-price:7.500,
-icon:"🎁",
-badge:"مميز"
+
+<!-- ===============================
+Firebase + JavaScript
+================================ -->
+
+<script type="module">
+
+
+/* ===============================
+Firebase
+================================ */
+
+import {
+initializeApp
 }
-];
+from
+"https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
-let activeCategory = "الكل";
 
-let cart = JSON.parse(localStorage.getItem("rimiCart")) || [];
+import {
+getFirestore,
+collection,
+getDocs,
+getDoc,
+addDoc,
+doc,
+serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+apiKey:
+"AIzaSyAtBFy0kQdyayn1F-Fxxpd04UD7kWFXBu4",
+
+authDomain:
+"rimi-store.firebaseapp.com",
+
+projectId:
+"rimi-store",
+
+storageBucket:
+"rimi-store.firebasestorage.app",
+
+messagingSenderId:
+"1640224406",
+
+appId:
+"1:1640224406:web:c59fd821a5e91317aed4b7"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+
+const db =
+getFirestore(app);
+
+
+/* ===============================
+المتغيرات
+================================ */
+
+const $ =
+id =>
+document.getElementById(id);
+
+
+let categories = [];
+
+let products = [];
+
+let activeCategory =
+"all";
+
+
+let selectedProduct =
+null;
+
+
+let selectedColor =
+"";
+
+
+let selectedSize =
+"";
+
+
+let cart =
+JSON.parse(
+localStorage.getItem(
+"rimiCartV2"
+)
+) || [];
+
+
+/* ===============================
+إعدادات Rimi الافتراضية
+================================ */
+
+let storeSettings = {
+
+storeName:
+"Rimi",
+
+whatsapp:
+"96547355",
+
+officeFee:
+1,
+
+courierFee:
+2,
+
+paymentNotice:
+"يتم تثبيت الطلب بعد تحويل المبلغ والتأكد من استلامه.",
+
+customerNotice:
+""
+
+};
+
+
+/* ===============================
+أدوات عامة
+================================ */
+
+function escapeHtml(
+value=""
+){
+
+return String(value)
+
+.replaceAll(
+"&",
+"&amp;"
+)
+
+.replaceAll(
+"<",
+"&lt;"
+)
+
+.replaceAll(
+">",
+"&gt;"
+)
+
+.replaceAll(
+'"',
+"&quot;"
+)
+
+.replaceAll(
+"'",
+"&#039;"
+);
+
+}
+
+
+function safeNumber(
+value,
+fallback=0
+){
+
+const number =
+Number(value);
+
+
+if(
+Number.isNaN(number)
+){
+
+return fallback;
+
+}
+
+
+return number;
+
+}
+
 
 function money(value){
-return Number(value).toFixed(3) + " ر.ع";
+
+return (
+safeNumber(value)
+.toFixed(3)
++
+" ر.ع"
+);
+
 }
+
+
+function showToast(
+message=
+"تمت الإضافة إلى السلة ♡"
+){
+
+const toast =
+$("toast");
+
+
+toast.textContent =
+message;
+
+
+toast
+.classList
+.add("show");
+
+
+setTimeout(
+()=>{
+
+toast
+.classList
+.remove("show");
+
+},
+1800
+);
+
+}
+
+
+/* ===============================
+المخزون
+================================ */
+
+function getProductStock(
+product
+){
+
+if(
+product.hasColors &&
+Array.isArray(
+product.variants
+)
+){
+
+return product.variants.reduce(
+
+(total,variant)=>
+total +
+safeNumber(
+variant.stock,
+0
+),
+
+0
+
+);
+
+}
+
+
+if(
+product.hasSizes &&
+Array.isArray(
+product.sizes
+)
+){
+
+return product.sizes.reduce(
+
+(total,size)=>
+total +
+safeNumber(
+size.stock,
+0
+),
+
+0
+
+);
+
+}
+
+
+return safeNumber(
+product.stock,
+0
+);
+
+}
+
+
+/* ===============================
+صورة المنتج
+================================ */
+
+function getProductImage(
+product
+){
+
+if(product.mainImage){
+
+return product.mainImage;
+
+}
+
+
+if(
+Array.isArray(
+product.images
+) &&
+product.images.length
+){
+
+return product.images[0];
+
+}
+
+
+if(
+product.hasColors &&
+Array.isArray(
+product.variants
+)
+){
+
+for(
+const variant
+of product.variants
+){
+
+if(
+variant.mainImage
+){
+
+return variant.mainImage;
+
+}
+
+
+if(
+Array.isArray(
+variant.images
+) &&
+variant.images.length
+){
+
+return variant.images[0];
+
+}
+
+}
+
+}
+
+
+if(product.image){
+
+return product.image;
+
+}
+
+
+return "";
+
+}
+
+
+/* ===============================
+معرف السلة
+================================ */
+
+function cartKey(
+productId,
+color="",
+size=""
+){
+
+return [
+productId,
+color,
+size
+].join("::");
+
+}
+
+
+/* ===============================
+الحد الأقصى للمخزون
+================================ */
+
+function getAvailableStock(
+product,
+color="",
+size=""
+){
+
+if(!product){
+
+return 0;
+
+}
+
+
+if(product.hasColors){
+
+const variant =
+(
+product.variants ||
+[]
+)
+.find(
+item=>
+item.color === color
+);
+
+
+if(!variant){
+
+return 0;
+
+}
+
+
+if(product.hasSizes){
+
+const sizeItem =
+(
+variant.sizes ||
+[]
+)
+.find(
+item=>
+item.size === size
+);
+
+
+return safeNumber(
+sizeItem?.stock,
+0
+);
+
+}
+
+
+return safeNumber(
+variant.stock,
+0
+);
+
+}
+
+
+if(product.hasSizes){
+
+const sizeItem =
+(
+product.sizes ||
+[]
+)
+.find(
+item=>
+item.size === size
+);
+
+
+return safeNumber(
+sizeItem?.stock,
+0
+);
+
+}
+
+
+return safeNumber(
+product.stock,
+0
+);
+
+}
+
+
+/* ===============================
+تحميل الإعدادات
+================================ */
+
+async function loadSettings(){
+
+try{
+
+const snapshot =
+await getDoc(
+
+doc(
+db,
+"settings",
+"store"
+)
+
+);
+
+
+if(
+snapshot.exists()
+){
+
+storeSettings = {
+
+...storeSettings,
+
+...snapshot.data()
+
+};
+
+}
+
+
+}catch(error){
+
+console.log(
+"Using default store settings.",
+error
+);
+
+}
+
+
+$("officeFeeLabel")
+.textContent =
+money(
+storeSettings.officeFee
+);
+
+
+$("courierFeeLabel")
+.textContent =
+money(
+storeSettings.courierFee
+);
+
+
+$("paymentNotice")
+.textContent =
+storeSettings.paymentNotice ||
+"يتم تثبيت الطلب بعد تحويل المبلغ والتأكد من استلامه.";
+
+}
+
+
+/* ===============================
+تحميل الأقسام
+================================ */
+
+async function loadCategories(){
+
+categories = [];
+
+
+try{
+
+const snapshot =
+await getDocs(
+
+collection(
+db,
+"categories"
+)
+
+);
+
+
+snapshot.forEach(
+item=>{
+
+const data =
+item.data();
+
+
+if(
+data.active !== false
+){
+
+categories.push({
+
+id:
+item.id,
+
+...data
+
+});
+
+}
+
+}
+);
+
+
+categories.sort(
+(a,b)=>
+
+safeNumber(
+a.order,
+1
+)
+
+-
+
+safeNumber(
+b.order,
+1
+)
+);
+
+
+renderCategories();
+
+
+}catch(error){
+
+console.error(error);
+
+
+$("categories")
+.innerHTML =
+
+`
+<button
+class="category active"
+type="button"
+>
+الكل
+</button>
+`;
+
+}
+
+}
+
+
+/* ===============================
+عرض الأقسام
+================================ */
 
 function renderCategories(){
 
-const cats = ["الكل", ...new Set(products.map(p => p.category))];
+const area =
+$("categories");
 
-document.getElementById("categories").innerHTML =
-cats.map(cat => `
+
+const allButton = `
+
 <button
-class="category ${activeCategory === cat ? "active" : ""}"
-onclick="setCategory('${cat}')">
-${cat}
+class="category ${
+activeCategory === "all"
+? "active"
+: ""
+}"
+type="button"
+data-category="all"
+>
+الكل
 </button>
-`).join("");
+
+`;
+
+
+const categoryButtons =
+categories.map(
+category=>`
+
+<button
+class="category ${
+activeCategory ===
+category.id
+? "active"
+: ""
+}"
+type="button"
+data-category="${category.id}"
+>
+${escapeHtml(
+category.name || ""
+)}
+</button>
+
+`
+).join("");
+
+
+area.innerHTML =
+allButton +
+categoryButtons;
+
+
+area
+.querySelectorAll(
+"[data-category]"
+)
+.forEach(
+button=>{
+
+button.onclick =
+()=>{
+
+activeCategory =
+button.dataset.category;
+
+
+renderCategories();
+
+renderProducts();
+
+};
+
+}
+);
+
 }
 
-function setCategory(cat){
-activeCategory = cat;
-renderCategories();
-renderProducts();
+
+/* ===============================
+تحميل المنتجات
+================================ */
+
+async function loadProducts(){
+
+products = [];
+
+
+try{
+
+const snapshot =
+await getDocs(
+
+collection(
+db,
+"products"
+)
+
+);
+
+
+snapshot.forEach(
+item=>{
+
+const data =
+item.data();
+
+
+if(
+data.active !== false
+){
+
+products.push({
+
+id:
+item.id,
+
+...data
+
+});
+
 }
+
+}
+);
+
+
+renderProducts();
+
+
+}catch(error){
+
+console.error(error);
+
+
+$("products")
+.innerHTML =
+
+`
+<div class="empty">
+
+تعذر تحميل المنتجات حاليًا ♡
+
+</div>
+`;
+
+}
+
+}
+
+
+/* ===============================
+شارة المنتج
+================================ */
+
+function productBadge(
+product
+){
+
+if(product.featured){
+
+return "مميز";
+
+}
+
+
+if(product.isNew){
+
+return "جديد";
+
+}
+
+
+return "";
+
+}
+
+
+/* ===============================
+عرض المنتجات
+================================ */
 
 function renderProducts(){
 
 const search =
-document.getElementById("searchInput").value.trim().toLowerCase();
+$("searchInput")
+.value
+.trim()
+.toLowerCase();
 
-const filtered = products.filter(product => {
+
+const filtered =
+products.filter(
+product=>{
+
+const category =
+categories.find(
+item=>
+item.id ===
+product.categoryId
+);
+
+
+const categoryName =
+category?.name ||
+"";
+
 
 const categoryMatch =
-activeCategory === "الكل" ||
-product.category === activeCategory;
+
+activeCategory ===
+"all"
+
+||
+
+product.categoryId ===
+activeCategory;
+
 
 const searchMatch =
-product.name.toLowerCase().includes(search) ||
-product.category.toLowerCase().includes(search);
 
-return categoryMatch && searchMatch;
-});
+!search
 
-const area = document.getElementById("products");
+||
 
-if(!filtered.length){
-area.innerHTML =
-`<div class="empty">ما لقينا منتج بهذا البحث ♡</div>`;
+String(
+product.name || ""
+)
+.toLowerCase()
+.includes(search)
+
+||
+
+categoryName
+.toLowerCase()
+.includes(search);
+
+
+return (
+categoryMatch &&
+searchMatch
+);
+
+}
+);
+
+
+const area =
+$("products");
+
+
+if(
+!filtered.length
+){
+
+area.innerHTML = `
+
+<div class="empty">
+
+ما لقينا منتجات
+بهذا البحث ♡
+
+</div>
+
+`;
+
 return;
+
 }
 
-area.innerHTML = filtered.map(product => `
-<article class="product">
 
-<div class="product-image">
-${product.badge ? `<span class="badge">${product.badge}</span>` : ""}
-<span>${product.icon}</span>
+area.innerHTML =
+filtered.map(
+product=>{
+
+const image =
+getProductImage(
+product
+);
+
+
+const stock =
+getProductStock(
+product
+);
+
+
+const badge =
+productBadge(
+product
+);
+
+
+return `
+
+<article
+class="product"
+>
+
+<div
+class="product-image"
+data-open-product="${product.id}"
+>
+
+${
+badge
+?
+`
+<span class="badge">
+${escapeHtml(badge)}
+</span>
+`
+:
+""
+}
+
+
+${
+stock <= 0
+?
+`
+<span
+class="stock-badge out"
+>
+نفد المخزون
+</span>
+`
+:
+stock <= 3
+?
+`
+<span
+class="stock-badge"
+>
+الكمية محدودة
+</span>
+`
+:
+""
+}
+
+
+${
+image
+?
+`
+<img
+src="${escapeHtml(image)}"
+alt="${escapeHtml(
+product.name || ""
+)}"
+loading="lazy"
+>
+`
+:
+`
+<div
+class="product-placeholder"
+>
+🎀
 </div>
+`
+}
+
+</div>
+
 
 <div class="product-info">
-<h3 class="product-name">${product.name}</h3>
-<div class="price">${money(product.price)}</div>
 
-<div class="product-actions">
+<h3 class="product-name">
+
+${escapeHtml(
+product.name ||
+""
+)}
+
+</h3>
+
+
+${
+product.description
+?
+`
+<p
+class="product-description"
+>
+${escapeHtml(
+product.description
+)}
+</p>
+`
+:
+""
+}
+
+
+<div class="price">
+
+${money(
+product.price
+)}
+
+</div>
+
+
+<div
+class="product-actions"
+>
+
 <button
 class="add-btn"
-onclick="addToCart(${product.id})">
-أضيفي للسلة
+type="button"
+data-add-product="${product.id}"
+${
+stock <= 0
+? "disabled"
+: ""
+}
+>
+
+${
+stock <= 0
+?
+"نفد المخزون"
+:
+"أضيفي للسلة"
+}
+
 </button>
+
+
+<button
+class="details-btn"
+type="button"
+data-details-product="${product.id}"
+>
+التفاصيل
+</button>
+
 </div>
+
 </div>
 
 </article>
-`).join("");
+
+`;
+
+}
+).join("");
+
+
+area
+.querySelectorAll(
+"[data-open-product]"
+)
+.forEach(
+element=>{
+
+element.onclick =
+()=>{
+
+openProduct(
+element.dataset.openProduct
+);
+
+};
+
+}
+);
+
+
+area
+.querySelectorAll(
+"[data-details-product]"
+)
+.forEach(
+button=>{
+
+button.onclick =
+()=>{
+
+openProduct(
+button.dataset.detailsProduct
+);
+
+};
+
+}
+);
+
+
+area
+.querySelectorAll(
+"[data-add-product]"
+)
+.forEach(
+button=>{
+
+button.onclick =
+()=>{
+
+const product =
+products.find(
+item=>
+item.id ===
+button.dataset.addProduct
+);
+
+
+if(!product){
+return;
 }
 
-function addToCart(id){
 
-const product = products.find(p => p.id === id);
+if(
+product.hasColors ||
+product.hasSizes
+){
 
-const existing = cart.find(item => item.id === id);
+openProduct(
+product.id
+);
+
+return;
+
+}
+
+
+addSimpleProductToCart(
+product
+);
+
+};
+
+}
+);
+
+}
+
+
+/* ===============================
+نهاية الجزء ١
+الجزء ٢ يبدأ مباشرة من هنا
+================================ */
+  /* ===============================
+فتح تفاصيل المنتج
+================================ */
+
+function openProduct(productId){
+
+const product =
+products.find(
+item =>
+item.id === productId
+);
+
+if(!product){
+return;
+}
+
+selectedProduct = product;
+selectedColor = "";
+selectedSize = "";
+
+$("modalProductName").textContent =
+product.name || "";
+
+$("modalProductPrice").textContent =
+money(product.price);
+
+$("modalProductDescription").textContent =
+product.description || "";
+
+renderProductOptions();
+
+$("productModalOverlay")
+.classList
+.add("show");
+
+document.body
+.classList
+.add("no-scroll");
+
+}
+
+
+/* ===============================
+إغلاق تفاصيل المنتج
+================================ */
+
+function closeProduct(){
+
+$("productModalOverlay")
+.classList
+.remove("show");
+
+document.body
+.classList
+.remove("no-scroll");
+
+selectedProduct = null;
+selectedColor = "";
+selectedSize = "";
+
+}
+
+
+$("closeProductModal").onclick =
+closeProduct;
+
+
+$("productModalOverlay").onclick =
+event => {
+
+if(
+event.target ===
+$("productModalOverlay")
+){
+closeProduct();
+}
+
+};
+
+
+/* ===============================
+صور المنتج حسب اللون
+================================ */
+
+function getCurrentImages(){
+
+if(!selectedProduct){
+return [];
+}
+
+if(
+selectedProduct.hasColors &&
+selectedColor
+){
+
+const variant =
+(
+selectedProduct.variants ||
+[]
+).find(
+item =>
+item.color === selectedColor
+);
+
+if(variant){
+
+const images = [];
+
+if(variant.mainImage){
+images.push(
+variant.mainImage
+);
+}
+
+if(
+Array.isArray(
+variant.images
+)
+){
+
+variant.images.forEach(
+image => {
+
+if(
+image &&
+!images.includes(image)
+){
+images.push(image);
+}
+
+}
+);
+
+}
+
+if(images.length){
+return images;
+}
+
+}
+
+}
+
+const images = [];
+
+if(selectedProduct.mainImage){
+images.push(
+selectedProduct.mainImage
+);
+}
+
+if(
+Array.isArray(
+selectedProduct.images
+)
+){
+
+selectedProduct.images.forEach(
+image => {
+
+if(
+image &&
+!images.includes(image)
+){
+images.push(image);
+}
+
+}
+);
+
+}
+
+if(
+!images.length &&
+selectedProduct.image
+){
+images.push(
+selectedProduct.image
+);
+}
+
+if(
+!images.length &&
+selectedProduct.hasColors
+){
+
+(
+selectedProduct.variants ||
+[]
+).forEach(
+variant => {
+
+(
+variant.images ||
+[]
+).forEach(
+image => {
+
+if(
+image &&
+!images.includes(image)
+){
+images.push(image);
+}
+
+}
+);
+
+}
+);
+
+}
+
+return images;
+
+}
+
+
+/* ===============================
+معرض الصور
+================================ */
+
+function renderGallery(){
+
+const images =
+getCurrentImages();
+
+const main =
+$("modalMainImage");
+
+const thumbs =
+$("modalGallery");
+
+if(!images.length){
+
+main.innerHTML = `
+
+<div
+class="product-placeholder"
+>
+🎀
+</div>
+
+`;
+
+thumbs.innerHTML = "";
+
+return;
+
+}
+
+main.innerHTML = `
+
+<img
+src="${escapeHtml(images[0])}"
+alt="${escapeHtml(
+selectedProduct?.name || ""
+)}"
+>
+
+`;
+
+thumbs.innerHTML =
+images.map(
+(image,index) => `
+
+<button
+class="gallery-thumb ${
+index === 0
+? "active"
+: ""
+}"
+type="button"
+data-gallery-image="${escapeHtml(image)}"
+>
+
+<img
+src="${escapeHtml(image)}"
+alt=""
+>
+
+</button>
+
+`
+).join("");
+
+thumbs
+.querySelectorAll(
+"[data-gallery-image]"
+)
+.forEach(
+button => {
+
+button.onclick =
+() => {
+
+main.innerHTML = `
+
+<img
+src="${escapeHtml(
+button.dataset.galleryImage
+)}"
+alt="${escapeHtml(
+selectedProduct?.name || ""
+)}"
+>
+
+`;
+
+thumbs
+.querySelectorAll(
+".gallery-thumb"
+)
+.forEach(
+item =>
+item.classList.remove(
+"active"
+)
+);
+
+button
+.classList
+.add("active");
+
+};
+
+}
+);
+
+}
+
+
+/* ===============================
+ألوان المنتج
+================================ */
+
+function renderColors(){
+
+const section =
+$("modalColorsSection");
+
+const area =
+$("modalColors");
+
+if(
+!selectedProduct?.hasColors ||
+!Array.isArray(
+selectedProduct.variants
+) ||
+!selectedProduct.variants.length
+){
+
+section
+.classList
+.add("hidden");
+
+area.innerHTML = "";
+
+return;
+
+}
+
+section
+.classList
+.remove("hidden");
+
+area.innerHTML =
+selectedProduct.variants.map(
+variant => {
+
+let stock = 0;
+
+if(
+selectedProduct.hasSizes &&
+Array.isArray(
+variant.sizes
+)
+){
+
+stock =
+variant.sizes.reduce(
+(total,item) =>
+total +
+safeNumber(
+item.stock,
+0
+),
+0
+);
+
+}else{
+
+stock =
+safeNumber(
+variant.stock,
+0
+);
+
+}
+
+return `
+
+<button
+type="button"
+class="option-btn ${
+selectedColor ===
+variant.color
+? "selected"
+: ""
+}"
+data-color="${escapeHtml(
+variant.color || ""
+)}"
+${
+stock <= 0
+? "disabled"
+: ""
+}
+>
+
+${escapeHtml(
+variant.color || ""
+)}
+
+${
+stock <= 0
+? " — نفد"
+: ""
+}
+
+</button>
+
+`;
+
+}
+).join("");
+
+area
+.querySelectorAll(
+"[data-color]"
+)
+.forEach(
+button => {
+
+button.onclick =
+() => {
+
+selectedColor =
+button.dataset.color;
+
+selectedSize = "";
+
+renderProductOptions();
+
+};
+
+}
+);
+
+}
+
+
+/* ===============================
+المقاسات
+================================ */
+
+function getCurrentSizes(){
+
+if(!selectedProduct?.hasSizes){
+return [];
+}
+
+if(
+selectedProduct.hasColors
+){
+
+if(!selectedColor){
+return [];
+}
+
+const variant =
+(
+selectedProduct.variants ||
+[]
+).find(
+item =>
+item.color ===
+selectedColor
+);
+
+return (
+variant?.sizes ||
+[]
+);
+
+}
+
+return (
+selectedProduct.sizes ||
+[]
+);
+
+}
+
+
+function renderSizes(){
+
+const section =
+$("modalSizesSection");
+
+const area =
+$("modalSizes");
+
+if(
+!selectedProduct?.hasSizes
+){
+
+section
+.classList
+.add("hidden");
+
+area.innerHTML = "";
+
+return;
+
+}
+
+section
+.classList
+.remove("hidden");
+
+if(
+selectedProduct.hasColors &&
+!selectedColor
+){
+
+area.innerHTML = `
+
+<span
+style="
+color:var(--muted);
+font-size:13px;
+"
+>
+اختاري اللون أولًا
+</span>
+
+`;
+
+return;
+
+}
+
+const sizes =
+getCurrentSizes();
+
+if(!sizes.length){
+
+area.innerHTML = `
+
+<span
+style="
+color:var(--muted);
+font-size:13px;
+"
+>
+لا توجد مقاسات متاحة
+</span>
+
+`;
+
+return;
+
+}
+
+area.innerHTML =
+sizes.map(
+item => {
+
+const sizeName =
+typeof item === "string"
+? item
+: (
+item.size ||
+item.name ||
+""
+);
+
+const stock =
+typeof item === "string"
+? 999999
+: safeNumber(
+item.stock,
+0
+);
+
+return `
+
+<button
+type="button"
+class="option-btn ${
+selectedSize ===
+sizeName
+? "selected"
+: ""
+}"
+data-size="${escapeHtml(
+sizeName
+)}"
+${
+stock <= 0
+? "disabled"
+: ""
+}
+>
+
+${escapeHtml(sizeName)}
+
+${
+stock <= 0
+? " — نفد"
+: ""
+}
+
+</button>
+
+`;
+
+}
+).join("");
+
+area
+.querySelectorAll(
+"[data-size]"
+)
+.forEach(
+button => {
+
+button.onclick =
+() => {
+
+selectedSize =
+button.dataset.size;
+
+renderProductOptions();
+
+};
+
+}
+);
+
+}
+
+
+/* ===============================
+حالة المخزون داخل المنتج
+================================ */
+
+function renderModalStock(){
+
+if(!selectedProduct){
+return;
+}
+
+let stock = 0;
+
+if(
+selectedProduct.hasColors &&
+!selectedColor
+){
+
+stock =
+getProductStock(
+selectedProduct
+);
+
+}else if(
+selectedProduct.hasSizes &&
+!selectedSize
+){
+
+if(
+selectedProduct.hasColors
+){
+
+const variant =
+(
+selectedProduct.variants ||
+[]
+).find(
+item =>
+item.color ===
+selectedColor
+);
+
+stock =
+(
+variant?.sizes ||
+[]
+).reduce(
+(total,item) =>
+total +
+safeNumber(
+item.stock,
+0
+),
+0
+);
+
+}else{
+
+stock =
+getProductStock(
+selectedProduct
+);
+
+}
+
+}else{
+
+stock =
+getAvailableStock(
+selectedProduct,
+selectedColor,
+selectedSize
+);
+
+}
+
+if(stock <= 0){
+
+$("modalStock")
+.textContent =
+"نفد المخزون";
+
+return;
+
+}
+
+if(stock <= 3){
+
+$("modalStock")
+.textContent =
+`متبقي ${stock} فقط`;
+
+return;
+
+}
+
+$("modalStock")
+.textContent =
+"متوفر ♡";
+
+}
+
+
+/* ===============================
+تحديث نافذة المنتج
+================================ */
+
+function renderProductOptions(){
+
+renderColors();
+
+renderSizes();
+
+renderGallery();
+
+renderModalStock();
+
+const button =
+$("modalAddButton");
+
+let ready = true;
+
+if(
+selectedProduct?.hasColors &&
+!selectedColor
+){
+ready = false;
+}
+
+if(
+selectedProduct?.hasSizes &&
+!selectedSize
+){
+ready = false;
+}
+
+let stock = 0;
+
+if(ready){
+
+stock =
+getAvailableStock(
+selectedProduct,
+selectedColor,
+selectedSize
+);
+
+}
+
+button.disabled =
+!ready ||
+stock <= 0;
+
+if(
+selectedProduct?.hasColors &&
+!selectedColor
+){
+
+button.textContent =
+"اختاري اللون أولًا";
+
+}else if(
+selectedProduct?.hasSizes &&
+!selectedSize
+){
+
+button.textContent =
+"اختاري المقاس أولًا";
+
+}else if(
+stock <= 0
+){
+
+button.textContent =
+"نفد المخزون";
+
+}else{
+
+button.textContent =
+"أضيفي للسلة";
+
+}
+
+}
+
+
+/* ===============================
+حفظ السلة
+================================ */
+
+function saveCart(){
+
+localStorage.setItem(
+"rimiCartV2",
+JSON.stringify(cart)
+);
+
+}
+
+
+/* ===============================
+إضافة منتج بدون خيارات
+================================ */
+
+function addSimpleProductToCart(
+product
+){
+
+const stock =
+getAvailableStock(
+product
+);
+
+if(stock <= 0){
+
+showToast(
+"هذا المنتج غير متوفر حاليًا"
+);
+
+return;
+}
+
+addToCart(
+product,
+"",
+""
+);
+
+}
+
+
+/* ===============================
+إضافة للسلة
+================================ */
+
+function addToCart(
+product,
+color="",
+size=""
+){
+
+const available =
+getAvailableStock(
+product,
+color,
+size
+);
+
+if(available <= 0){
+
+showToast(
+"هذا الاختيار غير متوفر حاليًا"
+);
+
+return;
+}
+
+const key =
+cartKey(
+product.id,
+color,
+size
+);
+
+const existing =
+cart.find(
+item =>
+item.key === key
+);
 
 if(existing){
-existing.qty++;
+
+if(
+existing.qty >=
+available
+){
+
+showToast(
+"وصلتِ للكمية المتوفرة"
+);
+
+return;
+}
+
+existing.qty += 1;
+
 }else{
-cart.push({...product,qty:1});
+
+let image =
+getProductImage(
+product
+);
+
+if(
+product.hasColors &&
+color
+){
+
+const variant =
+(
+product.variants ||
+[]
+).find(
+item =>
+item.color === color
+);
+
+if(
+variant?.mainImage
+){
+
+image =
+variant.mainImage;
+
+}else if(
+Array.isArray(
+variant?.images
+) &&
+variant.images.length
+){
+
+image =
+variant.images[0];
+
+}
+
+}
+
+cart.push({
+
+key,
+
+productId:
+product.id,
+
+name:
+product.name || "",
+
+price:
+safeNumber(
+product.price,
+0
+),
+
+color,
+
+size,
+
+image,
+
+qty:1
+
+});
+
 }
 
 saveCart();
-showToast();
+
+renderCart();
+
+showToast(
+"تمت الإضافة إلى السلة ♡"
+);
+
 }
 
-function saveCart(){
-localStorage.setItem("rimiCart",JSON.stringify(cart));
-renderCart();
+
+/* ===============================
+زر الإضافة من النافذة
+================================ */
+
+$("modalAddButton").onclick =
+() => {
+
+if(!selectedProduct){
+return;
 }
+
+if(
+selectedProduct.hasColors &&
+!selectedColor
+){
+
+showToast(
+"اختاري اللون أولًا"
+);
+
+return;
+}
+
+if(
+selectedProduct.hasSizes &&
+!selectedSize
+){
+
+showToast(
+"اختاري المقاس أولًا"
+);
+
+return;
+}
+
+addToCart(
+selectedProduct,
+selectedColor,
+selectedSize
+);
+
+closeProduct();
+
+openCart();
+
+};
+
+
+/* ===============================
+السلة
+================================ */
+
+function openCart(){
+
+$("cart")
+.classList
+.add("open");
+
+$("overlay")
+.classList
+.add("show");
+
+document.body
+.classList
+.add("no-scroll");
+
+}
+
+
+function closeCart(){
+
+$("cart")
+.classList
+.remove("open");
+
+$("overlay")
+.classList
+.remove("show");
+
+document.body
+.classList
+.remove("no-scroll");
+
+}
+
+
+$("cartButton").onclick =
+openCart;
+
+
+$("closeCartButton").onclick =
+closeCart;
+
+
+$("overlay").onclick =
+closeCart;
+
+
+$("shopButton").onclick =
+() => {
+
+document
+.getElementById("shop")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+};
+
+
+/* ===============================
+كمية عنصر السلة
+================================ */
+
+function cartItemAvailableStock(
+item
+){
+
+const product =
+products.find(
+product =>
+product.id ===
+item.productId
+);
+
+if(!product){
+
+return 0;
+}
+
+return getAvailableStock(
+product,
+item.color,
+item.size
+);
+
+}
+
+
+/* ===============================
+تغيير الكمية
+================================ */
+
+function changeQty(
+key,
+amount
+){
+
+const item =
+cart.find(
+item =>
+item.key === key
+);
+
+if(!item){
+return;
+}
+
+if(amount > 0){
+
+const available =
+cartItemAvailableStock(
+item
+);
+
+if(
+item.qty >=
+available
+){
+
+showToast(
+"وصلتِ للكمية المتوفرة"
+);
+
+return;
+}
+
+}
+
+item.qty += amount;
+
+if(item.qty <= 0){
+
+cart =
+cart.filter(
+cartItem =>
+cartItem.key !== key
+);
+
+}
+
+saveCart();
+
+renderCart();
+
+}
+
+
+/* ===============================
+حذف عنصر
+================================ */
+
+function removeCartItem(
+key
+){
+
+cart =
+cart.filter(
+item =>
+item.key !== key
+);
+
+saveCart();
+
+renderCart();
+
+}
+
+
+/* ===============================
+رسوم التوصيل
+================================ */
+
+function selectedDeliveryMethod(){
+
+return (
+document.querySelector(
+'input[name="deliveryMethod"]:checked'
+)?.value
+||
+"office"
+);
+
+}
+
+
+function currentDeliveryFee(){
+
+if(!cart.length){
+return 0;
+}
+
+return (
+selectedDeliveryMethod() ===
+"courier"
+)
+?
+safeNumber(
+storeSettings.courierFee,
+2
+)
+:
+safeNumber(
+storeSettings.officeFee,
+1
+);
+
+}
+
+
+/* ===============================
+الإجماليات
+================================ */
+
+function calculateSubtotal(){
+
+return cart.reduce(
+(total,item) =>
+total +
+(
+safeNumber(
+item.price,
+0
+)
+*
+safeNumber(
+item.qty,
+1
+)
+),
+0
+);
+
+}
+
+
+function updateTotals(){
+
+const subtotal =
+calculateSubtotal();
+
+const delivery =
+currentDeliveryFee();
+
+const total =
+subtotal +
+delivery;
+
+$("subtotal")
+.textContent =
+money(subtotal);
+
+$("deliveryFee")
+.textContent =
+money(delivery);
+
+$("total")
+.textContent =
+money(total);
+
+}
+
+
+/* ===============================
+عرض السلة
+================================ */
 
 function renderCart(){
 
-const items = document.getElementById("cartItems");
+$("cartCount")
+.textContent =
+cart.reduce(
+(total,item) =>
+total +
+safeNumber(
+item.qty,
+0
+),
+0
+);
 
-const count =
-cart.reduce((sum,item) => sum + item.qty,0);
-
-document.getElementById("cartCount").textContent = count;
+const area =
+$("cartItems");
 
 if(!cart.length){
 
-items.innerHTML = `
-<div style="text-align:center;padding:35px 10px">
-<div style="font-size:45px">🛍️</div>
-<p>سلتك فاضية حاليًا ♡</p>
+area.innerHTML = `
+
+<div
+style="
+text-align:center;
+padding:35px 10px;
+color:var(--muted);
+"
+>
+سلتك فارغة حاليًا ♡
 </div>
+
 `;
 
-}else{
+updateTotals();
 
-items.innerHTML = cart.map(item => `
+return;
+}
+
+area.innerHTML =
+cart.map(
+item => `
+
 <div class="cart-item">
 
+${
+item.image
+?
+`
+<img
+class="cart-item-image"
+src="${escapeHtml(
+item.image
+)}"
+alt=""
+>
+`
+:
+`
+<div
+class="cart-item-image"
+style="
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+"
+>
+🎀
+</div>
+`
+}
+
+
 <div>
-<strong>${item.name}</strong>
-<div>${money(item.price)}</div>
+
+<strong>
+${escapeHtml(
+item.name
+)}
+</strong>
+
+<div
+class="cart-item-options"
+>
+
+${
+item.color
+?
+`
+اللون:
+${escapeHtml(
+item.color
+)}
+<br>
+`
+:
+""
+}
+
+${
+item.size
+?
+`
+المقاس:
+${escapeHtml(
+item.size
+)}
+<br>
+`
+:
+""
+}
+
+السعر:
+${money(
+item.price
+)}
+
+</div>
+
 
 <div class="qty">
-<button onclick="changeQty(${item.id},1)">+</button>
-<span>${item.qty}</span>
-<button onclick="changeQty(${item.id},-1)">−</button>
+
+<button
+type="button"
+data-qty-plus="${escapeHtml(
+item.key
+)}"
+>
++
+</button>
+
+<span>
+${item.qty}
+</span>
+
+<button
+type="button"
+data-qty-minus="${escapeHtml(
+item.key
+)}"
+>
+−
+</button>
+
 </div>
+
 </div>
+
 
 <button
 class="remove"
-onclick="removeItem(${item.id})">
+type="button"
+data-remove-item="${escapeHtml(
+item.key
+)}"
+>
 حذف
 </button>
 
 </div>
-`).join("");
+
+`
+).join("");
+
+area
+.querySelectorAll(
+"[data-qty-plus]"
+)
+.forEach(
+button => {
+
+button.onclick =
+() =>
+changeQty(
+button.dataset.qtyPlus,
+1
+);
+
 }
+);
+
+area
+.querySelectorAll(
+"[data-qty-minus]"
+)
+.forEach(
+button => {
+
+button.onclick =
+() =>
+changeQty(
+button.dataset.qtyMinus,
+-1
+);
+
+}
+);
+
+area
+.querySelectorAll(
+"[data-remove-item]"
+)
+.forEach(
+button => {
+
+button.onclick =
+() =>
+removeCartItem(
+button.dataset.removeItem
+);
+
+}
+);
+
+updateTotals();
+
+}
+
+
+/* ===============================
+تغيير طريقة التوصيل
+================================ */
+
+document
+.querySelectorAll(
+'input[name="deliveryMethod"]'
+)
+.forEach(
+radio => {
+
+radio.addEventListener(
+"change",
+updateTotals
+);
+
+}
+);
+
+
+/* ===============================
+الزاجل
+================================ */
+
+$("isZajel")
+.addEventListener(
+"change",
+() => {
+
+const isZajel =
+$("isZajel").value ===
+"yes";
+
+$("zajelFields")
+.classList
+.toggle(
+"hidden",
+!isZajel
+);
+
+}
+);
+
+
+/* ===============================
+الولايات والمناطق
+
+ملاحظة:
+لا نضع أسماء مناطق غير مؤكدة.
+الإدارة تستطيع لاحقًا توفير
+قائمة الولايات والمناطق من
+إعدادات المتجر.
+================================ */
+
+let locationData = {};
+
+
+/* ===============================
+تعبئة الولايات
+================================ */
+
+function populateWilayas(){
+
+const wilayas =
+Object.keys(
+locationData
+);
+
+const customer =
+$("customerWilaya");
+
+const recipient =
+$("recipientWilaya");
+
+customer.innerHTML = `
+
+<option value="">
+اختاري الولاية
+</option>
+
+`;
+
+recipient.innerHTML = `
+
+<option value="">
+اختاري الولاية
+</option>
+
+`;
+
+wilayas.forEach(
+wilaya => {
+
+const option1 =
+document.createElement(
+"option"
+);
+
+option1.value =
+wilaya;
+
+option1.textContent =
+wilaya;
+
+customer.appendChild(
+option1
+);
+
+
+const option2 =
+document.createElement(
+"option"
+);
+
+option2.value =
+wilaya;
+
+option2.textContent =
+wilaya;
+
+recipient.appendChild(
+option2
+);
+
+}
+);
+
+}
+
+
+/* ===============================
+تعبئة المناطق
+================================ */
+
+function populateAreas(
+wilayaSelect,
+areaSelect
+){
+
+const wilaya =
+wilayaSelect.value;
+
+const areas =
+locationData[wilaya] ||
+[];
+
+areaSelect.innerHTML = `
+
+<option value="">
+اختاري المنطقة
+</option>
+
+`;
+
+if(!wilaya){
+
+areaSelect.disabled =
+true;
+
+areaSelect.innerHTML = `
+
+<option value="">
+اختاري الولاية أولًا
+</option>
+
+`;
+
+return;
+
+}
+
+areaSelect.disabled =
+false;
+
+areas.forEach(
+area => {
+
+const option =
+document.createElement(
+"option"
+);
+
+option.value =
+area;
+
+option.textContent =
+area;
+
+areaSelect.appendChild(
+option
+);
+
+}
+);
+
+}
+
+
+/* ===============================
+تحميل بيانات المواقع
+================================ */
+
+async function loadLocationData(){
+
+try{
+
+const snapshot =
+await getDoc(
+
+doc(
+db,
+"settings",
+"locations"
+)
+
+);
+
+if(snapshot.exists()){
+
+const data =
+snapshot.data();
+
+locationData =
+data.wilayas ||
+data.locations ||
+{};
+
+}
+
+}catch(error){
+
+console.log(
+"Locations not configured.",
+error
+);
+
+}
+
+populateWilayas();
+
+}
+
+
+$("customerWilaya")
+.addEventListener(
+"change",
+() =>
+populateAreas(
+$("customerWilaya"),
+$("customerArea")
+)
+);
+
+
+$("recipientWilaya")
+.addEventListener(
+"change",
+() =>
+populateAreas(
+$("recipientWilaya"),
+$("recipientArea")
+)
+);
+
+
+/* ===============================
+التحقق من المخزون قبل الطلب
+================================ */
+
+function validateCartStock(){
+
+for(
+const item
+of cart
+){
+
+const available =
+cartItemAvailableStock(
+item
+);
+
+if(
+available <= 0
+){
+
+return (
+`المنتج "${item.name}" ` +
+`لم يعد متوفرًا.`
+);
+
+}
+
+if(
+item.qty >
+available
+){
+
+return (
+`الكمية المتوفرة من ` +
+`"${item.name}" هي ` +
+`${available} فقط.`
+);
+
+}
+
+}
+
+return "";
+
+}
+
+
+/* ===============================
+التحقق من بيانات الطلب
+================================ */
+
+function validateOrder(){
+
+if(!cart.length){
+
+return (
+"السلة فارغة."
+);
+
+}
+
+const stockError =
+validateCartStock();
+
+if(stockError){
+
+return stockError;
+
+}
+
+if(
+!$("customerName")
+.value
+.trim()
+){
+
+return (
+"اكتبي الاسم."
+);
+
+}
+
+if(
+!$("customerPhone")
+.value
+.trim()
+){
+
+return (
+"اكتبي رقم الهاتف."
+);
+
+}
+
+if(
+!$("customerWilaya")
+.value
+){
+
+return (
+"اختاري الولاية."
+);
+
+}
+
+if(
+!$("customerArea")
+.value
+){
+
+return (
+"اختاري المنطقة."
+);
+
+}
+
+if(
+!$("customerAddress")
+.value
+.trim()
+){
+
+return (
+"اكتبي تفاصيل العنوان."
+);
+
+}
+
+const isZajel =
+$("isZajel").value ===
+"yes";
+
+if(isZajel){
+
+if(
+!$("recipientName")
+.value
+.trim()
+){
+
+return (
+"اكتبي اسم الشخص المستلم للزاجل."
+);
+
+}
+
+if(
+!$("recipientPhone")
+.value
+.trim()
+){
+
+return (
+"اكتبي رقم الشخص المستلم للزاجل."
+);
+
+}
+
+if(
+!$("recipientWilaya")
+.value
+){
+
+return (
+"اختاري ولاية مستلم الزاجل."
+);
+
+}
+
+if(
+!$("recipientArea")
+.value
+){
+
+return (
+"اختاري منطقة مستلم الزاجل."
+);
+
+}
+
+if(
+!$("recipientAddress")
+.value
+.trim()
+){
+
+return (
+"اكتبي عنوان مستلم الزاجل."
+);
+
+}
+
+}
+
+return "";
+
+}
+
+
+/* ===============================
+إنشاء رقم الطلب
+================================ */
+
+function createOrderNumber(){
+
+const now =
+new Date();
+
+const date =
+[
+now.getFullYear(),
+String(
+now.getMonth() + 1
+).padStart(2,"0"),
+String(
+now.getDate()
+).padStart(2,"0")
+].join("");
+
+const time =
+[
+String(
+now.getHours()
+).padStart(2,"0"),
+String(
+now.getMinutes()
+).padStart(2,"0"),
+String(
+now.getSeconds()
+).padStart(2,"0")
+].join("");
+
+const random =
+Math.floor(
+100 +
+Math.random() * 900
+);
+
+return (
+`RIMI-${date}-${time}-${random}`
+);
+
+}
+
+
+/* ===============================
+تجهيز بيانات الطلب
+================================ */
+
+function buildOrderData(){
+
+const subtotal =
+calculateSubtotal();
+
+const deliveryFee =
+currentDeliveryFee();
 
 const total =
-cart.reduce((sum,item) => sum + item.price * item.qty,0);
+subtotal +
+deliveryFee;
 
-document.getElementById("total").textContent = money(total);
+const deliveryMethod =
+selectedDeliveryMethod();
+
+const isZajel =
+$("isZajel").value ===
+"yes";
+
+return {
+
+orderNumber:
+createOrderNumber(),
+
+status:
+"new",
+
+statusLabel:
+"جديد",
+
+customer:{
+
+name:
+$("customerName")
+.value
+.trim(),
+
+phone:
+$("customerPhone")
+.value
+.trim(),
+
+wilaya:
+$("customerWilaya")
+.value,
+
+area:
+$("customerArea")
+.value,
+
+address:
+$("customerAddress")
+.value
+.trim()
+
+},
+
+delivery:{
+
+method:
+deliveryMethod,
+
+methodLabel:
+deliveryMethod ===
+"courier"
+?
+"مندوب"
+:
+"مكتب",
+
+fee:
+deliveryFee
+
+},
+
+isZajel,
+
+zajel:
+isZajel
+?
+{
+
+recipientName:
+$("recipientName")
+.value
+.trim(),
+
+recipientPhone:
+$("recipientPhone")
+.value
+.trim(),
+
+wilaya:
+$("recipientWilaya")
+.value,
+
+area:
+$("recipientArea")
+.value,
+
+address:
+$("recipientAddress")
+.value
+.trim(),
+
+message:
+$("zajelMessage")
+.value
+.trim()
+
+}
+:
+null,
+
+notes:
+$("customerNotes")
+.value
+.trim(),
+
+items:
+cart.map(
+item => ({
+
+productId:
+item.productId,
+
+name:
+item.name,
+
+color:
+item.color || "",
+
+size:
+item.size || "",
+
+price:
+safeNumber(
+item.price,
+0
+),
+
+quantity:
+safeNumber(
+item.qty,
+1
+),
+
+lineTotal:
+safeNumber(
+item.price,
+0
+)
+*
+safeNumber(
+item.qty,
+1
+),
+
+image:
+item.image || ""
+
+})
+),
+
+subtotal,
+
+deliveryFee,
+
+total,
+
+paymentStatus:
+"waiting_transfer",
+
+paymentStatusLabel:
+"بانتظار التحويل",
+
+paymentNotice:
+storeSettings.paymentNotice ||
+"يتم تثبيت الطلب بعد تحويل المبلغ والتأكد من استلامه.",
+
+createdAt:
+serverTimestamp(),
+
+createdAtClient:
+new Date().toISOString()
+
+};
+
 }
 
-function changeQty(id,change){
 
-const item = cart.find(item => item.id === id);
+/* ===============================
+رسالة واتساب مرتبة
+================================ */
 
-if(!item) return;
+function buildWhatsAppMessage(
+order
+){
 
-item.qty += change;
+let message =
 
-if(item.qty <= 0){
-cart = cart.filter(item => item.id !== id);
+`🎀 طلب جديد من متجر Rimi
+
+رقم الطلب: ${order.orderNumber}
+
+👤 بيانات العميلة
+الاسم: ${order.customer.name}
+رقم الهاتف: ${order.customer.phone}
+الولاية: ${order.customer.wilaya}
+المنطقة: ${order.customer.area}
+تفاصيل العنوان: ${order.customer.address}
+
+🚚 طريقة الاستلام
+${order.delivery.methodLabel}
+رسوم التوصيل: ${money(order.delivery.fee)}
+
+🛍️ الطلب:
+`;
+
+order.items.forEach(
+(item,index) => {
+
+message +=
+
+`
+${index + 1}- ${item.name}
+${item.color ? `اللون: ${item.color}\n` : ""}${item.size ? `المقاس: ${item.size}\n` : ""}الكمية: ${item.quantity}
+السعر: ${money(item.price)}
+المجموع: ${money(item.lineTotal)}
+`;
+
+}
+);
+
+message +=
+
+`
+💰 الحساب
+مجموع المنتجات: ${money(order.subtotal)}
+رسوم التوصيل: ${money(order.deliveryFee)}
+الإجمالي: ${money(order.total)}
+`;
+
+if(order.isZajel){
+
+message +=
+
+`
+💌 زاجل للشخص: نعم
+اسم المستلم: ${order.zajel.recipientName}
+رقم المستلم: ${order.zajel.recipientPhone}
+ولاية المستلم: ${order.zajel.wilaya}
+منطقة المستلم: ${order.zajel.area}
+عنوان المستلم: ${order.zajel.address}
+ما هي الرسالة التي تود أن تكتبها في زاجل؟
+${order.zajel.message || "لا توجد رسالة"}
+`;
+
+}else{
+
+message +=
+
+`
+💌 زاجل للشخص: لا
+`;
+
 }
 
-saveCart();
+message +=
+
+`
+📝 ملاحظات:
+${order.notes || "لا توجد ملاحظات"}
+
+⏳ حالة الدفع:
+بانتظار التحويل
+
+⚠️ ${order.paymentNotice}
+
+شكرًا لاختيار Rimi ♡`;
+
+return message;
+
 }
 
-function removeItem(id){
-cart = cart.filter(item => item.id !== id);
-saveCart();
-}
 
-function openCart(){
-document.getElementById("cart").classList.add("open");
-document.getElementById("overlay").classList.add("show");
-}
+/* ===============================
+فتح واتساب
+================================ */
 
-function closeCart(){
-document.getElementById("cart").classList.remove("open");
-document.getElementById("overlay").classList.remove("show");
-}
-
-function showToast(){
-
-const toast = document.getElementById("toast");
-
-toast.classList.add("show");
-
-setTimeout(() => {
-toast.classList.remove("show");
-},1800);
-}
-
-function sendOrder(){
-
-if(cart.length === 0){
-alert("أضيفي منتجًا إلى السلة أولًا ♡");
-return;
-}
-
-const name =
-document.getElementById("customerName").value.trim();
+function openWhatsApp(
+message
+){
 
 const phone =
-document.getElementById("customerPhone").value.trim();
+String(
+storeSettings.whatsapp ||
+"96547355"
+)
+.replace(/\D/g,"");
 
-const area =
-document.getElementById("customerArea").value.trim();
-
-const address =
-document.getElementById("customerAddress").value.trim();
-
-const delivery =
-document.getElementById("deliveryMethod").value;
-
-const notes =
-document.getElementById("customerNotes").value.trim();
-
-if(!name || !phone || !area){
-alert("فضلاً اكتبي الاسم ورقم الهاتف والمنطقة ♡");
-return;
-}
-
-const itemsText = cart.map((item,index) =>
-`${index + 1}- ${item.name}
-الكمية: ${item.qty}
-السعر: ${money(item.price * item.qty)}`
-).join("\n\n");
-
-const total =
-cart.reduce((sum,item) => sum + item.price * item.qty,0);
-
-const message =
-`طلب جديد من متجر Rimi 🎀
-
-الاسم: ${name}
-رقم الهاتف: ${phone}
-المنطقة: ${area}
-العنوان: ${address || "غير مذكور"}
-طريقة الاستلام: ${delivery}
-
-الطلب:
-${itemsText}
-
-الإجمالي: ${money(total)}
-
-ملاحظات:
-${notes || "لا توجد ملاحظات"}
-
-شكراً لاختيار Rimi ♡`;
+const fullPhone =
+phone.startsWith("968")
+?
+phone
+:
+`968${phone}`;
 
 const whatsapp =
-"https://api.whatsapp.com/send?phone=96896547355&text=" +
-encodeURIComponent(message);
 
-window.open(whatsapp,"_blank");
+"https://api.whatsapp.com/send?phone="
+
++
+
+fullPhone
+
++
+
+"&text="
+
++
+
+encodeURIComponent(
+message
+);
+
+window.open(
+whatsapp,
+"_blank"
+);
+
 }
 
-renderCategories();
-renderProducts();
+
+/* ===============================
+مسح بيانات الطلب بعد النجاح
+================================ */
+
+function clearOrderForm(){
+
+$("customerName").value =
+"";
+
+$("customerPhone").value =
+"";
+
+$("customerWilaya").value =
+"";
+
+$("customerArea").innerHTML = `
+
+<option value="">
+اختاري الولاية أولًا
+</option>
+
+`;
+
+$("customerArea").disabled =
+true;
+
+$("customerAddress").value =
+"";
+
+$("customerNotes").value =
+"";
+
+$("isZajel").value =
+"no";
+
+$("zajelFields")
+.classList
+.add("hidden");
+
+$("recipientName").value =
+"";
+
+$("recipientPhone").value =
+"";
+
+$("recipientWilaya").value =
+"";
+
+$("recipientArea").innerHTML = `
+
+<option value="">
+اختاري الولاية أولًا
+</option>
+
+`;
+
+$("recipientArea").disabled =
+true;
+
+$("recipientAddress").value =
+"";
+
+$("zajelMessage").value =
+"";
+
+}
+
+
+/* ===============================
+إرسال الطلب
+================================ */
+
+$("sendOrderButton").onclick =
+async () => {
+
+const error =
+validateOrder();
+
+if(error){
+
+showToast(error);
+
+return;
+
+}
+
+const button =
+$("sendOrderButton");
+
+button.disabled =
+true;
+
+button.textContent =
+"جاري تسجيل الطلب...";
+
+try{
+
+const order =
+buildOrderData();
+
+await addDoc(
+
+collection(
+db,
+"orders"
+),
+
+order
+
+);
+
+const message =
+buildWhatsAppMessage(
+order
+);
+
+/*
+نحفظ نجاح الطلب أولًا
+ثم نفتح واتساب.
+*/
+
+cart = [];
+
+saveCart();
+
 renderCart();
+
+clearOrderForm();
+
+showToast(
+"تم تسجيل طلبك بنجاح ♡"
+);
+
+openWhatsApp(
+message
+);
+
+}catch(error){
+
+console.error(
+"Order error:",
+error
+);
+
+showToast(
+"تعذر تسجيل الطلب. حاولي مرة أخرى."
+);
+
+}finally{
+
+button.disabled =
+false;
+
+button.textContent =
+"تأكيد وإرسال الطلب عبر واتساب";
+
+}
+
+};
+
+
+/* ===============================
+البحث
+================================ */
+
+$("searchInput")
+.addEventListener(
+"input",
+renderProducts
+);
+
+
+/* ===============================
+تحديث السلة عند تغير المنتجات
+================================ */
+
+function cleanInvalidCartItems(){
+
+cart =
+cart.filter(
+item =>
+item &&
+item.productId &&
+safeNumber(
+item.qty,
+0
+) > 0
+);
+
+saveCart();
+
+}
+
+
+/* ===============================
+بدء المتجر
+================================ */
+
+async function startStore(){
+
+cleanInvalidCartItems();
+
+renderCart();
+
+await Promise.all([
+
+loadSettings(),
+
+loadCategories(),
+
+loadProducts(),
+
+loadLocationData()
+
+]);
+
+renderCart();
+
+}
+
+
+/* ===============================
+تشغيل Rimi
+================================ */
+
+startStore();
+
 
 </script>
 
