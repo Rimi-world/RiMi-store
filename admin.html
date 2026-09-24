@@ -5066,38 +5066,27 @@ order.status ===
 
 <p>
 الاسم:
-${escapeHtml(customerName)}
+${escapeHtml(order.customer?.name || "غير محدد")}
 </p>
 
 <p>
 الرقم:
-${escapeHtml(phone)}
+${escapeHtml(order.customer?.phone || "غير محدد")}
+</p>
+
+<p>
+المحافظة:
+${escapeHtml(order.customer?.governorate || "غير محدد")}
 </p>
 
 <p>
 الولاية:
-${escapeHtml(
-order.wilaya ||
-order.customerWilaya ||
-"غير محدد"
-)}
-</p>
-
-<p>
-المنطقة:
-${escapeHtml(
-order.area ||
-order.customerArea ||
-"غير محدد"
-)}
+${escapeHtml(order.customer?.wilaya || "غير محدد")}
 </p>
 
 <p>
 تفاصيل العنوان:
-${escapeHtml(
-order.address ||
-"غير محدد"
-)}
+${escapeHtml(order.customer?.address || "غير محدد")}
 </p>
 
 </div>
