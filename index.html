@@ -2159,13 +2159,13 @@ placeholder="رقم التواصل"
 <div class="field">
 
 <label>
-الولاية *
+المحافظة *
 </label>
 
-<select id="customerWilaya">
+<select id="customerGovernorate">
 
 <option value="">
-اختاري الولاية
+اختاري المحافظة
 </option>
 
 </select>
@@ -2176,16 +2176,16 @@ placeholder="رقم التواصل"
 <div class="field">
 
 <label>
-المنطقة *
+الولاية *
 </label>
 
 <select
-id="customerArea"
+id="customerWilaya"
 disabled
 >
 
 <option value="">
-اختاري الولاية أولًا
+اختاري المحافظة أولًا
 </option>
 
 </select>
@@ -2335,13 +2335,13 @@ placeholder="رقم المستلم"
 <div class="field">
 
 <label>
-ولاية المستلم *
+محافظة المستلم *
 </label>
 
-<select id="recipientWilaya">
+<select id="recipientGovernorate">
 
 <option value="">
-اختاري الولاية
+اختاري المحافظة
 </option>
 
 </select>
@@ -2352,12 +2352,21 @@ placeholder="رقم المستلم"
 <div class="field">
 
 <label>
-منطقة المستلم *
+ولاية المستلم *
 </label>
 
 <select
-id="recipientArea"
+id="recipientWilaya"
 disabled
+>
+
+<option value="">
+اختاري المحافظة أولًا
+</option>
+
+</select>
+
+</div>
 >
 
 <option value="">
@@ -5249,226 +5258,223 @@ $("zajelFields")
 }
 );
 
-
+,
 /* ===============================
-الولايات والمناطق
-
-ملاحظة:
-لا نضع أسماء مناطق غير مؤكدة.
-الإدارة تستطيع لاحقًا توفير
-قائمة الولايات والمناطق من
-إعدادات المتجر.
+المحافظات والولايات
 ================================ */
 
-let locationData = {};
+const OMAN_LOCATIONS = {
+"مسقط": [
+"مسقط",
+"مطرح",
+"العامرات",
+"بوشر",
+"السيب",
+"قريات"
+],
+
+"ظفار": [
+"صلالة",
+"طاقة",
+"مرباط",
+"رخيوت",
+"ثمريت",
+"ضلكوت",
+"المزيونة",
+"مقشن",
+"شليم وجزر الحلانيات",
+"سدح"
+],
+
+"مسندم": [
+"خصب",
+"دبا",
+"بخاء",
+"مدحاء"
+],
+
+"البريمي": [
+"البريمي",
+"محضة",
+"السنينة"
+],
+
+"الداخلية": [
+"نزوى",
+"بهلاء",
+"منح",
+"الحمراء",
+"أدم",
+"إزكي",
+"سمائل",
+"بدبد",
+"الجبل الأخضر"
+],
+
+"شمال الباطنة": [
+"صحار",
+"شناص",
+"لوى",
+"صحم",
+"الخابورة",
+"السويق"
+],
+
+"جنوب الباطنة": [
+"الرستاق",
+"العوابي",
+"نخل",
+"وادي المعاول",
+"بركاء",
+"المصنعة"
+],
+
+"جنوب الشرقية": [
+"صور",
+"الكامل والوافي",
+"جعلان بني بو حسن",
+"جعلان بني بو علي",
+"مصيرة"
+],
+
+"شمال الشرقية": [
+"إبراء",
+"المضيبي",
+"بدية",
+"القابل",
+"وادي بني خالد",
+"دماء والطائيين",
+"سناو"
+],
+
+"الظاهرة": [
+"عبري",
+"ينقل",
+"ضنك"
+],
+
+"الوسطى": [
+"هيما",
+"محوت",
+"الدقم",
+"الجازر"
+]
+};
+
+
+/* ===============================
+تعبئة المحافظات
+================================ */
+
+function populateGovernorates(){
+
+const customer =
+$("customerGovernorate");
+
+const recipient =
+$("recipientGovernorate");
+
+customer.innerHTML =
+`<option value="">اختاري المحافظة</option>`;
+
+recipient.innerHTML =
+`<option value="">اختاري المحافظة</option>`;
+
+Object.keys(OMAN_LOCATIONS)
+.forEach(governorate => {
+
+const option1 =
+document.createElement("option");
+
+option1.value = governorate;
+option1.textContent = governorate;
+
+customer.appendChild(option1);
+
+
+const option2 =
+document.createElement("option");
+
+option2.value = governorate;
+option2.textContent = governorate;
+
+recipient.appendChild(option2);
+
+});
+
+}
 
 
 /* ===============================
 تعبئة الولايات
 ================================ */
 
-function populateWilayas(){
-
-const wilayas =
-Object.keys(
-locationData
-);
-
-const customer =
-$("customerWilaya");
-
-const recipient =
-$("recipientWilaya");
-
-customer.innerHTML = `
-
-<option value="">
-اختاري الولاية
-</option>
-
-`;
-
-recipient.innerHTML = `
-
-<option value="">
-اختاري الولاية
-</option>
-
-`;
-
-wilayas.forEach(
-wilaya => {
-
-const option1 =
-document.createElement(
-"option"
-);
-
-option1.value =
-wilaya;
-
-option1.textContent =
-wilaya;
-
-customer.appendChild(
-option1
-);
-
-
-const option2 =
-document.createElement(
-"option"
-);
-
-option2.value =
-wilaya;
-
-option2.textContent =
-wilaya;
-
-recipient.appendChild(
-option2
-);
-
-}
-);
-
-}
-
-
-/* ===============================
-تعبئة المناطق
-================================ */
-
-function populateAreas(
-wilayaSelect,
-areaSelect
+function populateWilayas(
+governorateSelect,
+wilayaSelect
 ){
 
-const wilaya =
-wilayaSelect.value;
+const governorate =
+governorateSelect.value;
 
-const areas =
-locationData[wilaya] ||
-[];
+wilayaSelect.innerHTML =
+`<option value="">اختاري الولاية</option>`;
 
-areaSelect.innerHTML = `
+if(!governorate){
 
-<option value="">
-اختاري المنطقة
-</option>
+wilayaSelect.disabled = true;
 
-`;
-
-if(!wilaya){
-
-areaSelect.disabled =
-true;
-
-areaSelect.innerHTML = `
-
-<option value="">
-اختاري الولاية أولًا
-</option>
-
-`;
+wilayaSelect.innerHTML =
+`<option value="">اختاري المحافظة أولًا</option>`;
 
 return;
-
 }
 
-areaSelect.disabled =
-false;
+wilayaSelect.disabled = false;
 
-areas.forEach(
-area => {
+const wilayas =
+OMAN_LOCATIONS[governorate] || [];
+
+wilayas.forEach(wilaya => {
 
 const option =
-document.createElement(
-"option"
-);
+document.createElement("option");
 
-option.value =
-area;
+option.value = wilaya;
+option.textContent = wilaya;
 
-option.textContent =
-area;
+wilayaSelect.appendChild(option);
 
-areaSelect.appendChild(
-option
-);
-
-}
-);
+});
 
 }
 
 
-/* ===============================
-تحميل بيانات المواقع
-================================ */
+$("customerGovernorate")
+.addEventListener("change", () => {
 
-async function loadLocationData(){
-
-try{
-
-const snapshot =
-await getDoc(
-
-doc(
-db,
-"settings",
-"locations"
-)
-
-);
-
-if(snapshot.exists()){
-
-const data =
-snapshot.data();
-
-locationData =
-data.wilayas ||
-data.locations ||
-{};
-
-}
-
-}catch(error){
-
-console.log(
-"Locations not configured.",
-error
-);
-
-}
-
-populateWilayas();
-
-}
-
-
+populateWilayas(
+$("customerGovernorate"),
 $("customerWilaya")
-.addEventListener(
-"change",
-() =>
-populateAreas(
-$("customerWilaya"),
-$("customerArea")
-)
 );
 
+});
 
+
+$("recipientGovernorate")
+.addEventListener("change", () => {
+
+populateWilayas(
+$("recipientGovernorate"),
 $("recipientWilaya")
-.addEventListener(
-"change",
-() =>
-populateAreas(
-$("recipientWilaya"),
-$("recipientArea")
-)
 );
+
+});
+
+
+populateGovernorates();
+
+
 
 
 /* ===============================
@@ -5566,23 +5572,23 @@ return (
 }
 
 if(
+!$("customerGovernorate")
+.value
+){
+
+return (
+"اختاري المحافظة."
+);
+
+}
+
+if(
 !$("customerWilaya")
 .value
 ){
 
 return (
 "اختاري الولاية."
-);
-
-}
-
-if(
-!$("customerArea")
-.value
-){
-
-return (
-"اختاري المنطقة."
 );
 
 }
@@ -5630,23 +5636,23 @@ return (
 }
 
 if(
+!$("recipientGovernorate")
+.value
+){
+
+return (
+"اختاري محافظة مستلم الزاجل."
+);
+
+}
+
+if(
 !$("recipientWilaya")
 .value
 ){
 
 return (
 "اختاري ولاية مستلم الزاجل."
-);
-
-}
-
-if(
-!$("recipientArea")
-.value
-){
-
-return (
-"اختاري منطقة مستلم الزاجل."
 );
 
 }
@@ -5762,14 +5768,13 @@ $("customerPhone")
 .value
 .trim(),
 
+governorate:
+$("customerGovernorate")
+.value,
+
 wilaya:
 $("customerWilaya")
 .value,
-
-area:
-$("customerArea")
-.value,
-
 address:
 $("customerAddress")
 .value
@@ -5812,12 +5817,12 @@ $("recipientPhone")
 .value
 .trim(),
 
-wilaya:
-$("recipientWilaya")
+governorate:
+$("recipientGovernorate")
 .value,
 
-area:
-$("recipientArea")
+wilaya:
+$("recipientWilaya")
 .value,
 
 address:
@@ -5928,8 +5933,8 @@ let message =
 👤 بيانات العميلة
 الاسم: ${order.customer.name}
 رقم الهاتف: ${order.customer.phone}
+المحافظة: ${order.customer.governorate}
 الولاية: ${order.customer.wilaya}
-المنطقة: ${order.customer.area}
 تفاصيل العنوان: ${order.customer.address}
 
 🚚 طريقة الاستلام
@@ -5971,8 +5976,8 @@ message +=
 💌 زاجل للشخص: نعم
 اسم المستلم: ${order.zajel.recipientName}
 رقم المستلم: ${order.zajel.recipientPhone}
+محافظة المستلم: ${order.zajel.governorate}
 ولاية المستلم: ${order.zajel.wilaya}
-منطقة المستلم: ${order.zajel.area}
 عنوان المستلم: ${order.zajel.address}
 ما هي الرسالة التي تود أن تكتبها في زاجل؟
 ${order.zajel.message || "لا توجد رسالة"}
