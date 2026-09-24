@@ -4890,11 +4890,12 @@ return 0;
 
 const method = selectedDeliveryMethod();
 
+if(method === "office"){
+return safeNumber(storeSettings.officeFee, 1);
+}
+
 if(method === "courier"){
-return safeNumber(
-storeSettings.courierFee,
-2
-);
+return safeNumber(storeSettings.courierFee, 2);
 }
 
 return 0;
