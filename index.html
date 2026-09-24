@@ -2236,7 +2236,21 @@ value="courier"
 </span>
 
 </label>
+<label class="radio-option">
 
+<input
+type="radio"
+name="deliveryMethod"
+value="whatsapp"
+>
+
+<span>
+يتم التفاهم في الواتساب
+<br>
+<small>بدون رسوم إضافية</small>
+</span>
+
+</label>
 </div>
 
 
@@ -4861,15 +4875,11 @@ renderCart();
 ================================ */
 
 function selectedDeliveryMethod(){
-
-return (
-document.querySelector(
+const selected = document.querySelector(
 'input[name="deliveryMethod"]:checked'
-)?.value
-||
-"office"
 );
 
+return selected ? selected.value : "office";
 }
 
 
