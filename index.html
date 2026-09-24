@@ -4884,26 +4884,20 @@ return selected ? selected.value : "office";
 
 
 function currentDeliveryFee(){
-
 if(!cart.length){
 return 0;
 }
 
-return (
-selectedDeliveryMethod() ===
-"courier"
-)
-?
-safeNumber(
+const method = selectedDeliveryMethod();
+
+if(method === "courier"){
+return safeNumber(
 storeSettings.courierFee,
 2
-)
-:
-safeNumber(
-storeSettings.officeFee,
-1
 );
+}
 
+return 0;
 }
 
 
