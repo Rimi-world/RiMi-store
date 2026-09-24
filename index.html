@@ -5998,100 +5998,40 @@ new Date().toISOString()
 رسالة واتساب مرتبة
 ================================ */
 
-function buildWhatsAppMessage(
-order
-){
+function buildWhatsAppMessage(order){
 
-let message =
-
-`🎀 طلب جديد من متجر Rimi
+let message = `🎀 طلب جديد | Rimi
 
 رقم الطلب: ${order.orderNumber}
 
-👤 بيانات العميلة
-الاسم: ${order.customer.name}
-رقم الهاتف: ${order.customer.phone}
-المحافظة: ${order.customer.governorate}
-الولاية: ${order.customer.wilaya}
-تفاصيل العنوان: ${order.customer.address}
+العميلة: ${order.customer.name}
+الهاتف: ${order.customer.phone}
+العنوان: ${order.customer.governorate} - ${order.customer.wilaya}
+${order.customer.address}
 
-🚚 طريقة الاستلام
-${order.delivery.methodLabel}
+الطلب 🛍️:
+`;
+
+order.items.forEach((item) => {
+message += `${item.name} × ${item.qty}
+${item.color ? `اللون: ${item.color}\n` : ""}${item.size ? `المقاس: ${item.size}\n` : ""}السعر: ${money(item.price)}
+`;
+});
+
+message += `
+الاستلام🚚: ${order.delivery.method === "whatsapp" ? "يتم التفاهم في الواتساب" : order.delivery.methodLabel}
 رسوم التوصيل: ${money(order.delivery.fee)}
 
-🛍️ الطلب:
-`;
+زاجل💌: ${order.zajel?.enabled ? "نعم" : "لا"}
+ملاحظات: ${order.notes || "لا يوجد"}
 
-
-order.items.forEach(
-(item,index) => {
-
-message +=
-
-`
-${index + 1}- ${item.name}
-${item.color ? `اللون: ${item.color}\n` : ""}${item.size ? `المقاس: ${item.size}\n` : ""}الكمية: ${item.quantity}
-السعر: ${money(item.price)}
-المجموع: ${money(item.lineTotal)}
-`;
-
-}
-);
-
-
-message +=
-
-`
-💰 الحساب
-مجموع المنتجات: ${money(order.subtotal)}
-رسوم التوصيل: ${money(order.deliveryFee)}
 الإجمالي: ${money(order.total)}
-`;
+الدفع⏳: بانتظار التحويل
 
-
-if(order.isZajel){
-
-message +=
-
-`
-💌 زاجل للشخص: نعم
-اسم المستلم: ${order.zajel.recipientName}
-رقم المستلم: ${order.zajel.recipientPhone}
-محافظة المستلم: ${order.zajel.governorate}
-ولاية المستلم: ${order.zajel.wilaya}
-عنوان المستلم: ${order.zajel.address}
-
-💌 رسالة الزاجل:
-${order.zajel.message || "لا توجد رسالة"}
-`;
-
-}else{
-
-message +=
-
-`
-💌 زاجل للشخص: لا
-`;
-
-}
-
-
-message +=
-
-`
-📝 ملاحظات:
-${order.notes || "لا توجد ملاحظات"}
-
-⏳ حالة الدفع:
-بانتظار التحويل
-
-⚠️ ${order.paymentNotice}
-
-شكرًا لاختيار Rimi ♡`;
-
+شكرًا لأختيارك لنا
+تابعوني على الانستجرام : https://www.instagram.com/rimi.world0?stkn=czhvYWtweDVyYTh4&utm_source=qr`;
 
 return message;
-
 }
 
 
