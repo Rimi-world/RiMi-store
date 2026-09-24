@@ -978,9 +978,7 @@ font-size:31px;
 color:
 var(--burgundy);
 }
-
-
-/* ===============================
+  /* ===============================
 الفوتر
 ================================ */
 
@@ -1895,9 +1893,7 @@ opacity:.85;
 </p>
 
 </footer>
-
-
-<!-- ===============================
+  <!-- ===============================
 نافذة تفاصيل المنتج
 ================================ -->
 
@@ -1919,9 +1915,7 @@ type="button"
 ✕
 </button>
 
-
 <div class="product-modal-grid">
-
 
 <div>
 
@@ -1931,7 +1925,6 @@ id="modalMainImage"
 >
 </div>
 
-
 <div
 class="gallery-thumbs"
 id="modalGallery"
@@ -1940,12 +1933,9 @@ id="modalGallery"
 
 </div>
 
-
 <div class="modal-info">
 
-<h2 id="modalProductName">
-</h2>
-
+<h2 id="modalProductName"></h2>
 
 <div
 class="price"
@@ -1953,13 +1943,11 @@ id="modalProductPrice"
 >
 </div>
 
-
 <div
 class="modal-description"
 id="modalProductDescription"
 >
 </div>
-
 
 <div
 id="modalColorsSection"
@@ -1978,7 +1966,6 @@ id="modalColors"
 
 </div>
 
-
 <div
 id="modalSizesSection"
 class="hidden"
@@ -1996,13 +1983,11 @@ id="modalSizes"
 
 </div>
 
-
 <div
 class="product-stock-text"
 id="modalStock"
 >
 </div>
-
 
 <button
 class="modal-add"
@@ -2047,7 +2032,6 @@ id="cart"
 سلة Rimi 🛍️
 </h2>
 
-
 <button
 class="close"
 id="closeCartButton"
@@ -2057,7 +2041,6 @@ type="button"
 </button>
 
 </div>
-
 
 <div id="cartItems">
 </div>
@@ -2079,7 +2062,6 @@ type="button"
 
 </div>
 
-
 <div class="summary-line">
 
 <span>
@@ -2091,7 +2073,6 @@ type="button"
 </span>
 
 </div>
-
 
 <div class="summary-line final">
 
@@ -2110,14 +2091,13 @@ type="button"
 
 <!-- ===============================
 إتمام الطلب
-================================= -->
+================================ -->
 
 <div class="checkout">
 
 <h3>
 إتمام الطلب
 </h3>
-
 
 <div class="checkout-section-title">
 بياناتك
@@ -2156,6 +2136,8 @@ placeholder="رقم التواصل"
 </div>
 
 
+<!-- المحافظة -->
+
 <div class="field">
 
 <label>
@@ -2172,6 +2154,8 @@ placeholder="رقم التواصل"
 
 </div>
 
+
+<!-- الولاية -->
 
 <div class="field">
 
@@ -2213,9 +2197,7 @@ placeholder="اكتبي تفاصيل العنوان بشكل واضح"
 طريقة الاستلام
 </div>
 
-
 <div class="radio-box">
-
 
 <label class="radio-option">
 
@@ -2255,7 +2237,6 @@ value="courier"
 
 </label>
 
-
 </div>
 
 
@@ -2273,13 +2254,11 @@ value="courier"
 الزاجل
 </div>
 
-
 <div class="field">
 
 <label>
-هل تريدين الطلب كزاجل لشخص؟
+هل تريده كزاجل للشخص؟
 </label>
-
 
 <select id="isZajel">
 
@@ -2367,15 +2346,6 @@ disabled
 </select>
 
 </div>
->
-
-<option value="">
-اختاري الولاية أولًا
-</option>
-
-</select>
-
-</div>
 
 
 <div class="field">
@@ -2395,7 +2365,7 @@ placeholder="اكتبي عنوان الشخص المستلم"
 <div class="field">
 
 <label>
-ما هي الرسالة التي تودين كتابتها في الزاجل؟
+ما هي الرسالة التي تود أن تكتبها في زاجل؟
 </label>
 
 <textarea
@@ -2404,7 +2374,6 @@ placeholder="اكتبي رسالة الزاجل هنا..."
 ></textarea>
 
 </div>
-
 
 </div>
 
@@ -2550,14 +2519,11 @@ let products = [];
 let activeCategory =
 "all";
 
-
 let selectedProduct =
 null;
 
-
 let selectedColor =
 "";
-
 
 let selectedSize =
 "";
@@ -2644,7 +2610,6 @@ fallback=0
 const number =
 Number(value);
 
-
 if(
 Number.isNaN(number)
 ){
@@ -2652,7 +2617,6 @@ Number.isNaN(number)
 return fallback;
 
 }
-
 
 return number;
 
@@ -2679,15 +2643,12 @@ message=
 const toast =
 $("toast");
 
-
 toast.textContent =
 message;
-
 
 toast
 .classList
 .add("show");
-
 
 setTimeout(
 ()=>{
@@ -2885,7 +2846,7 @@ product.variants ||
 []
 )
 .find(
-item=>
+item =>
 item.color === color
 );
 
@@ -2905,7 +2866,7 @@ variant.sizes ||
 []
 )
 .find(
-item=>
+item =>
 item.size === size
 );
 
@@ -2934,7 +2895,7 @@ product.sizes ||
 []
 )
 .find(
-item=>
+item =>
 item.size === size
 );
 
@@ -3179,7 +3140,6 @@ button.onclick =
 
 activeCategory =
 button.dataset.category;
-
 
 renderCategories();
 
@@ -3655,10 +3615,6 @@ product
 
 
 /* ===============================
-نهاية الجزء ١
-الجزء ٢ يبدأ مباشرة من هنا
-================================ */
-  /* ===============================
 فتح تفاصيل المنتج
 ================================ */
 
@@ -3944,6 +3900,7 @@ alt=""
 `
 ).join("");
 
+
 thumbs
 .querySelectorAll(
 "[data-gallery-image]"
@@ -3988,9 +3945,7 @@ button
 );
 
 }
-
-
-/* ===============================
+  /* ===============================
 ألوان المنتج
 ================================ */
 
@@ -4094,6 +4049,7 @@ stock <= 0
 
 }
 ).join("");
+
 
 area
 .querySelectorAll(
@@ -4288,6 +4244,7 @@ stock <= 0
 
 }
 ).join("");
+
 
 area
 .querySelectorAll(
@@ -4727,7 +4684,7 @@ openCart();
 
 
 /* ===============================
-السلة
+فتح وإغلاق السلة
 ================================ */
 
 function openCart(){
@@ -4767,14 +4724,16 @@ document.body
 $("cartButton").onclick =
 openCart;
 
-
 $("closeCartButton").onclick =
 closeCart;
-
 
 $("overlay").onclick =
 closeCart;
 
+
+/* ===============================
+زر تسوقي
+================================ */
 
 $("shopButton").onclick =
 () => {
@@ -4789,7 +4748,7 @@ behavior:"smooth"
 
 
 /* ===============================
-كمية عنصر السلة
+مخزون عنصر السلة
 ================================ */
 
 function cartItemAvailableStock(
@@ -5033,6 +4992,7 @@ updateTotals();
 return;
 }
 
+
 area.innerHTML =
 cart.map(
 item => `
@@ -5160,6 +5120,7 @@ item.key
 `
 ).join("");
 
+
 area
 .querySelectorAll(
 "[data-qty-plus]"
@@ -5177,6 +5138,7 @@ button.dataset.qtyPlus,
 }
 );
 
+
 area
 .querySelectorAll(
 "[data-qty-minus]"
@@ -5193,6 +5155,7 @@ button.dataset.qtyMinus,
 
 }
 );
+
 
 area
 .querySelectorAll(
@@ -5258,48 +5221,49 @@ $("zajelFields")
 }
 );
 
-,
+
 /* ===============================
 المحافظات والولايات
 ================================ */
 
 const OMAN_LOCATIONS = {
-"مسقط": [
+
+"مسقط":[
 "مسقط",
 "مطرح",
-"العامرات",
 "بوشر",
 "السيب",
+"العامرات",
 "قريات"
 ],
 
-"ظفار": [
+"ظفار":[
 "صلالة",
 "طاقة",
 "مرباط",
-"رخيوت",
 "ثمريت",
-"ضلكوت",
-"المزيونة",
 "مقشن",
 "شليم وجزر الحلانيات",
-"سدح"
+"سدح",
+"رخيوت",
+"ضلكوت",
+"المزيونة"
 ],
 
-"مسندم": [
+"مسندم":[
 "خصب",
-"دبا",
 "بخاء",
+"دبا",
 "مدحاء"
 ],
 
-"البريمي": [
+"البريمي":[
 "البريمي",
 "محضة",
 "السنينة"
 ],
 
-"الداخلية": [
+"الداخلية":[
 "نزوى",
 "بهلاء",
 "منح",
@@ -5307,11 +5271,10 @@ const OMAN_LOCATIONS = {
 "أدم",
 "إزكي",
 "سمائل",
-"بدبد",
-"الجبل الأخضر"
+"بدبد"
 ],
 
-"شمال الباطنة": [
+"شمال الباطنة":[
 "صحار",
 "شناص",
 "لوى",
@@ -5320,7 +5283,7 @@ const OMAN_LOCATIONS = {
 "السويق"
 ],
 
-"جنوب الباطنة": [
+"جنوب الباطنة":[
 "الرستاق",
 "العوابي",
 "نخل",
@@ -5329,7 +5292,16 @@ const OMAN_LOCATIONS = {
 "المصنعة"
 ],
 
-"جنوب الشرقية": [
+"شمال الشرقية":[
+"إبراء",
+"المضيبي",
+"بدية",
+"القابل",
+"وادي بني خالد",
+"دماء والطائيين"
+],
+
+"جنوب الشرقية":[
 "صور",
 "الكامل والوافي",
 "جعلان بني بو حسن",
@@ -5337,28 +5309,19 @@ const OMAN_LOCATIONS = {
 "مصيرة"
 ],
 
-"شمال الشرقية": [
-"إبراء",
-"المضيبي",
-"بدية",
-"القابل",
-"وادي بني خالد",
-"دماء والطائيين",
-"سناو"
-],
-
-"الظاهرة": [
+"الظاهرة":[
 "عبري",
 "ينقل",
 "ضنك"
 ],
 
-"الوسطى": [
-"هيما",
+"الوسطى":[
+"هيماء",
 "محوت",
 "الدقم",
 "الجازر"
 ]
+
 };
 
 
@@ -5368,45 +5331,78 @@ const OMAN_LOCATIONS = {
 
 function populateGovernorates(){
 
+const governorates =
+Object.keys(
+OMAN_LOCATIONS
+);
+
 const customer =
 $("customerGovernorate");
 
 const recipient =
 $("recipientGovernorate");
 
-customer.innerHTML =
-`<option value="">اختاري المحافظة</option>`;
 
-recipient.innerHTML =
-`<option value="">اختاري المحافظة</option>`;
+customer.innerHTML = `
 
-Object.keys(OMAN_LOCATIONS)
-.forEach(governorate => {
+<option value="">
+اختاري المحافظة
+</option>
+
+`;
+
+
+recipient.innerHTML = `
+
+<option value="">
+اختاري المحافظة
+</option>
+
+`;
+
+
+governorates.forEach(
+governorate => {
 
 const option1 =
-document.createElement("option");
+document.createElement(
+"option"
+);
 
-option1.value = governorate;
-option1.textContent = governorate;
+option1.value =
+governorate;
 
-customer.appendChild(option1);
+option1.textContent =
+governorate;
+
+customer.appendChild(
+option1
+);
 
 
 const option2 =
-document.createElement("option");
+document.createElement(
+"option"
+);
 
-option2.value = governorate;
-option2.textContent = governorate;
+option2.value =
+governorate;
 
-recipient.appendChild(option2);
+option2.textContent =
+governorate;
 
-});
+recipient.appendChild(
+option2
+);
+
+}
+);
 
 }
 
 
 /* ===============================
-تعبئة الولايات
+تعبئة الولايات حسب المحافظة
 ================================ */
 
 function populateWilayas(
@@ -5417,64 +5413,100 @@ wilayaSelect
 const governorate =
 governorateSelect.value;
 
-wilayaSelect.innerHTML =
-`<option value="">اختاري الولاية</option>`;
+const wilayas =
+OMAN_LOCATIONS[
+governorate
+] || [];
+
 
 if(!governorate){
 
-wilayaSelect.disabled = true;
+wilayaSelect.disabled =
+true;
 
-wilayaSelect.innerHTML =
-`<option value="">اختاري المحافظة أولًا</option>`;
+wilayaSelect.innerHTML = `
+
+<option value="">
+اختاري المحافظة أولًا
+</option>
+
+`;
 
 return;
+
 }
 
-wilayaSelect.disabled = false;
 
-const wilayas =
-OMAN_LOCATIONS[governorate] || [];
+wilayaSelect.disabled =
+false;
 
-wilayas.forEach(wilaya => {
+wilayaSelect.innerHTML = `
+
+<option value="">
+اختاري الولاية
+</option>
+
+`;
+
+
+wilayas.forEach(
+wilaya => {
 
 const option =
-document.createElement("option");
+document.createElement(
+"option"
+);
 
-option.value = wilaya;
-option.textContent = wilaya;
+option.value =
+wilaya;
 
-wilayaSelect.appendChild(option);
+option.textContent =
+wilaya;
 
-});
+wilayaSelect.appendChild(
+option
+);
+
+}
+);
 
 }
 
 
+/* ===============================
+تغيير محافظة العميلة
+================================ */
+
 $("customerGovernorate")
-.addEventListener("change", () => {
+.addEventListener(
+"change",
+() => {
 
 populateWilayas(
 $("customerGovernorate"),
 $("customerWilaya")
 );
 
-});
+}
+);
 
+
+/* ===============================
+تغيير محافظة مستلم الزاجل
+================================ */
 
 $("recipientGovernorate")
-.addEventListener("change", () => {
+.addEventListener(
+"change",
+() => {
 
 populateWilayas(
 $("recipientGovernorate"),
 $("recipientWilaya")
 );
 
-});
-
-
-populateGovernorates();
-
-
+}
+);
 
 
 /* ===============================
@@ -5547,6 +5579,7 @@ return stockError;
 
 }
 
+
 if(
 !$("customerName")
 .value
@@ -5558,6 +5591,7 @@ return (
 );
 
 }
+
 
 if(
 !$("customerPhone")
@@ -5571,6 +5605,7 @@ return (
 
 }
 
+
 if(
 !$("customerGovernorate")
 .value
@@ -5582,6 +5617,7 @@ return (
 
 }
 
+
 if(
 !$("customerWilaya")
 .value
@@ -5592,6 +5628,7 @@ return (
 );
 
 }
+
 
 if(
 !$("customerAddress")
@@ -5605,9 +5642,11 @@ return (
 
 }
 
+
 const isZajel =
 $("isZajel").value ===
 "yes";
+
 
 if(isZajel){
 
@@ -5623,6 +5662,7 @@ return (
 
 }
 
+
 if(
 !$("recipientPhone")
 .value
@@ -5635,6 +5675,7 @@ return (
 
 }
 
+
 if(
 !$("recipientGovernorate")
 .value
@@ -5646,6 +5687,7 @@ return (
 
 }
 
+
 if(
 !$("recipientWilaya")
 .value
@@ -5656,6 +5698,7 @@ return (
 );
 
 }
+
 
 if(
 !$("recipientAddress")
@@ -5688,32 +5731,54 @@ new Date();
 const date =
 [
 now.getFullYear(),
+
 String(
 now.getMonth() + 1
-).padStart(2,"0"),
+).padStart(
+2,
+"0"
+),
+
 String(
 now.getDate()
-).padStart(2,"0")
+).padStart(
+2,
+"0"
+)
 ].join("");
+
 
 const time =
 [
 String(
 now.getHours()
-).padStart(2,"0"),
+).padStart(
+2,
+"0"
+),
+
 String(
 now.getMinutes()
-).padStart(2,"0"),
+).padStart(
+2,
+"0"
+),
+
 String(
 now.getSeconds()
-).padStart(2,"0")
+).padStart(
+2,
+"0"
+)
 ].join("");
+
 
 const random =
 Math.floor(
 100 +
 Math.random() * 900
 );
+
 
 return (
 `RIMI-${date}-${time}-${random}`
@@ -5745,6 +5810,7 @@ const isZajel =
 $("isZajel").value ===
 "yes";
 
+
 return {
 
 orderNumber:
@@ -5755,6 +5821,7 @@ status:
 
 statusLabel:
 "جديد",
+
 
 customer:{
 
@@ -5775,12 +5842,14 @@ $("customerGovernorate")
 wilaya:
 $("customerWilaya")
 .value,
+
 address:
 $("customerAddress")
 .value
 .trim()
 
 },
+
 
 delivery:{
 
@@ -5800,7 +5869,9 @@ deliveryFee
 
 },
 
+
 isZajel,
+
 
 zajel:
 isZajel
@@ -5839,10 +5910,12 @@ $("zajelMessage")
 :
 null,
 
+
 notes:
 $("customerNotes")
 .value
 .trim(),
+
 
 items:
 cart.map(
@@ -5889,11 +5962,13 @@ item.image || ""
 })
 ),
 
+
 subtotal,
 
 deliveryFee,
 
 total,
+
 
 paymentStatus:
 "waiting_transfer",
@@ -5914,9 +5989,7 @@ new Date().toISOString()
 };
 
 }
-
-
-/* ===============================
+  /* ===============================
 رسالة واتساب مرتبة
 ================================ */
 
@@ -5944,6 +6017,7 @@ ${order.delivery.methodLabel}
 🛍️ الطلب:
 `;
 
+
 order.items.forEach(
 (item,index) => {
 
@@ -5959,6 +6033,7 @@ ${item.color ? `اللون: ${item.color}\n` : ""}${item.size ? `المقاس: $
 }
 );
 
+
 message +=
 
 `
@@ -5967,6 +6042,7 @@ message +=
 رسوم التوصيل: ${money(order.deliveryFee)}
 الإجمالي: ${money(order.total)}
 `;
+
 
 if(order.isZajel){
 
@@ -5979,7 +6055,8 @@ message +=
 محافظة المستلم: ${order.zajel.governorate}
 ولاية المستلم: ${order.zajel.wilaya}
 عنوان المستلم: ${order.zajel.address}
-ما هي الرسالة التي تود أن تكتبها في زاجل؟
+
+💌 رسالة الزاجل:
 ${order.zajel.message || "لا توجد رسالة"}
 `;
 
@@ -5993,6 +6070,7 @@ message +=
 
 }
 
+
 message +=
 
 `
@@ -6005,6 +6083,7 @@ ${order.notes || "لا توجد ملاحظات"}
 ⚠️ ${order.paymentNotice}
 
 شكرًا لاختيار Rimi ♡`;
+
 
 return message;
 
@@ -6026,12 +6105,14 @@ storeSettings.whatsapp ||
 )
 .replace(/\D/g,"");
 
+
 const fullPhone =
 phone.startsWith("968")
 ?
 phone
 :
 `968${phone}`;
+
 
 const whatsapp =
 
@@ -6050,6 +6131,7 @@ fullPhone
 encodeURIComponent(
 message
 );
+
 
 window.open(
 whatsapp,
@@ -6071,19 +6153,22 @@ $("customerName").value =
 $("customerPhone").value =
 "";
 
-$("customerWilaya").value =
+
+$("customerGovernorate").value =
 "";
 
-$("customerArea").innerHTML = `
+
+$("customerWilaya").innerHTML = `
 
 <option value="">
-اختاري الولاية أولًا
+اختاري المحافظة أولًا
 </option>
 
 `;
 
-$("customerArea").disabled =
+$("customerWilaya").disabled =
 true;
+
 
 $("customerAddress").value =
 "";
@@ -6091,12 +6176,15 @@ $("customerAddress").value =
 $("customerNotes").value =
 "";
 
+
 $("isZajel").value =
 "no";
+
 
 $("zajelFields")
 .classList
 .add("hidden");
+
 
 $("recipientName").value =
 "";
@@ -6104,19 +6192,22 @@ $("recipientName").value =
 $("recipientPhone").value =
 "";
 
-$("recipientWilaya").value =
+
+$("recipientGovernorate").value =
 "";
 
-$("recipientArea").innerHTML = `
+
+$("recipientWilaya").innerHTML = `
 
 <option value="">
-اختاري الولاية أولًا
+اختاري المحافظة أولًا
 </option>
 
 `;
 
-$("recipientArea").disabled =
+$("recipientWilaya").disabled =
 true;
+
 
 $("recipientAddress").value =
 "";
@@ -6137,6 +6228,7 @@ async () => {
 const error =
 validateOrder();
 
+
 if(error){
 
 showToast(error);
@@ -6145,19 +6237,25 @@ return;
 
 }
 
+
 const button =
 $("sendOrderButton");
+
 
 button.disabled =
 true;
 
+
 button.textContent =
 "جاري تسجيل الطلب...";
 
+
 try{
+
 
 const order =
 buildOrderData();
+
 
 await addDoc(
 
@@ -6170,10 +6268,12 @@ order
 
 );
 
+
 const message =
 buildWhatsAppMessage(
 order
 );
+
 
 /*
 نحفظ نجاح الطلب أولًا
@@ -6182,40 +6282,53 @@ order
 
 cart = [];
 
+
 saveCart();
+
 
 renderCart();
 
+
 clearOrderForm();
+
 
 showToast(
 "تم تسجيل طلبك بنجاح ♡"
 );
 
+
 openWhatsApp(
 message
 );
 
+
 }catch(error){
+
 
 console.error(
 "Order error:",
 error
 );
 
+
 showToast(
 "تعذر تسجيل الطلب. حاولي مرة أخرى."
 );
 
+
 }finally{
+
 
 button.disabled =
 false;
 
+
 button.textContent =
 "تأكيد وإرسال الطلب عبر واتساب";
 
+
 }
+
 
 };
 
@@ -6248,6 +6361,7 @@ item.qty,
 ) > 0
 );
 
+
 saveCart();
 
 }
@@ -6261,7 +6375,26 @@ async function startStore(){
 
 cleanInvalidCartItems();
 
+
+/*
+نعرض السلة مباشرة حتى تعمل
+الأزرار بدون انتظار Firebase
+*/
+
 renderCart();
+
+
+/*
+تعبئة المحافظات والولايات
+من القائمة الموجودة داخل الموقع
+*/
+
+populateGovernorates();
+
+
+/*
+تحميل بيانات المتجر
+*/
 
 await Promise.all([
 
@@ -6269,11 +6402,10 @@ loadSettings(),
 
 loadCategories(),
 
-loadProducts(),
-
-loadLocationData()
+loadProducts()
 
 ]);
+
 
 renderCart();
 
