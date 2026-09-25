@@ -5124,31 +5124,32 @@ order.recipientName ||
 <p>
 رقم المستلم:
 ${escapeHtml(
-order.recipientPhone ||
+order.zajel?.recipientPhone ||
 "غير محدد"
 )}
 </p>
 
+<p>
+محافظة المستلم:
+${escapeHtml(
+order.zajel?.governorate ||
+"غير محدد"
+)}
+</p>
 <p>
 ولاية المستلم:
 ${escapeHtml(
-order.recipientWilaya ||
+order.zajel?.wilaya ||
 "غير محدد"
 )}
 </p>
 
-<p>
-منطقة المستلم:
-${escapeHtml(
-order.recipientArea ||
-"غير محدد"
-)}
-</p>
+
 
 <p>
 عنوان المستلم:
 ${escapeHtml(
-order.recipientAddress ||
+order.zajel?.address ||
 "غير محدد"
 )}
 </p>
@@ -5159,7 +5160,7 @@ order.recipientAddress ||
 </strong>
 <br>
 ${escapeHtml(
-order.zajelMessage ||
+order.zajel?.message ||
 "لا توجد رسالة"
 )}
 </p>
