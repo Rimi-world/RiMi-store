@@ -2087,7 +2087,57 @@ type="button"
 </div>
 
 </div>
+<div class="checkout-section-title">
+طريقة التوصيل
+</div>
 
+<div class="radio-box">
+
+<label class="radio-option">
+<input
+type="radio"
+name="deliveryMethod"
+value="office"
+checked
+>
+<span>
+المكتب
+<br>
+<small id="officeFeeLabel">1.000 ر.ع</small>
+</span>
+</label>
+
+<label class="radio-option">
+<input
+type="radio"
+name="deliveryMethod"
+value="courier"
+>
+<span>
+مندوب
+<br>
+<small id="courierFeeLabel">2.000 ر.ع</small>
+</span>
+</label>
+
+<label class="radio-option">
+<input
+type="radio"
+name="deliveryMethod"
+value="whatsapp"
+>
+<span>
+يتم التفاهم في الواتساب
+<br>
+<small>بدون رسوم إضافية</small>
+</span>
+</label>
+
+</div>
+
+<div class="delivery-info">
+يتم احتساب رسوم الاستلام تلقائيًا وإضافتها إلى إجمالي الطلب.
+</div>
 
 <!-- ===============================
 إتمام الطلب
@@ -2191,57 +2241,7 @@ placeholder="اكتبي تفاصيل العنوان بشكل واضح"
 </div>
 
 
-<div class="checkout-section-title">
-طريقة التوصيل
-</div>
 
-<div class="radio-box">
-
-<label class="radio-option">
-<input
-type="radio"
-name="deliveryMethod"
-value="office"
-checked
->
-<span>
-المكتب
-<br>
-<small id="officeFeeLabel">1.000 ر.ع</small>
-</span>
-</label>
-
-<label class="radio-option">
-<input
-type="radio"
-name="deliveryMethod"
-value="courier"
->
-<span>
-مندوب
-<br>
-<small id="courierFeeLabel">2.000 ر.ع</small>
-</span>
-</label>
-
-<label class="radio-option">
-<input
-type="radio"
-name="deliveryMethod"
-value="whatsapp"
->
-<span>
-يتم التفاهم في الواتساب
-<br>
-<small>بدون رسوم إضافية</small>
-</span>
-</label>
-
-</div>
-
-<div class="delivery-info">
-يتم احتساب رسوم الاستلام تلقائيًا وإضافتها إلى إجمالي الطلب.
-</div>
 
 
 <!-- الزاجل -->
@@ -5844,12 +5844,11 @@ method:
 deliveryMethod,
 
 methodLabel:
-deliveryMethod ===
-"courier"
-?
-"مندوب"
-:
-"مكتب",
+deliveryMethod === "courier"
+? "مندوب"
+: deliveryMethod === "whatsapp"
+? "يتم التفاهم في الواتساب"
+: "المكتب",
 
 fee:
 deliveryFee
@@ -5995,23 +5994,24 @@ ${order.customer.address}
 `;
 
 order.items.forEach((item) => {
-message += `${item.name} × ${item.qty}
+message += `${item.name} × ${item.quantity}
 ${item.color ? `اللون: ${item.color}\n` : ""}${item.size ? `المقاس: ${item.size}\n` : ""}السعر: ${money(item.price)}
+
 `;
 });
 
-message += `
-الاستلام🚚: ${order.delivery.method === "whatsapp" ? "يتم التفاهم في الواتساب" : order.delivery.methodLabel}
+message += `الاستلام🚚: ${order.delivery.methodLabel}
 رسوم التوصيل: ${money(order.delivery.fee)}
 
-زاجل💌: ${order.zajel?.enabled ? "نعم" : "لا"}
+زاجل💌: ${order.isZajel ? "نعم" : "لا"}
 ملاحظات: ${order.notes || "لا يوجد"}
 
 الإجمالي: ${money(order.total)}
 الدفع⏳: بانتظار التحويل
 
 شكرًا لأختيارك لنا
-تابعوني على الانستجرام : https://www.instagram.com/rimi.world0?stkn=czhvYWtweDVyYTh4&utm_source=qr`;
+تابعوني على الانستجرام : https://www.instagram.com/rimi.world0?stkn=czhvYWtweDVyYTh4&utm_source=qr
+`;
 
 return message;
 }
