@@ -2230,7 +2230,7 @@ disabled
 <div class="field">
 
 <label>
-تفاصيل العنوان *
+تفاصيل العنوان 
 </label>
 
 <textarea
@@ -2347,7 +2347,7 @@ disabled
 <div class="field">
 
 <label>
-تفاصيل عنوان المستلم *
+تفاصيل عنوان المستلم 
 </label>
 
 <textarea
@@ -5617,17 +5617,6 @@ return (
 }
 
 
-if(
-!$("customerAddress")
-.value
-.trim()
-){
-
-return (
-"اكتبي تفاصيل العنوان."
-);
-
-}
 
 
 const isZajel =
@@ -5687,17 +5676,7 @@ return (
 }
 
 
-if(
-!$("recipientAddress")
-.value
-.trim()
-){
 
-return (
-"اكتبي عنوان مستلم الزاجل."
-);
-
-}
 
 }
 
