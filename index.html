@@ -5978,7 +5978,9 @@ ${item.color ? `اللون: ${item.color}\n` : ""}${item.size ? `المقاس: $
 
 `;
 });
-
+message += `
+الإجمالي: ${money(order.total)}
+`;
 message += `الاستلام🚚: ${order.delivery.methodLabel}
 رسوم التوصيل: ${money(order.delivery.fee)}
 
@@ -5988,7 +5990,7 @@ message += `الاستلام🚚: ${order.delivery.methodLabel}
 المحافظة/الولاية: ${order.zajel?.governorate || "غير محدد"}/ ${order.zajel?.wilaya || "غير محدد"}
 رسالة الزاجل: ${order.zajel?.message || "لا توجد"}` : ""}
 ملاحظات: ${order.notes || "لا يوجد"}
-الإجمالي: ${money(order.total)}
+
 الدفع⏳: بانتظار التحويل
 
 شكرًا لأختيارك لنا
