@@ -5982,9 +5982,12 @@ ${item.color ? `اللون: ${item.color}\n` : ""}${item.size ? `المقاس: $
 message += `الاستلام🚚: ${order.delivery.methodLabel}
 رسوم التوصيل: ${money(order.delivery.fee)}
 
-زاجل💌: ${order.isZajel ? "نعم" : "لا"}
+زاجل💌: ${order.isZajel ? "نعم" : "لا"}${order.isZajel ? `
+اسم المستلم: ${order.zajel?.recipientName || "غير محدد"}
+رقم المستلم: ${order.zajel?.recipientPhone || "غير محدد"}
+المحافظة/الولاية: ${order.zajel?.governorate || "غير محدد"}/ ${order.zajel?.wilaya || "غير محدد"}
+رسالة الزاجل: ${order.zajel?.message || "لا توجد"}` : ""}
 ملاحظات: ${order.notes || "لا يوجد"}
-
 الإجمالي: ${money(order.total)}
 الدفع⏳: بانتظار التحويل
 
