@@ -5978,9 +5978,7 @@ ${item.color ? `اللون: ${item.color}\n` : ""}${item.size ? `المقاس: $
 
 `;
 });
-message += `
-الإجمالي: ${money(order.total)}
-`;
+
 message += `الاستلام🚚: ${order.delivery.methodLabel}
 رسوم التوصيل: ${money(order.delivery.fee)}
 
@@ -5991,6 +5989,7 @@ message += `الاستلام🚚: ${order.delivery.methodLabel}
 رسالة الزاجل: ${order.zajel?.message || "لا توجد"}` : ""}
 ملاحظات: ${order.notes || "لا يوجد"}
 
+إجمالي المبلغ: ${money(order.total)}
 الدفع⏳: بانتظار التحويل
 
 شكرًا لأختيارك لنا
