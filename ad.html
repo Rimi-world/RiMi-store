@@ -2,24 +2,51 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Rimi | Ad Studio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#741b35">
+
+<title>Rimi | العرض التعريفي</title>
 
 <style>
+
+/* =========================================================
+RIMI AUTO EXPERIENCE
+PART 1 / 2
+العرض يعمل تلقائياً بالكامل
+========================================================= */
+
 :root{
---wine:#741b35;
---wine-dark:#541126;
+--burgundy:#741b35;
+--burgundy-dark:#541024;
+--burgundy-soft:#9b3854;
+
 --cream:#fffdf6;
---butter:#fff3bd;
---pink:#f7dce5;
---ink:#3d1824;
+--yellow:#fff3bd;
+--yellow-soft:#fff9df;
+
+--text:#4c2730;
+--muted:#87636c;
+
+--border:#ead9b9;
 --white:#ffffff;
---shadow:0 18px 55px rgba(77,20,39,.16);
+
+--green:#397451;
+--red:#a7374b;
+
+--shadow:
+0 24px 70px rgba(65,20,35,.16);
+
+--soft-shadow:
+0 12px 35px rgba(65,20,35,.09);
 }
+
+
+/* =========================================================
+RESET
+========================================================= */
 
 *{
 box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
 }
 
 html{
@@ -28,1044 +55,2886 @@ scroll-behavior:smooth;
 
 body{
 margin:0;
-background:
-radial-gradient(circle at 15% 10%,rgba(255,243,189,.9),transparent 28%),
-radial-gradient(circle at 85% 30%,rgba(247,220,229,.7),transparent 25%),
-var(--cream);
-color:var(--ink);
+min-height:100vh;
+
 font-family:
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-Tahoma,
 Arial,
+Tahoma,
 sans-serif;
-overflow-x:hidden;
-}
 
-button,
-input{
-font:inherit;
-}
+color:var(--text);
+background:#f3eee5;
 
-/* =========================
-شريط Rimi
-========================= */
-
-.topbar{
-position:sticky;
-top:0;
-z-index:50;
-height:68px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 18px;
-background:rgba(255,253,246,.92);
-backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(116,27,53,.08);
-}
-
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-font-size:25px;
-font-weight:900;
-color:var(--wine);
-letter-spacing:.4px;
-}
-
-.brand-mark{
-width:39px;
-height:39px;
-display:grid;
-place-items:center;
-border-radius:14px;
-color:white;
-background:linear-gradient(145deg,var(--wine),var(--wine-dark));
-box-shadow:0 8px 22px rgba(116,27,53,.24);
-}
-
-.cart-button{
-position:relative;
-border:0;
-width:46px;
-height:46px;
-border-radius:16px;
-background:white;
-color:var(--wine);
-box-shadow:0 7px 25px rgba(116,27,53,.12);
-cursor:pointer;
-font-size:21px;
-}
-
-.cart-count{
-position:absolute;
-top:-5px;
-left:-5px;
-min-width:20px;
-height:20px;
-padding:0 5px;
-display:grid;
-place-items:center;
-border-radius:20px;
-color:white;
-background:var(--wine);
-font-size:11px;
-font-weight:800;
-}
-
-/* =========================
-الواجهة
-========================= */
-
-.hero{
-min-height:calc(100vh - 68px);
-padding:55px 20px 42px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-position:relative;
 overflow:hidden;
 }
 
-.hero::before,
-.hero::after{
+button,
+input,
+textarea,
+select{
+font:inherit;
+}
+
+button{
+cursor:default;
+}
+
+.hidden{
+display:none !important;
+}
+
+
+/* =========================================================
+الخلفية العامة
+========================================================= */
+
+.ad-page{
+width:100%;
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:18px;
+
+background:
+radial-gradient(
+circle at 15% 10%,
+rgba(255,243,189,.9),
+transparent 27%
+),
+radial-gradient(
+circle at 85% 90%,
+rgba(116,27,53,.10),
+transparent 32%
+),
+#f7f2e9;
+}
+
+
+/* =========================================================
+الجهاز
+========================================================= */
+
+.phone{
+position:relative;
+
+width:min(430px,100%);
+height:min(900px,calc(100vh - 36px));
+
+min-height:620px;
+
+background:var(--cream);
+
+border:
+8px solid
+#271a1e;
+
+border-radius:42px;
+
+overflow:hidden;
+
+box-shadow:
+0 35px 100px rgba(36,15,22,.28);
+
+isolation:isolate;
+}
+
+.phone::before{
 content:"";
+
 position:absolute;
-border-radius:50%;
-filter:blur(3px);
+z-index:1000;
+
+top:10px;
+left:50%;
+
+transform:translateX(-50%);
+
+width:115px;
+height:27px;
+
+border-radius:30px;
+
+background:#271a1e;
+
 pointer-events:none;
 }
 
-.hero::before{
-width:240px;
-height:240px;
-background:rgba(255,243,189,.55);
-top:2%;
-right:-100px;
+
+/* =========================================================
+شاشة العرض
+========================================================= */
+
+.screen{
+position:absolute;
+inset:0;
+
+overflow:hidden;
+
+background:var(--cream);
 }
 
-.hero::after{
-width:210px;
-height:210px;
-background:rgba(247,220,229,.48);
-bottom:2%;
-left:-90px;
+.store{
+position:absolute;
+inset:0;
+
+overflow-y:auto;
+overflow-x:hidden;
+
+scrollbar-width:none;
+
+background:var(--cream);
+
+scroll-behavior:smooth;
 }
 
-.hero-badge{
+.store::-webkit-scrollbar{
+display:none;
+}
+
+
+/* =========================================================
+شريط التقدم
+========================================================= */
+
+.progress-track{
+position:absolute;
+
+z-index:900;
+
+top:0;
+left:0;
+
+width:100%;
+height:5px;
+
+background:
+rgba(255,255,255,.45);
+}
+
+.progress-bar{
+width:0%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+#fff0a9,
+#ffffff,
+#fff0a9
+);
+
+box-shadow:
+0 0 15px rgba(255,255,255,.8);
+
+transition:
+width .7s cubic-bezier(.22,.8,.3,1);
+}
+
+
+/* =========================================================
+حالة العرض
+========================================================= */
+
+.demo-status{
+position:absolute;
+
+z-index:850;
+
+top:46px;
+right:14px;
+
+display:flex;
+align-items:center;
+gap:7px;
+
+padding:7px 11px;
+
+border-radius:50px;
+
+color:white;
+
+font-size:10px;
+font-weight:bold;
+
+background:
+rgba(84,16,36,.88);
+
+backdrop-filter:
+blur(12px);
+
+box-shadow:
+0 8px 25px rgba(0,0,0,.13);
+}
+
+.demo-dot{
+width:7px;
+height:7px;
+
+border-radius:50%;
+
+background:#fff3bd;
+
+box-shadow:
+0 0 0 0
+rgba(255,243,189,.7);
+
+animation:
+livePulse 1.5s infinite;
+}
+
+@keyframes livePulse{
+
+0%{
+box-shadow:
+0 0 0 0
+rgba(255,243,189,.65);
+}
+
+70%{
+box-shadow:
+0 0 0 8px
+rgba(255,243,189,0);
+}
+
+100%{
+box-shadow:
+0 0 0 0
+rgba(255,243,189,0);
+}
+
+}
+
+
+/* =========================================================
+الشريط العلوي
+========================================================= */
+
+.topbar{
+background:
+var(--burgundy);
+
+color:white;
+
+text-align:center;
+
+padding:
+42px 12px 9px;
+
+font-size:11px;
+line-height:1.5;
+}
+
+
+/* =========================================================
+الهيدر
+========================================================= */
+
+.store-header{
+position:sticky;
+
+top:0;
+z-index:20;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:
+11px 15px;
+
+background:
+rgba(255,253,246,.96);
+
+border-bottom:
+1px solid var(--border);
+
+backdrop-filter:
+blur(14px);
+}
+
+.logo{
+color:
+var(--burgundy);
+
+font-family:
+Georgia,
+"Times New Roman",
+serif;
+
+font-size:27px;
+font-weight:bold;
+
+position:relative;
+}
+
+.logo::after{
+content:"♡";
+
+position:absolute;
+
+bottom:-1px;
+left:-12px;
+
+font-family:Arial;
+font-size:9px;
+}
+
+.nav-actions{
+display:flex;
+gap:6px;
+}
+
+.fake-nav-btn{
+border:
+1px solid var(--border);
+
+background:white;
+
+color:
+var(--burgundy);
+
+border-radius:30px;
+
+padding:
+7px 10px;
+
+font-size:10px;
+}
+
+.cart-number{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+
+min-width:17px;
+height:17px;
+
+margin-right:3px;
+
+padding:0 4px;
+
+border-radius:50%;
+
+color:white;
+background:
+var(--burgundy);
+
+font-size:9px;
+}
+
+
+/* =========================================================
+HERO
+========================================================= */
+
+.hero{
+min-height:475px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:
+38px 17px;
+
+text-align:center;
+
+background:
+
+linear-gradient(
+rgba(255,253,246,.20),
+rgba(255,253,246,.55)
+),
+
+repeating-linear-gradient(
+90deg,
+#fffdf6 0,
+#fffdf6 55px,
+#fff2b9 55px,
+#fff2b9 110px
+);
+}
+
+.hero-card{
+position:relative;
+
+width:100%;
+
+overflow:hidden;
+
+padding:
+38px 20px;
+
+border:
+1px solid
+rgba(116,27,53,.13);
+
+border-radius:31px;
+
+background:
+rgba(255,255,255,.93);
+
+box-shadow:
+var(--shadow);
+}
+
+.hero-card::before,
+.hero-card::after{
+content:"";
+
+position:absolute;
+
+width:100px;
+height:100px;
+
+border-radius:50%;
+
+background:
+rgba(255,243,189,.6);
+}
+
+.hero-card::before{
+top:-50px;
+right:-35px;
+}
+
+.hero-card::after{
+bottom:-55px;
+left:-40px;
+}
+
+.bow{
 position:relative;
 z-index:2;
-padding:9px 15px;
-background:white;
-border:1px solid rgba(116,27,53,.09);
-border-radius:100px;
-color:var(--wine);
-font-size:12px;
-font-weight:800;
-box-shadow:0 8px 25px rgba(116,27,53,.08);
-margin-bottom:22px;
+
+font-size:32px;
+
+animation:
+bowFloat 2.6s ease-in-out infinite;
+}
+
+@keyframes bowFloat{
+
+0%,
+100%{
+transform:translateY(0) rotate(-2deg);
+}
+
+50%{
+transform:translateY(-6px) rotate(2deg);
+}
+
 }
 
 .hero-logo{
 position:relative;
 z-index:2;
-margin:0;
-color:var(--wine);
-font-size:clamp(66px,20vw,108px);
-line-height:.9;
-font-weight:950;
-letter-spacing:-5px;
-text-shadow:0 12px 30px rgba(116,27,53,.10);
+
+margin:
+5px 0 6px;
+
+color:
+var(--burgundy);
+
+font-family:
+Georgia,
+"Times New Roman",
+serif;
+
+font-size:70px;
+line-height:1;
 }
 
 .hero-heart{
+position:relative;
+z-index:2;
+
+color:
+var(--burgundy);
+
+font-size:17px;
+}
+
+.hero-copy{
+position:relative;
+z-index:2;
+
+margin:
+10px 0 18px;
+
+line-height:1.9;
+
+font-size:14px;
+}
+
+.hero-button{
+position:relative;
+z-index:2;
+
 display:inline-block;
-font-size:.42em;
-vertical-align:top;
-margin-right:7px;
-transform:rotate(-9deg);
-}
 
-.hero-line{
-position:relative;
-z-index:2;
-width:60px;
-height:4px;
-margin:25px auto 20px;
-border-radius:50px;
-background:var(--butter);
-}
+padding:
+11px 24px;
 
-.hero-text{
-position:relative;
-z-index:2;
-max-width:330px;
-margin:0 auto 27px;
-line-height:2;
-font-size:15px;
-color:#684451;
-}
+border-radius:40px;
 
-.shop-btn{
-position:relative;
-z-index:2;
-min-width:180px;
-border:0;
-padding:15px 28px;
-border-radius:18px;
+background:
+var(--burgundy);
+
 color:white;
-background:linear-gradient(135deg,var(--wine),var(--wine-dark));
-box-shadow:0 14px 32px rgba(116,27,53,.27);
-font-weight:900;
-cursor:pointer;
-transition:.25s;
+
+font-size:12px;
+font-weight:bold;
+
+box-shadow:
+0 8px 25px
+rgba(116,27,53,.22);
 }
 
-.shop-btn:active{
-transform:scale(.96);
+
+/* =========================================================
+الأقسام العامة
+========================================================= */
+
+.section{
+padding:
+45px 14px;
 }
 
-.scroll-hint{
-position:absolute;
-bottom:18px;
-z-index:2;
-font-size:11px;
-color:#9a7b85;
-animation:float 1.8s ease-in-out infinite;
-}
+.section-title{
+margin:
+0 0 6px;
 
-@keyframes float{
-50%{transform:translateY(6px)}
-}
-
-/* =========================
-المتجر
-========================= */
-
-.shop{
-min-height:100vh;
-padding:75px 16px 90px;
-}
-
-.section-head{
-max-width:850px;
-margin:0 auto 24px;
 text-align:center;
+
+color:
+var(--burgundy);
+
+font-size:24px;
 }
 
-.section-head small{
-color:#a37784;
-font-weight:700;
+.section-subtitle{
+margin:
+0 0 23px;
+
+text-align:center;
+
+color:
+var(--muted);
+
+line-height:1.7;
+
+font-size:12px;
 }
 
-.section-head h2{
-margin:8px 0 5px;
-color:var(--wine);
-font-size:31px;
+
+/* =========================================================
+البحث
+========================================================= */
+
+.search-box{
+width:100%;
+
+margin-bottom:17px;
+
+padding:
+12px 16px;
+
+border:
+1px solid var(--border);
+
+border-radius:50px;
+
+background:white;
+
+color:
+#a18a90;
+
+font-size:11px;
+
+box-shadow:
+0 4px 15px
+rgba(70,25,40,.03);
 }
 
-.section-head p{
-margin:0;
-color:#8a6873;
-font-size:13px;
-}
+
+/* =========================================================
+التصنيفات
+========================================================= */
 
 .categories{
-max-width:900px;
-margin:25px auto;
 display:flex;
-gap:9px;
-overflow:auto;
-padding:5px 2px 13px;
-scrollbar-width:none;
-}
 
-.categories::-webkit-scrollbar{
-display:none;
+gap:6px;
+
+overflow:hidden;
+
+margin-bottom:18px;
 }
 
 .category{
 flex:0 0 auto;
-border:1px solid rgba(116,27,53,.13);
+
+padding:
+8px 13px;
+
+border:
+1px solid var(--border);
+
+border-radius:30px;
+
 background:white;
-color:var(--wine);
-border-radius:100px;
-padding:10px 18px;
-font-weight:800;
-font-size:13px;
-box-shadow:0 6px 18px rgba(116,27,53,.06);
+
+color:
+var(--burgundy);
+
+font-size:10px;
 }
 
 .category.active{
 color:white;
-background:var(--wine);
-border-color:var(--wine);
+
+background:
+var(--burgundy);
+
+border-color:
+var(--burgundy);
 }
 
+
+/* =========================================================
+المنتجات
+========================================================= */
+
 .products{
-max-width:950px;
-margin:auto;
 display:grid;
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:14px;
+
+grid-template-columns:
+1fr 1fr;
+
+gap:10px;
 }
 
 .product{
-background:white;
-border-radius:24px;
 overflow:hidden;
-box-shadow:0 12px 34px rgba(116,27,53,.09);
-border:1px solid rgba(116,27,53,.06);
-position:relative;
+
+border:
+1px solid var(--border);
+
+border-radius:20px;
+
+background:white;
+
+box-shadow:
+var(--soft-shadow);
+
+transition:
+transform .4s ease,
+box-shadow .4s ease;
+}
+
+.product.demo-focus{
+transform:
+translateY(-4px)
+scale(1.025);
+
+box-shadow:
+0 18px 40px
+rgba(116,27,53,.17);
 }
 
 .product-image{
-height:190px;
 position:relative;
+
+height:175px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
 overflow:hidden;
-background:linear-gradient(145deg,#fff8e2,#fae8ee);
+
+background:
+linear-gradient(
+135deg,
+#fff5c8,
+#fffdf7
+);
 }
 
-.product-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
+.product-visual{
+font-size:63px;
+
+transition:
+transform .6s ease;
 }
 
-.product-placeholder{
-width:100%;
-height:100%;
-display:grid;
-place-items:center;
-font-size:44px;
+.product.demo-focus
+.product-visual{
+transform:
+scale(1.10)
+rotate(-2deg);
 }
 
-.badge{
+.product-badge{
 position:absolute;
-z-index:2;
-top:10px;
-right:10px;
-padding:6px 10px;
-border-radius:100px;
-background:var(--butter);
-color:var(--wine);
-font-size:10px;
-font-weight:900;
+
+top:9px;
+right:9px;
+
+padding:
+5px 8px;
+
+border-radius:30px;
+
+background:
+var(--burgundy);
+
+color:white;
+
+font-size:8px;
 }
 
 .product-info{
-padding:14px;
+padding:
+11px;
 }
 
 .product-name{
-margin:0 0 7px;
-color:var(--wine);
-font-size:15px;
+margin:
+0 0 5px;
+
+color:
+var(--burgundy);
+
+font-size:13px;
+}
+
+.product-desc{
+min-height:28px;
+
+margin:
+0 0 7px;
+
+color:
+var(--muted);
+
+font-size:9px;
 line-height:1.5;
 }
 
-.product-description{
-margin:0 0 9px;
-height:34px;
-overflow:hidden;
-color:#8b6b75;
-font-size:11px;
-line-height:1.5;
+.product-price{
+margin-bottom:8px;
+
+font-size:12px;
+font-weight:bold;
 }
 
-.price{
-font-weight:950;
-color:var(--wine);
-margin-bottom:11px;
-}
-
-.product-actions{
+.product-buttons{
 display:flex;
+gap:5px;
+}
+
+.product-btn{
+flex:1;
+
+padding:
+8px 4px;
+
+border:0;
+
+border-radius:30px;
+
+background:
+var(--burgundy);
+
+color:white;
+
+font-size:9px;
+}
+
+.product-btn.light{
+color:
+var(--burgundy);
+
+background:
+var(--yellow-soft);
+
+border:
+1px solid var(--border);
+}
+
+
+/* =========================================================
+المميزات
+========================================================= */
+
+.features{
+padding:
+42px 14px;
+
+background:
+var(--yellow-soft);
+}
+
+.feature-grid{
+display:grid;
+gap:9px;
+}
+
+.feature-card{
+padding:
+18px 14px;
+
+text-align:center;
+
+border:
+1px solid var(--border);
+
+border-radius:18px;
+
+background:white;
+}
+
+.feature-icon{
+font-size:25px;
+}
+
+.feature-card h3{
+margin:
+6px 0;
+
+color:
+var(--burgundy);
+
+font-size:13px;
+}
+
+.feature-card p{
+margin:0;
+
+color:
+var(--muted);
+
+font-size:10px;
+line-height:1.6;
+}
+
+
+/* =========================================================
+PRODUCT MODAL - نسخة العرض
+========================================================= */
+
+.demo-modal{
+position:absolute;
+
+z-index:300;
+
+inset:0;
+
+display:flex;
+align-items:flex-end;
+
+background:
+rgba(38,16,23,.48);
+
+opacity:0;
+visibility:hidden;
+
+transition:
+opacity .35s ease,
+visibility .35s ease;
+}
+
+.demo-modal.show{
+opacity:1;
+visibility:visible;
+}
+
+.demo-modal-card{
+width:100%;
+max-height:88%;
+
+overflow-y:auto;
+
+padding:
+18px 16px 30px;
+
+border-radius:
+28px 28px 0 0;
+
+background:white;
+
+transform:
+translateY(100%);
+
+transition:
+transform .55s
+cubic-bezier(.22,.8,.3,1);
+
+scrollbar-width:none;
+}
+
+.demo-modal-card::-webkit-scrollbar{
+display:none;
+}
+
+.demo-modal.show
+.demo-modal-card{
+transform:
+translateY(0);
+}
+
+.modal-handle{
+width:42px;
+height:4px;
+
+margin:
+0 auto 14px;
+
+border-radius:20px;
+
+background:
+#e7dadd;
+}
+
+.modal-product-image{
+height:245px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:22px;
+
+background:
+linear-gradient(
+135deg,
+#fff3bd,
+#fffdf6
+);
+
+font-size:90px;
+}
+
+.modal-name{
+margin:
+16px 0 6px;
+
+color:
+var(--burgundy);
+
+font-size:22px;
+}
+
+.modal-copy{
+color:
+var(--muted);
+
+font-size:11px;
+line-height:1.8;
+}
+
+.modal-price{
+margin:
+10px 0 16px;
+
+font-weight:bold;
+}
+
+.option-label{
+margin:
+15px 0 8px;
+
+font-size:12px;
+font-weight:bold;
+}
+
+.options{
+display:flex;
+flex-wrap:wrap;
 gap:7px;
 }
 
-.add-btn,
-.details-btn{
-border:0;
-border-radius:12px;
-padding:9px 7px;
+.option{
+padding:
+8px 13px;
+
+border:
+1px solid var(--border);
+
+border-radius:30px;
+
+background:white;
+
+color:
+var(--burgundy);
+
 font-size:10px;
-font-weight:900;
-cursor:pointer;
-}
 
-.add-btn{
-flex:1;
-background:var(--wine);
-color:white;
-}
-
-.details-btn{
-background:var(--butter);
-color:var(--wine);
-}
-
-/* =========================
-شاشة التحميل
-========================= */
-
-.loading{
-grid-column:1/-1;
-text-align:center;
-padding:50px 20px;
-color:var(--wine);
-}
-
-.loader{
-width:38px;
-height:38px;
-margin:0 auto 14px;
-border-radius:50%;
-border:3px solid #f1dfe5;
-border-top-color:var(--wine);
-animation:spin .8s linear infinite;
-}
-
-@keyframes spin{
-to{transform:rotate(360deg)}
-}
-
-/* =========================
-نافذة المنتج
-========================= */
-
-.modal-overlay{
-position:fixed;
-inset:0;
-z-index:120;
-background:rgba(39,12,21,.55);
-backdrop-filter:blur(8px);
-display:flex;
-align-items:flex-end;
-justify-content:center;
-opacity:0;
-pointer-events:none;
 transition:.35s;
 }
 
-.modal-overlay.show{
-opacity:1;
-pointer-events:auto;
-}
-
-.product-modal{
-width:100%;
-max-width:600px;
-max-height:92vh;
-overflow:auto;
-background:var(--cream);
-border-radius:30px 30px 0 0;
-padding:18px;
-transform:translateY(105%);
-transition:.45s cubic-bezier(.2,.8,.2,1);
-}
-
-.modal-overlay.show .product-modal{
-transform:translateY(0);
-}
-
-.modal-close{
-position:sticky;
-top:0;
-z-index:5;
-float:left;
-border:0;
-width:38px;
-height:38px;
-border-radius:50%;
-background:white;
-color:var(--wine);
-box-shadow:0 6px 20px rgba(0,0,0,.09);
-}
-
-.gallery-main{
-clear:both;
-height:320px;
-margin-top:10px;
-border-radius:23px;
-overflow:hidden;
-background:#f8ecdf;
-}
-
-.gallery-main img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.gallery-thumbs{
-display:flex;
-gap:8px;
-overflow:auto;
-padding:10px 1px;
-}
-
-.gallery-thumb{
-flex:0 0 62px;
-width:62px;
-height:62px;
-padding:0;
-border:2px solid transparent;
-border-radius:13px;
-overflow:hidden;
-background:white;
-}
-
-.gallery-thumb.active{
-border-color:var(--wine);
-}
-
-.gallery-thumb img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.modal-info{
-padding:7px 3px 10px;
-}
-
-.modal-info h2{
-color:var(--wine);
-margin:5px 0;
-}
-
-.modal-description{
-color:#7d626b;
-font-size:13px;
-line-height:1.8;
-margin:10px 0 15px;
-}
-
-.option-title{
-font-size:13px;
-font-weight:900;
-color:var(--wine);
-margin:16px 0 8px;
-}
-
-.option-list{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-}
-
-.option{
-border:1px solid #e8d2d9;
-background:white;
-color:var(--wine);
-border-radius:12px;
-padding:9px 14px;
-font-weight:800;
-}
-
-.option.selected{
-background:var(--wine);
+.option.auto-selected{
 color:white;
-border-color:var(--wine);
-}
 
-.option:disabled{
-opacity:.35;
+border-color:
+var(--burgundy);
+
+background:
+var(--burgundy);
+
+transform:
+scale(1.04);
 }
 
 .modal-add{
 width:100%;
+
 margin-top:20px;
+
+padding:
+12px;
+
 border:0;
-border-radius:17px;
-padding:15px;
-background:var(--wine);
+
+border-radius:40px;
+
 color:white;
-font-weight:950;
-font-size:15px;
-}
 
-.modal-add:disabled{
-opacity:.45;
-}
+background:
+var(--burgundy);
 
-/* =========================
-السلة التجريبية
-========================= */
+font-weight:bold;
 
-.cart-overlay{
-position:fixed;
-inset:0;
-z-index:140;
-background:rgba(39,12,21,.48);
-opacity:0;
-pointer-events:none;
+font-size:12px;
+
 transition:.3s;
 }
 
-.cart-overlay.show{
-opacity:1;
-pointer-events:auto;
+.modal-add.auto-pressed{
+transform:
+scale(.96);
+
+background:
+var(--burgundy-dark);
 }
 
-.cart{
-position:fixed;
-z-index:150;
+
+/* =========================================================
+السلة
+========================================================= */
+
+.cart-panel{
+position:absolute;
+
+z-index:320;
+
 top:0;
-bottom:0;
-right:0;
-width:min(92%,430px);
-background:var(--cream);
-box-shadow:-20px 0 55px rgba(55,14,29,.22);
-transform:translateX(110%);
-transition:.45s cubic-bezier(.2,.8,.2,1);
-overflow:auto;
-padding:20px;
+right:-100%;
+
+width:100%;
+height:100%;
+
+overflow-y:auto;
+
+padding:
+47px 16px 35px;
+
+background:white;
+
+transition:
+right .6s
+cubic-bezier(.22,.8,.3,1);
+
+scrollbar-width:none;
 }
 
-.cart.open{
-transform:translateX(0);
+.cart-panel::-webkit-scrollbar{
+display:none;
+}
+
+.cart-panel.show{
+right:0;
 }
 
 .cart-head{
 display:flex;
 align-items:center;
 justify-content:space-between;
-margin-bottom:18px;
+
+padding-bottom:12px;
+
+border-bottom:
+1px solid var(--border);
 }
 
 .cart-head h2{
 margin:0;
-color:var(--wine);
+
+color:
+var(--burgundy);
+
+font-size:20px;
 }
 
-.close-cart{
-border:0;
-width:38px;
-height:38px;
+.fake-close{
+width:34px;
+height:34px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
 border-radius:50%;
-background:white;
-color:var(--wine);
+
+background:
+#f8edf0;
+
+color:
+var(--burgundy);
 }
 
 .cart-item{
 display:grid;
-grid-template-columns:74px 1fr;
-gap:12px;
-padding:12px;
-margin-bottom:10px;
-border-radius:18px;
-background:white;
-box-shadow:0 7px 20px rgba(116,27,53,.06);
+
+grid-template-columns:
+62px 1fr auto;
+
+gap:10px;
+
+padding:
+15px 0;
+
+border-bottom:
+1px solid #eee;
 }
 
-.cart-item img{
-width:74px;
-height:82px;
-border-radius:13px;
-object-fit:cover;
-background:#f8ecdf;
+.cart-thumb{
+width:62px;
+height:62px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:14px;
+
+background:
+var(--yellow-soft);
+
+font-size:31px;
 }
 
-.cart-item h4{
-margin:3px 0 5px;
-color:var(--wine);
+.cart-item-name{
+margin:
+2px 0 5px;
+
+color:
+var(--burgundy);
+
+font-size:12px;
+font-weight:bold;
 }
 
-.cart-item small{
-display:block;
-color:#91727c;
-margin-top:3px;
+.cart-options{
+color:
+var(--muted);
+
+font-size:9px;
+line-height:1.6;
 }
+
+.cart-price{
+font-size:10px;
+font-weight:bold;
+}
+
+.quantity{
+display:flex;
+align-items:center;
+gap:6px;
+
+margin-top:6px;
+
+font-size:10px;
+}
+
+.qty-circle{
+width:22px;
+height:22px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border:
+1px solid var(--border);
+
+border-radius:50%;
+}
+
+
+/* =========================================================
+ملخص الطلب
+========================================================= */
 
 .summary{
-margin:18px 0;
-padding:16px;
-background:var(--butter);
-border-radius:20px;
+margin:
+10px 0 18px;
+
+padding:
+13px;
+
+border:
+1px solid var(--border);
+
+border-radius:18px;
+
+background:
+var(--cream);
 }
 
-.summary-row{
+.summary-line{
 display:flex;
 justify-content:space-between;
-margin:8px 0;
-font-size:13px;
+
+padding:
+6px 0;
+
+font-size:11px;
 }
 
-.summary-row.total{
-padding-top:10px;
-margin-top:10px;
-border-top:1px solid rgba(116,27,53,.15);
-color:var(--wine);
-font-size:16px;
-font-weight:950;
+.summary-line.total{
+margin-top:6px;
+padding-top:11px;
+
+border-top:
+1px solid var(--border);
+
+color:
+var(--burgundy);
+
+font-size:15px;
+font-weight:bold;
 }
+
+
+/* =========================================================
+checkout
+========================================================= */
 
 .checkout-title{
-color:var(--wine);
-font-weight:950;
-margin:22px 0 10px;
+margin:
+21px 0 10px;
+
+color:
+var(--burgundy);
+
+font-size:14px;
+font-weight:bold;
 }
 
-.delivery-options{
+.delivery-grid{
 display:grid;
 gap:8px;
 }
 
-.delivery-option{
+.delivery-card{
+position:relative;
+
 display:flex;
-gap:10px;
 align-items:center;
-padding:12px;
-background:white;
-border-radius:14px;
-font-size:12px;
-}
 
-.field{
-margin:10px 0;
-}
+min-height:60px;
 
-.field label{
-display:block;
-color:var(--wine);
-font-size:12px;
-font-weight:850;
-margin-bottom:6px;
-}
+padding:
+11px 12px;
 
-.field input{
-width:100%;
-border:1px solid #ead8de;
-background:white;
-border-radius:13px;
-padding:12px;
-outline:none;
-color:#5d3743;
-}
+border:
+1px solid var(--border);
 
-.demo-order{
-width:100%;
-border:0;
-margin:17px 0 30px;
-padding:15px;
-border-radius:17px;
-background:var(--wine);
-color:white;
-font-weight:950;
-}
+border-radius:16px;
 
-/* =========================
-عناصر الإعلان السينمائية
-========================= */
+background:
+var(--cream);
 
-.ad-cursor{
-position:fixed;
-z-index:999;
-width:47px;
-height:47px;
-border-radius:50%;
-display:grid;
-place-items:center;
-color:white;
-background:rgba(116,27,53,.94);
-border:4px solid rgba(255,255,255,.85);
-box-shadow:
-0 10px 30px rgba(116,27,53,.35),
-0 0 0 7px rgba(116,27,53,.10);
-left:50%;
-top:78%;
-opacity:0;
-pointer-events:none;
-transform:translate(-50%,-50%) scale(.7);
 transition:
-left 1s cubic-bezier(.2,.8,.2,1),
-top 1s cubic-bezier(.2,.8,.2,1),
-transform .2s,
+.4s ease;
+}
+
+.delivery-card::before{
+content:"";
+
+width:15px;
+height:15px;
+
+flex:0 0 15px;
+
+margin-left:9px;
+
+border:
+2px solid #d9c8ad;
+
+border-radius:50%;
+
+background:white;
+
+transition:.3s;
+}
+
+.delivery-card.selected{
+border-color:
+var(--burgundy);
+
+background:
+#fff8fa;
+
+box-shadow:
+0 8px 24px
+rgba(116,27,53,.08);
+}
+
+.delivery-card.selected::before{
+border:
+4px solid
+var(--burgundy);
+}
+
+.delivery-name{
+font-size:11px;
+font-weight:bold;
+}
+
+.delivery-price{
+margin-top:3px;
+
+color:
+var(--muted);
+
+font-size:9px;
+}
+
+.delivery-explanation{
+margin-top:9px;
+
+padding:
+11px;
+
+border:
+1px solid var(--border);
+
+border-radius:14px;
+
+background:
+var(--yellow-soft);
+
+color:
+var(--text);
+
+font-size:10px;
+line-height:1.8;
+
+transition:.4s;
+}
+
+
+/* =========================================================
+الحقول
+========================================================= */
+
+.form-field{
+margin-bottom:10px;
+}
+
+.form-field label{
+display:block;
+
+margin-bottom:5px;
+
+font-size:10px;
+font-weight:bold;
+}
+
+.fake-input{
+min-height:42px;
+
+display:flex;
+align-items:center;
+
+padding:
+10px 12px;
+
+border:
+1px solid var(--border);
+
+border-radius:13px;
+
+background:white;
+
+color:
+#a68b92;
+
+font-size:10px;
+
+transition:
+border-color .3s,
+box-shadow .3s;
+}
+
+.fake-input.filling{
+border-color:
+var(--burgundy-soft);
+
+box-shadow:
+0 0 0 3px
+rgba(116,27,53,.06);
+}
+
+.fake-input.filled{
+color:
+var(--text);
+}
+
+.fake-textarea{
+min-height:68px;
+
+align-items:flex-start;
+
+line-height:1.7;
+}
+
+
+/* =========================================================
+الزاجل
+========================================================= */
+
+.zajel-question{
+display:grid;
+
+grid-template-columns:
+1fr 1fr;
+
+gap:7px;
+}
+
+.zajel-choice{
+padding:
+10px;
+
+text-align:center;
+
+border:
+1px solid var(--border);
+
+border-radius:14px;
+
+background:
+var(--cream);
+
+color:
+var(--burgundy);
+
+font-size:10px;
+
+transition:.35s;
+}
+
+.zajel-choice.selected{
+color:white;
+
+border-color:
+var(--burgundy);
+
+background:
+var(--burgundy);
+
+transform:
+scale(1.02);
+}
+
+.zajel-fields{
+max-height:0;
+
+overflow:hidden;
+
+opacity:0;
+
+margin-top:0;
+
+padding:
+0 12px;
+
+border:
+0 solid var(--border);
+
+border-radius:18px;
+
+background:
+#fffaf0;
+
+transition:
+max-height .8s ease,
+opacity .5s ease,
+margin .5s ease,
+padding .5s ease,
+border-width .3s ease;
+}
+
+.zajel-fields.show{
+max-height:800px;
+
+opacity:1;
+
+margin-top:10px;
+
+padding:
+13px 12px;
+
+border-width:1px;
+}
+
+
+/* =========================================================
+الدفع
+========================================================= */
+
+.payment-notice{
+margin:
+15px 0;
+
+padding:
+12px;
+
+border:
+1px solid #ead9a8;
+
+border-radius:15px;
+
+background:
+#fff5d5;
+
+color:
+var(--burgundy-dark);
+
+font-size:10px;
+font-weight:bold;
+line-height:1.8;
+}
+
+.send-order{
+width:100%;
+
+padding:
+13px;
+
+border:0;
+
+border-radius:40px;
+
+background:
+var(--burgundy);
+
+color:white;
+
+font-size:11px;
+font-weight:bold;
+
+box-shadow:
+0 8px 22px
+rgba(116,27,53,.16);
+
+transition:.3s;
+}
+
+.send-order.auto-pressed{
+transform:
+scale(.97);
+
+background:
+var(--burgundy-dark);
+}
+
+
+/* =========================================================
+طبقة الشرح السينمائية
+========================================================= */
+
+.guide{
+position:absolute;
+
+z-index:700;
+
+left:14px;
+right:14px;
+bottom:17px;
+
+pointer-events:none;
+
+transform:
+translateY(140%);
+
+opacity:0;
+
+transition:
+transform .55s
+cubic-bezier(.22,.8,.3,1),
 opacity .4s;
 }
 
-.ad-cursor.show{
-opacity:1;
-transform:translate(-50%,-50%) scale(1);
-}
+.guide.show{
+transform:
+translateY(0);
 
-.ad-cursor.tap{
-transform:translate(-50%,-50%) scale(.72);
-}
-
-.ad-cursor::after{
-content:"";
-width:8px;
-height:8px;
-border-radius:50%;
-background:white;
-}
-
-.ad-note{
-position:fixed;
-z-index:998;
-max-width:230px;
-padding:12px 16px;
-border-radius:17px;
-background:rgba(255,255,255,.96);
-color:var(--wine);
-box-shadow:0 14px 40px rgba(77,20,39,.18);
-border:1px solid rgba(116,27,53,.08);
-font-size:13px;
-font-weight:900;
-line-height:1.7;
-opacity:0;
-transform:translateY(15px) scale(.95);
-transition:.4s;
-pointer-events:none;
-}
-
-.ad-note.show{
-opacity:1;
-transform:translateY(0) scale(1);
-}
-
-.ad-note::after{
-content:"";
-position:absolute;
-width:12px;
-height:12px;
-background:white;
-transform:rotate(45deg);
-bottom:-6px;
-right:28px;
-}
-
-.spotlight{
-position:fixed;
-z-index:997;
-border:2px solid var(--butter);
-border-radius:20px;
-box-shadow:
-0 0 0 9999px rgba(52,12,27,.22),
-0 0 0 7px rgba(255,243,189,.22);
-opacity:0;
-pointer-events:none;
-transition:.55s cubic-bezier(.2,.8,.2,1);
-}
-
-.spotlight.show{
 opacity:1;
 }
 
-.record-label{
-position:fixed;
-z-index:996;
-top:82px;
-left:50%;
-transform:translateX(-50%) translateY(-15px);
-background:rgba(116,27,53,.94);
+.guide-card{
+position:relative;
+
+overflow:hidden;
+
+padding:
+14px 15px 14px;
+
+border:
+1px solid
+rgba(255,255,255,.42);
+
+border-radius:21px;
+
 color:white;
-padding:8px 14px;
-border-radius:100px;
-font-size:11px;
-font-weight:900;
-opacity:0;
-transition:.4s;
+
+background:
+linear-gradient(
+135deg,
+rgba(84,16,36,.97),
+rgba(116,27,53,.94)
+);
+
+box-shadow:
+0 18px 50px
+rgba(45,13,25,.28);
+
+backdrop-filter:
+blur(16px);
+}
+
+.guide-card::after{
+content:"";
+
+position:absolute;
+
+top:-35px;
+left:-25px;
+
+width:100px;
+height:100px;
+
+border-radius:50%;
+
+background:
+rgba(255,243,189,.09);
+}
+
+.guide-top{
+position:relative;
+z-index:2;
+
+display:flex;
+align-items:center;
+gap:9px;
+
+margin-bottom:7px;
+}
+
+.guide-icon{
+width:31px;
+height:31px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+flex:0 0 31px;
+
+border-radius:50%;
+
+background:
+rgba(255,255,255,.14);
+
+font-size:16px;
+}
+
+.guide-title{
+font-size:12px;
+font-weight:bold;
+}
+
+.guide-step{
+margin-top:2px;
+
+color:
+#f5dfe5;
+
+font-size:8px;
+}
+
+.guide-text{
+position:relative;
+z-index:2;
+
+margin:0;
+
+color:
+#fffdf8;
+
+font-size:10px;
+line-height:1.85;
+}
+
+
+/* =========================================================
+المؤشر التلقائي
+========================================================= */
+
+.auto-cursor{
+position:absolute;
+
+z-index:800;
+
+top:280px;
+left:50%;
+
+width:28px;
+height:35px;
+
 pointer-events:none;
-white-space:nowrap;
+
+opacity:0;
+
+filter:
+drop-shadow(
+0 5px 6px
+rgba(0,0,0,.25)
+);
+
+transition:
+top .8s
+cubic-bezier(.22,.8,.3,1),
+left .8s
+cubic-bezier(.22,.8,.3,1),
+opacity .3s,
+transform .25s;
 }
 
-.record-label.show{
+.auto-cursor.show{
 opacity:1;
-transform:translateX(-50%) translateY(0);
 }
 
-/* =========================
-النهاية
-========================= */
+.auto-cursor.click{
+transform:
+scale(.78);
+}
 
-.end-screen{
-position:fixed;
+.cursor-svg{
+width:100%;
+height:100%;
+}
+
+
+/* =========================================================
+نبضة المكان المشروح
+========================================================= */
+
+.auto-highlight{
+position:absolute;
+
+z-index:650;
+
+pointer-events:none;
+
+border:
+2px solid
+rgba(116,27,53,.75);
+
+border-radius:18px;
+
+opacity:0;
+
+box-shadow:
+0 0 0 6px
+rgba(116,27,53,.08);
+
+transition:
+top .65s ease,
+left .65s ease,
+width .65s ease,
+height .65s ease,
+opacity .3s;
+}
+
+.auto-highlight.show{
+opacity:1;
+
+animation:
+highlightPulse 1.5s infinite;
+}
+
+@keyframes highlightPulse{
+
+0%,
+100%{
+box-shadow:
+0 0 0 4px
+rgba(116,27,53,.07);
+}
+
+50%{
+box-shadow:
+0 0 0 10px
+rgba(116,27,53,.02);
+}
+
+}
+
+
+/* =========================================================
+Toast
+========================================================= */
+
+.demo-toast{
+position:absolute;
+
+z-index:820;
+
+left:50%;
+bottom:155px;
+
+width:max-content;
+max-width:85%;
+
+transform:
+translate(-50%,40px);
+
+opacity:0;
+
+padding:
+10px 15px;
+
+border-radius:40px;
+
+background:
+var(--burgundy-dark);
+
+color:white;
+
+font-size:10px;
+
+box-shadow:
+0 12px 35px
+rgba(0,0,0,.20);
+
+transition:.4s;
+}
+
+.demo-toast.show{
+opacity:1;
+
+transform:
+translate(-50%,0);
+}
+
+
+/* =========================================================
+شاشة واتساب - محاكاة فقط
+========================================================= */
+
+.whatsapp-screen{
+position:absolute;
+
+z-index:500;
+
 inset:0;
-z-index:2000;
+
 display:flex;
 flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:25px;
+
 background:
-radial-gradient(circle at 30% 20%,#fff3bd,transparent 35%),
-linear-gradient(145deg,#fffdf6,#f9e8ed);
+#efeae2;
+
+transform:
+translateX(-105%);
+
+transition:
+transform .7s
+cubic-bezier(.22,.8,.3,1);
+}
+
+.whatsapp-screen.show{
+transform:
+translateX(0);
+}
+
+.wa-header{
+padding:
+42px 12px 10px;
+
+display:flex;
+align-items:center;
+gap:9px;
+
+background:
+#075e54;
+
+color:white;
+}
+
+.wa-back{
+font-size:19px;
+}
+
+.wa-avatar{
+width:37px;
+height:37px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:
+#fff3bd;
+
+color:
+var(--burgundy);
+
+font-family:
+Georgia,
+serif;
+
+font-weight:bold;
+}
+
+.wa-name{
+font-size:12px;
+font-weight:bold;
+}
+
+.wa-status{
+margin-top:2px;
+
+font-size:8px;
+
+opacity:.8;
+}
+
+.wa-chat{
+flex:1;
+
+overflow-y:auto;
+
+padding:
+18px 12px 120px;
+
+scrollbar-width:none;
+
+background:
+
+linear-gradient(
+rgba(239,234,226,.92),
+rgba(239,234,226,.92)
+),
+
+radial-gradient(
+circle at 20% 20%,
+#ffffff 1px,
+transparent 1px
+);
+
+background-size:
+auto,
+18px 18px;
+}
+
+.wa-chat::-webkit-scrollbar{
+display:none;
+}
+
+.wa-date{
+width:max-content;
+
+margin:
+0 auto 12px;
+
+padding:
+5px 9px;
+
+border-radius:7px;
+
+background:
+#e1f3fb;
+
+color:#5f696b;
+
+font-size:8px;
+}
+
+.wa-message{
+width:88%;
+
+margin-right:auto;
+
+padding:
+10px 11px;
+
+border-radius:
+10px 2px 10px 10px;
+
+background:
+#d9fdd3;
+
+color:#25302e;
+
+font-size:9px;
+line-height:1.75;
+
+box-shadow:
+0 1px 2px
+rgba(0,0,0,.08);
+
 opacity:0;
-pointer-events:none;
-transition:1s;
+
+transform:
+translateY(20px);
+
+transition:
+.5s;
 }
 
-.end-screen.show{
+.wa-message.show{
 opacity:1;
-pointer-events:auto;
+
+transform:
+translateY(0);
 }
 
-.end-screen .mini{
-font-size:13px;
-color:#8f6975;
-letter-spacing:1px;
+.wa-message strong{
+color:
+#5c1830;
 }
 
-.end-screen h1{
-margin:12px 0;
-font-size:76px;
-line-height:1;
-color:var(--wine);
-letter-spacing:-4px;
+.wa-time{
+display:block;
+
+margin-top:7px;
+
+text-align:left;
+
+color:#78827f;
+
+font-size:7px;
 }
 
-.end-screen p{
-margin:4px 0;
-color:#704b57;
+.wa-input-bar{
+position:absolute;
+
+left:0;
+right:0;
+bottom:0;
+
+display:flex;
+align-items:center;
+gap:7px;
+
+padding:
+9px 9px 18px;
+
+background:
+#f0f2f5;
+}
+
+.wa-fake-input{
+flex:1;
+
+padding:
+10px 12px;
+
+border-radius:30px;
+
+background:white;
+
+color:#929a9c;
+
+font-size:9px;
+}
+
+.wa-send{
+width:37px;
+height:37px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:
+#00a884;
+
+color:white;
+
+font-size:15px;
+}
+
+
+/* =========================================================
+شاشة النهاية
+========================================================= */
+
+.final-screen{
+position:absolute;
+
+z-index:600;
+
+inset:0;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:25px;
+
+text-align:center;
+
+color:white;
+
+background:
+
+radial-gradient(
+circle at 50% 35%,
+rgba(255,243,189,.18),
+transparent 35%
+),
+
+linear-gradient(
+145deg,
+var(--burgundy),
+var(--burgundy-dark)
+);
+
+opacity:0;
+visibility:hidden;
+
+transition:.8s;
+}
+
+.final-screen.show{
+opacity:1;
+visibility:visible;
+}
+
+.final-content{
+transform:
+translateY(20px);
+
+opacity:0;
+
+transition:
+.8s .25s;
+}
+
+.final-screen.show
+.final-content{
+transform:
+translateY(0);
+
+opacity:1;
+}
+
+.final-bow{
+font-size:44px;
+
+animation:
+bowFloat 2.4s ease-in-out infinite;
+}
+
+.final-logo{
+margin:
+8px 0;
+
+font-family:
+Georgia,
+"Times New Roman",
+serif;
+
+font-size:67px;
+}
+
+.final-heart{
+font-size:19px;
+}
+
+.final-title{
+margin:
+18px 0 8px;
+
+font-size:19px;
+}
+
+.final-copy{
+margin:
+0 auto;
+
+max-width:290px;
+
+color:
+#f7e9ed;
+
+font-size:11px;
 line-height:1.9;
 }
 
-.end-line{
-width:65px;
-height:4px;
-margin:20px 0;
-border-radius:50px;
-background:var(--wine);
+.final-tag{
+display:inline-block;
+
+margin-top:18px;
+
+padding:
+10px 20px;
+
+border:
+1px solid
+rgba(255,255,255,.28);
+
+border-radius:40px;
+
+background:
+rgba(255,255,255,.09);
+
+font-size:10px;
 }
 
-/* =========================
-استجابة الآيباد والجوال
-========================= */
 
-@media(min-width:700px){
-.products{
-grid-template-columns:repeat(3,minmax(0,1fr));
+/* =========================================================
+الحركة الخاصة بالكتابة
+========================================================= */
+
+.typing::after{
+content:"|";
+
+margin-right:2px;
+
+color:
+var(--burgundy);
+
+animation:
+blink .7s infinite;
 }
 
-.product-image{
-height:250px;
+@keyframes blink{
+
+0%,
+50%{
+opacity:1;
 }
 
-.product-modal{
-margin-bottom:25px;
+51%,
+100%{
+opacity:0;
+}
+
+}
+
+
+/* =========================================================
+الجوال الصغير
+========================================================= */
+
+@media(max-height:700px){
+
+.phone{
+height:
+calc(100vh - 18px);
+
+min-height:0;
+
 border-radius:30px;
 }
+
+.ad-page{
+padding:9px;
 }
 
-.hidden{
-display:none !important;
+.hero{
+min-height:410px;
 }
+
+.hero-logo{
+font-size:60px;
+}
+
+.guide{
+bottom:10px;
+}
+
+}
+
+
+/* =========================================================
+سطح المكتب
+========================================================= */
+
+@media(min-width:700px){
+
+.phone{
+height:
+min(900px,calc(100vh - 40px));
+}
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<header class="topbar">
-<div class="brand">
-<div class="brand-mark">R</div>
-<span>Rimi</span>
-</div>
-
-<button class="cart-button" id="cartButton" type="button">
-🛍️
-<span class="cart-count" id="cartCount">0</span>
-</button>
-</header>
-
-<main>
-
-<section class="hero" id="home">
-<div class="hero-badge">Rimi • Online Store</div>
-
-<h1 class="hero-logo">
-Rimi<span class="hero-heart">♡</span>
-</h1>
-
-<div class="hero-line"></div>
-
-<p class="hero-text">
-اختاري اللي يعجبك بكل سهولة،
-وشوفي التفاصيل والخيارات في مكان واحد.
-</p>
-
-<button class="shop-btn" id="shopButton" type="button">
-تسوّقي الآن
-</button>
-
-<div class="scroll-hint">⌄</div>
-</section>
-
-<section class="shop" id="shop">
-
-<div class="section-head">
-<small>RIMI COLLECTION</small>
-<h2>اختاري اللي يعجبك ♡</h2>
-<p>تصفحي الأقسام والمنتجات بكل سهولة</p>
-</div>
-
-<div class="categories" id="categories">
-<button class="category active" type="button">
-الكل
-</button>
-</div>
-
-<div class="products" id="products">
-<div class="loading">
-<div class="loader"></div>
-جاري تجهيز Rimi...
-</div>
-</div>
-
-</section>
-
-</main>
-
-<!-- نافذة المنتج -->
-
-<div class="modal-overlay" id="productModalOverlay">
-
-<div class="product-modal">
-
-<button
-class="modal-close"
-id="closeProductModal"
-type="button"
->
-✕
-</button>
-
-<div class="gallery-main" id="modalMainImage">
-<div class="product-placeholder">🎀</div>
-</div>
-
-<div class="gallery-thumbs" id="modalGallery"></div>
-
-<div class="modal-info">
-
-<h2 id="modalProductName"></h2>
-
-<div class="price" id="modalProductPrice"></div>
+<div class="ad-page">
 
 <div
-class="modal-description"
-id="modalProductDescription"
+class="phone"
+id="phone"
+>
+
+<!-- =============================
+تقدم العرض
+============================== -->
+
+<div class="progress-track">
+<div
+class="progress-bar"
+id="progressBar"
 ></div>
-
-<div id="modalColorsSection" class="hidden">
-<div class="option-title">اختاري اللون</div>
-<div class="option-list" id="modalColors"></div>
 </div>
 
-<div id="modalSizesSection" class="hidden">
-<div class="option-title">اختاري المقاس</div>
-<div class="option-list" id="modalSizes"></div>
+
+<!-- =============================
+حالة العرض
+============================== -->
+
+<div class="demo-status">
+<span class="demo-dot"></span>
+<span id="demoStatusText">
+جولة Rimi
+</span>
 </div>
+
+
+<!-- =============================
+الشاشة
+============================== -->
+
+<div class="screen">
+
+<div
+class="store"
+id="store"
+>
+
+<!-- =========================
+TOP BAR
+========================== -->
+
+<div class="topbar">
+أهلاً بكِ في Rimi ♡
+<br>
+من أجلك .. نختار أجمل التفاصيل
+</div>
+
+
+<!-- =========================
+HEADER
+========================== -->
+
+<header class="store-header">
+
+<div class="logo">
+Rimi
+</div>
+
+<div class="nav-actions">
+
+<div class="fake-nav-btn">
+تسوّقي
+</div>
+
+<div
+class="fake-nav-btn"
+id="cartNavButton"
+>
+السلة 🛍️
+
+<span
+class="cart-number"
+id="cartNumber"
+>
+0
+</span>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- =========================
+HERO
+========================== -->
+
+<section
+class="hero"
+id="heroSection"
+>
+
+<div class="hero-card">
+
+<div class="bow">
+🎀
+</div>
+
+<div class="hero-logo">
+Rimi
+</div>
+
+<div class="hero-heart">
+♡
+</div>
+
+<div class="hero-copy">
+
+<strong>
+من أجلك .. نختار أجمل التفاصيل
+</strong>
+
+<br>
+
+اكتشفي مختارات Rimi
+بعناية ولمسة جميلة خاصة بكِ
+
+</div>
+
+<div
+class="hero-button"
+id="shopNowButton"
+>
+تسوّقي الآن
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+المنتجات
+========================== -->
+
+<section
+class="section"
+id="productsSection"
+>
+
+<h2 class="section-title">
+اكتشفي Rimi
+</h2>
+
+<p class="section-subtitle">
+كل ما تحبينه في مكان واحد ♡
+</p>
+
+
+<div class="search-box">
+🔍 ابحثي عن منتج...
+</div>
+
+
+<div class="categories">
+
+<div class="category active">
+الكل
+</div>
+
+<div class="category">
+الأكثر طلباً
+</div>
+
+<div class="category">
+هدايا
+</div>
+
+<div class="category">
+مختارات Rimi
+</div>
+
+</div>
+
+
+<div class="products">
+
+<!-- المنتج الذي ستتم عليه الجولة -->
+
+<article
+class="product"
+id="demoProduct"
+>
+
+<div class="product-image">
+
+<span class="product-badge">
+مميز
+</span>
+
+<div class="product-visual">
+🎁
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3 class="product-name">
+اختيار Rimi المميز
+</h3>
+
+<p class="product-desc">
+تفاصيل جميلة مختارة بعناية
+لتكون الهدية أكثر خصوصية.
+</p>
+
+<div class="product-price">
+8.500 ر.ع
+</div>
+
+<div class="product-buttons">
+
+<div
+class="product-btn"
+id="quickAddButton"
+>
+أضيفي للسلة
+</div>
+
+<div
+class="product-btn light"
+id="detailsButton"
+>
+التفاصيل
+</div>
+
+</div>
+
+</div>
+
+</article>
+
+
+<article class="product">
+
+<div class="product-image">
+
+<div class="product-visual">
+🎀
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3 class="product-name">
+لمسة Rimi
+</h3>
+
+<p class="product-desc">
+اختيار أنيق بتفاصيل ناعمة.
+</p>
+
+<div class="product-price">
+6.000 ر.ع
+</div>
+
+<div class="product-buttons">
+
+<div class="product-btn">
+أضيفي للسلة
+</div>
+
+<div class="product-btn light">
+التفاصيل
+</div>
+
+</div>
+
+</div>
+
+</article>
+
+
+<article class="product">
+
+<div class="product-image">
+
+<div class="product-visual">
+👜
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3 class="product-name">
+اختيار يومي
+</h3>
+
+<p class="product-desc">
+قطعة عملية بلمسة Rimi.
+</p>
+
+<div class="product-price">
+7.250 ر.ع
+</div>
+
+<div class="product-buttons">
+
+<div class="product-btn">
+أضيفي للسلة
+</div>
+
+<div class="product-btn light">
+التفاصيل
+</div>
+
+</div>
+
+</div>
+
+</article>
+
+
+<article class="product">
+
+<div class="product-image">
+
+<div class="product-visual">
+✨
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3 class="product-name">
+تفاصيل خاصة
+</h3>
+
+<p class="product-desc">
+لمسة صغيرة تصنع فرقاً جميلاً.
+</p>
+
+<div class="product-price">
+4.500 ر.ع
+</div>
+
+<div class="product-buttons">
+
+<div class="product-btn">
+أضيفي للسلة
+</div>
+
+<div class="product-btn light">
+التفاصيل
+</div>
+
+</div>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+المميزات
+========================== -->
+
+<section
+class="features"
+id="featuresSection"
+>
+
+<h2 class="section-title">
+لماذا Rimi؟
+</h2>
+
+<p class="section-subtitle">
+لأن التفاصيل الصغيرة
+هي التي تصنع التجربة ♡
+</p>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🎀
+</div>
+
+<h3>
+مختارات بعناية
+</h3>
+
+<p>
+نختار التفاصيل التي تضيف
+لمسة أجمل لكل طلب.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🚚
+</div>
+
+<h3>
+خيارات استلام مرنة
+</h3>
+
+<p>
+اختاري الطريقة المناسبة لكِ
+عند إتمام الطلب.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+💌
+</div>
+
+<h3>
+زاجل لشخص تحبينه
+</h3>
+
+<p>
+يمكنكِ تجهيز الطلب لشخص آخر
+مع رسالة خاصة.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- مساحة إضافية للحركة -->
+
+<div style="height:100px"></div>
+
+</div>
+
+
+<!-- =============================
+نافذة تفاصيل المنتج
+============================== -->
+
+<div
+class="demo-modal"
+id="productModal"
+>
+
+<div
+class="demo-modal-card"
+id="productModalCard"
+>
+
+<div class="modal-handle"></div>
+
+<div class="modal-product-image">
+🎁
+</div>
+
+<h2 class="modal-name">
+اختيار Rimi المميز
+</h2>
+
+<div class="modal-copy">
+منتج مختار بعناية ليضيف
+لمسة جميلة ومميزة إلى طلبكِ.
+يمكنكِ اختيار التفاصيل المناسبة
+قبل إضافته إلى السلة.
+</div>
+
+<div class="modal-price">
+8.500 ر.ع
+</div>
+
+
+<div class="option-label">
+اختاري اللون
+</div>
+
+<div class="options">
+
+<div
+class="option"
+id="colorOption1"
+>
+عنابي
+</div>
+
+<div class="option">
+بيج
+</div>
+
+<div class="option">
+وردي
+</div>
+
+</div>
+
+
+<div class="option-label">
+اختاري المقاس
+</div>
+
+<div class="options">
+
+<div
+class="option"
+id="sizeOption1"
+>
+متوسط
+</div>
+
+<div class="option">
+كبير
+</div>
+
+</div>
+
 
 <button
 class="modal-add"
@@ -1079,1822 +2948,1374 @@ type="button"
 
 </div>
 
-</div>
 
-<!-- السلة -->
+<!-- =============================
+السلة وإتمام الطلب
+============================== -->
 
-<div class="cart-overlay" id="cartOverlay"></div>
-
-<aside class="cart" id="cart">
+<aside
+class="cart-panel"
+id="cartPanel"
+>
 
 <div class="cart-head">
-<h2>سلة Rimi 🛍️</h2>
 
-<button
-class="close-cart"
-id="closeCartButton"
-type="button"
->
+<h2>
+سلة Rimi 🛍️
+</h2>
+
+<div class="fake-close">
 ✕
-</button>
 </div>
-
-<div id="cartItems"></div>
-
-<div class="summary">
-<div class="summary-row">
-<span>مجموع المنتجات</span>
-<span id="subtotal">0.000 ر.ع</span>
-</div>
-
-<div class="summary-row">
-<span>رسوم التوصيل</span>
-<span id="deliveryFee">1.000 ر.ع</span>
-</div>
-
-<div class="summary-row total">
-<span>الإجمالي</span>
-<span id="total">0.000 ر.ع</span>
-</div>
-</div>
-
-<div class="checkout-title">طريقة التوصيل</div>
-
-<div class="delivery-options">
-
-<label class="delivery-option">
-<input
-type="radio"
-name="demoDelivery"
-value="office"
-checked
->
-<span>المكتب • 1.000 ر.ع</span>
-</label>
-
-<label class="delivery-option">
-<input
-type="radio"
-name="demoDelivery"
-value="courier"
->
-<span>مندوب • 2.000 ر.ع</span>
-</label>
-
-<label class="delivery-option">
-<input
-type="radio"
-name="demoDelivery"
-value="whatsapp"
->
-<span>التفاهم في الواتساب</span>
-</label>
 
 </div>
 
-<div class="checkout-title">بيانات الطلب</div>
 
-<div class="field">
-<label>الاسم</label>
-<input
-id="demoName"
-value=""
-placeholder="اكتبي اسمك"
-readonly
->
-</div>
-
-<div class="field">
-<label>رقم الهاتف</label>
-<input
-id="demoPhone"
-value=""
-placeholder="رقم التواصل"
-readonly
->
-</div>
-
-<div class="field">
-<label>المحافظة</label>
-<input
-id="demoGovernorate"
-value=""
-placeholder="المحافظة"
-readonly
->
-</div>
-
-<button
-class="demo-order"
-id="demoOrderButton"
-type="button"
->
-تأكيد الطلب
-</button>
-
-</aside>
-
-<!-- عناصر حركة الإعلان -->
-
-<div class="ad-cursor" id="adCursor"></div>
-
-<div class="ad-note" id="adNote"></div>
-
-<div class="spotlight" id="spotlight"></div>
-
-<div class="record-label" id="recordLabel">
-Rimi • طريقة الطلب
-</div>
-
-<!-- النهاية -->
-
-<div class="end-screen" id="endScreen">
-<div class="mini">THANK YOU FOR SHOPPING</div>
-<h1>Rimi♡</h1>
-<div class="end-line"></div>
-<p>
-تسوّق بسيط، مرتب، ومن مكان واحد.
-</p>
-<p>
-Rimi
-</p>
-</div>
-
-<!-- PART 2 -->
-  <script type="module">
-
-/* =========================================================
-RIMI AD STUDIO — PART 2
-قراءة فقط من Firebase + عرض تجريبي بدون إنشاء طلبات
-========================================================= */
-
-import {
-initializeApp
-} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-
-import {
-getFirestore,
-collection,
-getDocs
-} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
-
-
-/* =========================
-Firebase
-========================= */
-
-const firebaseConfig = {
-apiKey:"AIzaSyAtBFy0kQdyayn1F-Fxxpd04UD7kWFXBu4",
-authDomain:"rimi-store.firebaseapp.com",
-projectId:"rimi-store",
-storageBucket:"rimi-store.firebasestorage.app",
-messagingSenderId:"1640224406",
-appId:"1:1640224406:web:c59fd821a5e91317aed4b7"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-
-/* =========================
-اختصارات ومتغيرات
-========================= */
-
-const $ = id => document.getElementById(id);
-
-let categories = [];
-let products = [];
-
-let activeCategory = "all";
-
-let selectedProduct = null;
-let selectedColor = "";
-let selectedSize = "";
-
-let demoCart = [];
-
-let adStarted = false;
-
-
-/* =========================
-أدوات عامة
-========================= */
-
-function safeNumber(value,fallback=0){
-const n = Number(value);
-return Number.isFinite(n) ? n : fallback;
-}
-
-function money(value){
-return safeNumber(value).toFixed(3) + " ر.ع";
-}
-
-function escapeHtml(value=""){
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-}
-
-function sleep(ms){
-return new Promise(resolve=>setTimeout(resolve,ms));
-}
-
-function visible(el){
-if(!el) return false;
-
-const r = el.getBoundingClientRect();
-
-return (
-r.width > 0 &&
-r.height > 0 &&
-r.bottom > 0 &&
-r.top < window.innerHeight
-);
-}
-
-
-/* =========================
-صور المنتج
-========================= */
-
-function getProductImages(product,color=""){
-
-if(!product){
-return [];
-}
-
-const images = [];
-
-if(product.hasColors && color){
-
-const variant =
-(product.variants || [])
-.find(v => v.color === color);
-
-if(variant){
-
-if(variant.mainImage){
-images.push(variant.mainImage);
-}
-
-if(Array.isArray(variant.images)){
-
-variant.images.forEach(image=>{
-
-if(
-image &&
-!images.includes(image)
-){
-images.push(image);
-}
-
-});
-
-}
-
-}
-
-}
-
-if(!images.length){
-
-if(product.mainImage){
-images.push(product.mainImage);
-}
-
-if(Array.isArray(product.images)){
-
-product.images.forEach(image=>{
-
-if(
-image &&
-!images.includes(image)
-){
-images.push(image);
-}
-
-});
-
-}
-
-}
-
-if(
-!images.length &&
-product.image
-){
-images.push(product.image);
-}
-
-if(
-!images.length &&
-product.hasColors
-){
-
-(product.variants || [])
-.forEach(variant=>{
-
-if(
-variant.mainImage &&
-!images.includes(variant.mainImage)
-){
-images.push(variant.mainImage);
-}
-
-(variant.images || [])
-.forEach(image=>{
-
-if(
-image &&
-!images.includes(image)
-){
-images.push(image);
-}
-
-});
-
-});
-
-}
-
-return images;
-}
-
-
-function getProductImage(product){
-
-const images =
-getProductImages(product);
-
-return images[0] || "";
-}
-
-
-/* =========================
-حساب المخزون
-========================= */
-
-function getStock(product,color="",size=""){
-
-if(!product){
-return 0;
-}
-
-if(product.hasColors){
-
-const variants =
-product.variants || [];
-
-if(color){
-
-const variant =
-variants.find(
-item =>
-String(item.color || "") ===
-String(color)
-);
-
-if(!variant){
-return 0;
-}
-
-if(product.hasSizes){
-
-if(size){
-
-const sizeItem =
-(variant.sizes || [])
-.find(
-item =>
-String(item.size || "") ===
-String(size)
-);
-
-return safeNumber(
-sizeItem?.stock,
-0
-);
-
-}
-
-return (variant.sizes || [])
-.reduce(
-(sum,item)=>
-sum +
-safeNumber(item.stock),
-0
-);
-
-}
-
-return safeNumber(
-variant.stock,
-0
-);
-
-}
-
-return variants.reduce(
-(sum,variant)=>{
-
-if(product.hasSizes){
-
-return sum +
-(variant.sizes || [])
-.reduce(
-(total,item)=>
-total +
-safeNumber(item.stock),
-0
-);
-
-}
-
-return sum +
-safeNumber(
-variant.stock,
-0
-);
-
-},
-0
-);
-
-}
-
-if(product.hasSizes){
-
-if(size){
-
-const item =
-(product.sizes || [])
-.find(
-x =>
-String(x.size || "") ===
-String(size)
-);
-
-return safeNumber(
-item?.stock,
-0
-);
-
-}
-
-return (product.sizes || [])
-.reduce(
-(sum,item)=>
-sum +
-safeNumber(item.stock),
-0
-);
-
-}
-
-return safeNumber(
-product.stock,
-0
-);
-}
-
-
-/* =========================
-تحميل الأقسام
-========================= */
-
-async function loadCategories(){
-
-try{
-
-const snapshot =
-await getDocs(
-collection(db,"categories")
-);
-
-categories = [];
-
-snapshot.forEach(docSnap=>{
-
-const data =
-docSnap.data();
-
-if(data.active !== false){
-
-categories.push({
-id:docSnap.id,
-...data
-});
-
-}
-
-});
-
-categories.sort(
-(a,b)=>
-safeNumber(a.order,1) -
-safeNumber(b.order,1)
-);
-
-renderCategories();
-
-}catch(error){
-
-console.error(
-"Categories:",
-error
-);
-
-$("categories").innerHTML = `
-<button
-class="category active"
-type="button"
->
-الكل
-</button>
-`;
-
-}
-
-}
-
-
-/* =========================
-عرض الأقسام
-========================= */
-
-function renderCategories(){
-
-const area =
-$("categories");
-
-area.innerHTML = `
-
-<button
-class="category ${
-activeCategory === "all"
-? "active"
-: ""
-}"
-type="button"
-data-category="all"
->
-الكل
-</button>
-
-${categories.map(category=>`
-
-<button
-class="category ${
-activeCategory === category.id
-? "active"
-: ""
-}"
-type="button"
-data-category="${escapeHtml(category.id)}"
->
-${escapeHtml(category.name || "")}
-</button>
-
-`).join("")}
-
-`;
-
-area
-.querySelectorAll("[data-category]")
-.forEach(button=>{
-
-button.onclick = ()=>{
-
-activeCategory =
-button.dataset.category;
-
-renderCategories();
-renderProducts();
-
-};
-
-});
-
-}
-
-
-/* =========================
-تحميل المنتجات
-========================= */
-
-async function loadProducts(){
-
-try{
-
-const snapshot =
-await getDocs(
-collection(db,"products")
-);
-
-products = [];
-
-snapshot.forEach(docSnap=>{
-
-const data =
-docSnap.data();
-
-if(data.active !== false){
-
-products.push({
-id:docSnap.id,
-...data
-});
-
-}
-
-});
-
-renderProducts();
-
-}catch(error){
-
-console.error(
-"Products:",
-error
-);
-
-$("products").innerHTML = `
-
-<div class="loading">
-تعذر تحميل المنتجات حاليًا ♡
-</div>
-
-`;
-
-}
-
-}
-
-
-/* =========================
-اختيار أفضل منتج للإعلان
-========================= */
-
-function adScore(product){
-
-let score = 0;
-
-const stock =
-getStock(product);
-
-if(stock > 0){
-score += 100;
-}
-
-if(product.featured){
-score += 35;
-}
-
-if(product.isNew){
-score += 20;
-}
-
-if(product.hasColors){
-score += 28;
-}
-
-if(product.hasSizes){
-score += 18;
-}
-
-if(getProductImage(product)){
-score += 35;
-}
-
-if(
-String(product.name || "")
-.includes("شنط")
-||
-String(product.name || "")
-.includes("شنطة")
-||
-String(product.name || "")
-.includes("حقيبة")
-){
-score += 45;
-}
-
-return score;
-}
-
-
-function chooseAdProduct(){
-
-const available =
-products
-.filter(
-product =>
-getStock(product) > 0
-)
-.sort(
-(a,b)=>
-adScore(b) -
-adScore(a)
-);
-
-return (
-available[0] ||
-products[0] ||
-null
-);
-}
-
-
-/* =========================
-عرض المنتجات
-========================= */
-
-function renderProducts(){
-
-const area =
-$("products");
-
-const filtered =
-products.filter(product=>{
-
-if(activeCategory === "all"){
-return true;
-}
-
-return (
-product.categoryId ===
-activeCategory
-);
-
-});
-
-if(!filtered.length){
-
-area.innerHTML = `
-
-<div class="loading">
-ما فيه منتجات في هذا القسم حاليًا ♡
-</div>
-
-`;
-
-return;
-}
-
-area.innerHTML =
-filtered.map(product=>{
-
-const image =
-getProductImage(product);
-
-const stock =
-getStock(product);
-
-let badge = "";
-
-if(product.featured){
-badge = "مميز";
-}else if(product.isNew){
-badge = "جديد";
-}
-
-return `
-
-<article
-class="product"
-data-product-card="${escapeHtml(product.id)}"
->
+<!-- المنتج داخل السلة -->
 
 <div
-class="product-image"
-data-open-product="${escapeHtml(product.id)}"
+class="cart-item"
+id="cartDemoItem"
 >
 
-${
-badge
-? `
-<span class="badge">
-${escapeHtml(badge)}
-</span>
-`
-: ""
-}
-
-${
-image
-? `
-<img
-src="${escapeHtml(image)}"
-alt="${escapeHtml(product.name || "Rimi")}"
->
-`
-: `
-<div class="product-placeholder">
-🎀
+<div class="cart-thumb">
+🎁
 </div>
-`
-}
-
-</div>
-
-<div class="product-info">
-
-<h3 class="product-name">
-${escapeHtml(product.name || "منتج Rimi")}
-</h3>
-
-<p class="product-description">
-${escapeHtml(
-product.description ||
-"من مختارات Rimi ♡"
-)}
-</p>
-
-<div class="price">
-${money(product.price)}
-</div>
-
-<div class="product-actions">
-
-<button
-class="add-btn"
-type="button"
-data-add-product="${escapeHtml(product.id)}"
-${stock <= 0 ? "disabled" : ""}
->
-${
-stock <= 0
-? "نفد المخزون"
-: "أضيفي للسلة"
-}
-</button>
-
-<button
-class="details-btn"
-type="button"
-data-details-product="${escapeHtml(product.id)}"
->
-التفاصيل
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-`;
-
-}).join("");
-
-area
-.querySelectorAll(
-"[data-open-product],[data-details-product]"
-)
-.forEach(element=>{
-
-element.onclick = ()=>{
-
-const id =
-element.dataset.openProduct ||
-element.dataset.detailsProduct;
-
-openProduct(id);
-
-};
-
-});
-
-area
-.querySelectorAll(
-"[data-add-product]"
-)
-.forEach(button=>{
-
-button.onclick = ()=>{
-
-const product =
-products.find(
-item =>
-item.id ===
-button.dataset.addProduct
-);
-
-if(!product){
-return;
-}
-
-if(
-product.hasColors ||
-product.hasSizes
-){
-openProduct(product.id);
-return;
-}
-
-addDemoItem(
-product,
-"",
-""
-);
-
-};
-
-});
-
-}
-
-
-/* =========================
-فتح المنتج
-========================= */
-
-function openProduct(productId){
-
-selectedProduct =
-products.find(
-product =>
-product.id === productId
-);
-
-if(!selectedProduct){
-return;
-}
-
-selectedColor = "";
-selectedSize = "";
-
-$("modalProductName")
-.textContent =
-selectedProduct.name ||
-"منتج Rimi";
-
-$("modalProductPrice")
-.textContent =
-money(selectedProduct.price);
-
-$("modalProductDescription")
-.textContent =
-selectedProduct.description ||
-"من مختارات Rimi ♡";
-
-renderModalOptions();
-
-$("productModalOverlay")
-.classList.add("show");
-
-document.body.style.overflow =
-"hidden";
-}
-
-
-/* =========================
-إغلاق المنتج
-========================= */
-
-function closeProduct(){
-
-$("productModalOverlay")
-.classList.remove("show");
-
-document.body.style.overflow =
-"";
-
-}
-
-$("closeProductModal").onclick =
-closeProduct;
-
-
-/* =========================
-معرض الصور
-========================= */
-
-function renderGallery(){
-
-if(!selectedProduct){
-return;
-}
-
-const images =
-getProductImages(
-selectedProduct,
-selectedColor
-);
-
-const main =
-$("modalMainImage");
-
-const gallery =
-$("modalGallery");
-
-if(!images.length){
-
-main.innerHTML = `
-<div class="product-placeholder">
-🎀
-</div>
-`;
-
-gallery.innerHTML = "";
-
-return;
-}
-
-main.innerHTML = `
-<img
-src="${escapeHtml(images[0])}"
-alt="${escapeHtml(selectedProduct.name || "")}"
->
-`;
-
-gallery.innerHTML =
-images.map((image,index)=>`
-
-<button
-class="gallery-thumb ${
-index === 0
-? "active"
-: ""
-}"
-type="button"
-data-gallery="${escapeHtml(image)}"
->
-<img
-src="${escapeHtml(image)}"
-alt=""
->
-</button>
-
-`).join("");
-
-gallery
-.querySelectorAll("[data-gallery]")
-.forEach(button=>{
-
-button.onclick = ()=>{
-
-main.innerHTML = `
-<img
-src="${escapeHtml(button.dataset.gallery)}"
-alt=""
->
-`;
-
-gallery
-.querySelectorAll(".gallery-thumb")
-.forEach(item=>
-item.classList.remove("active")
-);
-
-button.classList.add("active");
-
-};
-
-});
-
-}
-
-
-/* =========================
-الألوان
-========================= */
-
-function renderColors(){
-
-const section =
-$("modalColorsSection");
-
-const area =
-$("modalColors");
-
-if(
-!selectedProduct?.hasColors
-){
-
-section.classList.add("hidden");
-area.innerHTML = "";
-
-return;
-}
-
-section.classList.remove("hidden");
-
-const variants =
-selectedProduct.variants || [];
-
-area.innerHTML =
-variants.map(variant=>{
-
-const color =
-String(variant.color || "");
-
-const stock =
-selectedProduct.hasSizes
-
-? (variant.sizes || [])
-.reduce(
-(sum,item)=>
-sum +
-safeNumber(item.stock),
-0
-)
-
-: safeNumber(
-variant.stock,
-0
-);
-
-return `
-
-<button
-class="option ${
-selectedColor === color
-? "selected"
-: ""
-}"
-type="button"
-data-color="${escapeHtml(color)}"
-${stock <= 0 ? "disabled" : ""}
->
-${escapeHtml(color || "لون")}
-</button>
-
-`;
-
-}).join("");
-
-area
-.querySelectorAll("[data-color]")
-.forEach(button=>{
-
-button.onclick = ()=>{
-
-selectedColor =
-button.dataset.color;
-
-selectedSize = "";
-
-renderModalOptions();
-
-};
-
-});
-
-}
-
-
-/* =========================
-المقاسات
-========================= */
-
-function currentSizes(){
-
-if(!selectedProduct?.hasSizes){
-return [];
-}
-
-if(selectedProduct.hasColors){
-
-if(!selectedColor){
-return [];
-}
-
-const variant =
-(selectedProduct.variants || [])
-.find(
-item =>
-String(item.color || "") ===
-String(selectedColor)
-);
-
-return variant?.sizes || [];
-
-}
-
-return selectedProduct.sizes || [];
-}
-
-
-function renderSizes(){
-
-const section =
-$("modalSizesSection");
-
-const area =
-$("modalSizes");
-
-if(
-!selectedProduct?.hasSizes
-){
-
-section.classList.add("hidden");
-area.innerHTML = "";
-
-return;
-}
-
-section.classList.remove("hidden");
-
-if(
-selectedProduct.hasColors &&
-!selectedColor
-){
-
-area.innerHTML = `
-<span style="
-font-size:12px;
-color:#8b6b75;
-">
-اختاري اللون أولًا
-</span>
-`;
-
-return;
-}
-
-const sizes =
-currentSizes();
-
-area.innerHTML =
-sizes.map(item=>{
-
-const size =
-String(item.size || "");
-
-return `
-
-<button
-class="option ${
-selectedSize === size
-? "selected"
-: ""
-}"
-type="button"
-data-size="${escapeHtml(size)}"
-${
-safeNumber(item.stock) <= 0
-? "disabled"
-: ""
-}
->
-${escapeHtml(size || "مقاس")}
-</button>
-
-`;
-
-}).join("");
-
-area
-.querySelectorAll("[data-size]")
-.forEach(button=>{
-
-button.onclick = ()=>{
-
-selectedSize =
-button.dataset.size;
-
-renderModalOptions();
-
-};
-
-});
-
-}
-
-
-/* =========================
-تحديث نافذة المنتج
-========================= */
-
-function renderModalOptions(){
-
-renderColors();
-renderSizes();
-renderGallery();
-
-const button =
-$("modalAddButton");
-
-let ready = true;
-
-if(
-selectedProduct?.hasColors &&
-!selectedColor
-){
-ready = false;
-}
-
-if(
-selectedProduct?.hasSizes &&
-!selectedSize
-){
-ready = false;
-}
-
-button.disabled =
-!ready;
-
-if(
-selectedProduct?.hasColors &&
-!selectedColor
-){
-
-button.textContent =
-"اختاري اللون أولًا";
-
-}else if(
-selectedProduct?.hasSizes &&
-!selectedSize
-){
-
-button.textContent =
-"اختاري المقاس أولًا";
-
-}else{
-
-button.textContent =
-"أضيفي للسلة";
-
-}
-
-}
-
-
-$("modalAddButton").onclick =
-()=>{
-
-if(!selectedProduct){
-return;
-}
-
-addDemoItem(
-selectedProduct,
-selectedColor,
-selectedSize
-);
-
-closeProduct();
-openCart();
-
-};
-
-
-/* =========================
-السلة التجريبية
-========================= */
-
-function addDemoItem(
-product,
-color="",
-size=""
-){
-
-demoCart = [{
-product,
-color,
-size,
-qty:1
-}];
-
-renderCart();
-
-}
-
-
-function renderCart(){
-
-$("cartCount").textContent =
-demoCart.length;
-
-const area =
-$("cartItems");
-
-if(!demoCart.length){
-
-area.innerHTML = `
-<div style="
-text-align:center;
-padding:35px 10px;
-color:#8d6c76;
-">
-السلة فارغة ♡
-</div>
-`;
-
-$("subtotal").textContent =
-money(0);
-
-$("total").textContent =
-money(1);
-
-return;
-}
-
-const item =
-demoCart[0];
-
-const image =
-getProductImages(
-item.product,
-item.color
-)[0] || "";
-
-area.innerHTML = `
-
-<div class="cart-item">
-
-${
-image
-? `
-<img
-src="${escapeHtml(image)}"
-alt=""
->
-`
-: `
-<div
-style="
-width:74px;
-height:82px;
-border-radius:13px;
-background:#fff3bd;
-display:grid;
-place-items:center;
-font-size:30px;
-"
->
-🎀
-</div>
-`
-}
 
 <div>
 
-<h4>
-${escapeHtml(
-item.product.name ||
-"منتج Rimi"
-)}
-</h4>
+<div class="cart-item-name">
+اختيار Rimi المميز
+</div>
+
+<div class="cart-options">
+اللون: عنابي
+<br>
+المقاس: متوسط
+</div>
+
+<div class="quantity">
+
+<span class="qty-circle">
+−
+</span>
 
 <strong>
-${money(item.product.price)}
+1
 </strong>
 
-${
-item.color
-? `
-<small>
-اللون: ${escapeHtml(item.color)}
-</small>
-`
-: ""
-}
-
-${
-item.size
-? `
-<small>
-المقاس: ${escapeHtml(item.size)}
-</small>
-`
-: ""
-}
-
-<small>
-الكمية: 1
-</small>
+<span class="qty-circle">
++
+</span>
 
 </div>
 
 </div>
 
-`;
+<div class="cart-price">
+8.500 ر.ع
+</div>
 
-updateTotals();
-
-}
+</div>
 
 
-/* =========================
+<!-- الملخص -->
+
+<div
+class="summary"
+id="summaryBox"
+>
+
+<div class="summary-line">
+
+<span>
+مجموع المنتجات
+</span>
+
+<span>
+8.500 ر.ع
+</span>
+
+</div>
+
+<div class="summary-line">
+
+<span>
+رسوم التوصيل
+</span>
+
+<span id="deliveryPrice">
+1.000 ر.ع
+</span>
+
+</div>
+
+<div class="summary-line total">
+
+<span>
 الإجمالي
-========================= */
+</span>
 
-function deliveryFee(){
+<span id="totalPrice">
+9.500 ر.ع
+</span>
 
-const selected =
-document.querySelector(
-'input[name="demoDelivery"]:checked'
-);
+</div>
 
-if(!selected){
-return 1;
-}
-
-if(selected.value === "courier"){
-return 2;
-}
-
-if(selected.value === "whatsapp"){
-return 0;
-}
-
-return 1;
-}
+</div>
 
 
-function updateTotals(){
+<!-- =========================
+طريقة التوصيل
+========================== -->
 
-const subtotal =
-demoCart.reduce(
-(sum,item)=>
-sum +
-safeNumber(item.product.price) *
-item.qty,
-0
-);
-
-const fee =
-deliveryFee();
-
-$("subtotal").textContent =
-money(subtotal);
-
-$("deliveryFee").textContent =
-money(fee);
-
-$("total").textContent =
-money(subtotal + fee);
-
-}
+<div class="checkout-title">
+طريقة التوصيل
+</div>
 
 
-document
-.querySelectorAll(
-'input[name="demoDelivery"]'
-)
-.forEach(input=>{
+<div
+class="delivery-grid"
+id="deliveryGrid"
+>
 
-input.addEventListener(
-"change",
-updateTotals
-);
+<!-- المكتب -->
 
-});
+<div
+class="delivery-card selected"
+id="deliveryOffice"
+>
 
+<div>
 
-/* =========================
-فتح / إغلاق السلة
-========================= */
+<div class="delivery-name">
+المكتب
+</div>
 
-function openCart(){
+<div class="delivery-price">
+1.000 ر.ع
+</div>
 
-$("cart")
-.classList.add("open");
+</div>
 
-$("cartOverlay")
-.classList.add("show");
-
-document.body.style.overflow =
-"hidden";
-
-}
+</div>
 
 
-function closeCart(){
+<!-- المندوب -->
 
-$("cart")
-.classList.remove("open");
+<div
+class="delivery-card"
+id="deliveryCourier"
+>
 
-$("cartOverlay")
-.classList.remove("show");
+<div>
 
-document.body.style.overflow =
-"";
+<div class="delivery-name">
+مندوب
+</div>
 
-}
+<div class="delivery-price">
+2.000 ر.ع
+</div>
 
+</div>
 
-$("cartButton").onclick =
-openCart;
-
-$("closeCartButton").onclick =
-closeCart;
-
-$("cartOverlay").onclick =
-closeCart;
+</div>
 
 
-/* =========================
-زر التسوق
-========================= */
+<!-- التفاهم في واتساب -->
 
-$("shopButton").onclick = ()=>{
+<div
+class="delivery-card"
+id="deliveryWhatsApp"
+>
 
-$("shop")
-.scrollIntoView({
-behavior:"smooth"
-});
+<div>
 
-};
+<div class="delivery-name">
+يتم التفاهم في الواتساب
+</div>
+
+<div class="delivery-price">
+بدون رسوم إضافية
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="delivery-explanation"
+id="deliveryExplanation"
+>
+يتم احتساب رسوم الاستلام
+تلقائياً وإضافتها إلى إجمالي الطلب.
+</div>
+
+
+<!-- =========================
+بيانات العميل
+========================== -->
+
+<div
+class="checkout-title"
+id="customerDataTitle"
+>
+بياناتك
+</div>
+
+
+<div class="form-field">
+
+<label>
+الاسم *
+</label>
+
+<div
+class="fake-input"
+id="customerNameField"
+>
+اكتبي اسمك
+</div>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+رقم الهاتف *
+</label>
+
+<div
+class="fake-input"
+id="customerPhoneField"
+>
+رقم التواصل
+</div>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+المحافظة *
+</label>
+
+<div
+class="fake-input"
+id="customerGovernorateField"
+>
+اختاري المحافظة
+</div>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+الولاية *
+</label>
+
+<div
+class="fake-input"
+id="customerWilayaField"
+>
+اختاري الولاية
+</div>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+تفاصيل العنوان
+</label>
+
+<div
+class="fake-input fake-textarea"
+id="customerAddressField"
+>
+اكتبي تفاصيل العنوان بشكل واضح
+</div>
+
+</div>
+
+
+<!-- =========================
+الزاجل
+========================== -->
+
+<div
+class="checkout-title"
+id="zajelTitle"
+>
+الزاجل 💌
+</div>
+
+
+<div class="form-field">
+
+<label>
+هل تريده كزاجل للشخص؟
+</label>
+
+<div class="zajel-question">
+
+<div
+class="zajel-choice"
+id="zajelNo"
+>
+لا
+</div>
+
+<div
+class="zajel-choice"
+id="zajelYes"
+>
+نعم
+</div>
+
+</div>
+
+</div>
+
+
+<!-- تظهر تلقائياً في الجزء الثاني -->
+
+<div
+class="zajel-fields"
+id="zajelFields"
+>
+
+<div class="form-field">
+
+<label>
+اسم الشخص المستلم *
+</label>
+
+<div
+class="fake-input"
+id="recipientNameField"
+>
+اسم المستلم
+</div>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+رقم الشخص المستلم *
+</label>
+
+<div
+class="fake-input"
+id="recipientPhoneField"
+>
+رقم المستلم
+</div>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+محافظة المستلم *
+</label>
+
+<div
+class="fake-input"
+id="recipientGovernorateField"
+>
+اختاري المحافظة
+</div>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+ولاية المستلم *
+</label>
+
+<div
+class="fake-input"
+id="recipientWilayaField"
+>
+اختاري الولاية
+</div>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+تفاصيل عنوان المستلم
+</label>
+
+<div
+class="fake-input fake-textarea"
+id="recipientAddressField"
+>
+اكتبي عنوان الشخص المستلم
+</div>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+ما هي الرسالة التي تودين
+كتابتها في الزاجل؟
+</label>
+
+<div
+class="fake-input fake-textarea"
+id="zajelMessageField"
+>
+اكتبي رسالة الزاجل هنا...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+ملاحظات الطلب
+========================== -->
+
+<div
+class="checkout-title"
+id="notesTitle"
+>
+تفاصيل أخيرة
+</div>
+
+
+<div class="form-field">
+
+<label>
+ملاحظات الطلب
+</label>
+
+<div
+class="fake-input fake-textarea"
+id="notesField"
+>
+أي ملاحظة إضافية للطلب...
+</div>
+
+</div>
+
+
+<!-- =========================
+الدفع
+========================== -->
+
+<div
+class="payment-notice"
+id="paymentNotice"
+>
+يتم تثبيت الطلب بعد تحويل المبلغ
+والتأكد من استلامه.
+</div>
+
+
+<button
+class="send-order"
+id="sendOrderButton"
+type="button"
+>
+تأكيد وإرسال الطلب عبر واتساب
+</button>
+
+
+<div
+style="
+margin-top:10px;
+color:#87636c;
+font-size:9px;
+line-height:1.7;
+text-align:center;
+"
+>
+سيتم تجهيز رسالة مرتبة
+تحتوي على تفاصيل الطلب
+لفتحها في واتساب.
+</div>
+
+
+<div style="height:100px"></div>
+
+</aside>
+
+
+<!-- =============================
+واتساب - محاكاة العرض
+============================== -->
+
+<section
+class="whatsapp-screen"
+id="whatsappScreen"
+>
+
+<div class="wa-header">
+
+<div class="wa-back">
+‹
+</div>
+
+<div class="wa-avatar">
+R
+</div>
+
+<div>
+
+<div class="wa-name">
+Rimi
+</div>
+
+<div class="wa-status">
+حساب المتجر
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="wa-chat"
+id="waChat"
+>
+
+<div class="wa-date">
+اليوم
+</div>
+
+
+<div
+class="wa-message"
+id="waMessage"
+>
+
+🎀
+<strong>
+طلب جديد | Rimi
+</strong>
+
+<br><br>
+
+رقم الطلب:
+RIMI-DEMO-001
+
+<br><br>
+
+العميلة:
+سارة
+
+<br>
+
+الهاتف:
+9XXXXXXX
+
+<br>
+
+العنوان:
+مسقط - بوشر
+
+<br><br>
+
+🛍️
+<strong>
+الطلب:
+</strong>
+
+<br>
+
+اختيار Rimi المميز × 1
+
+<br>
+
+اللون:
+عنابي
+
+<br>
+
+المقاس:
+متوسط
+
+<br>
+
+السعر:
+8.500 ر.ع
+
+<br><br>
+
+🚚
+<strong>
+الاستلام:
+</strong>
+
+يتم التفاهم في الواتساب
+
+<br><br>
+
+💌
+<strong>
+زاجل:
+</strong>
+
+نعم
+
+<br>
+
+اسم المستلم:
+مريم
+
+<br>
+
+المحافظة / الولاية:
+مسقط / السيب
+
+<br>
+
+رسالة الزاجل:
+لكِ بكل حب ♡
+
+<br><br>
+
+ملاحظات:
+تغليف هدية
+
+<br><br>
+
+<strong>
+إجمالي المبلغ:
+8.500 ر.ع
+</strong>
+
+<br>
+
+الدفع ⏳:
+بانتظار التحويل
+
+<br><br>
+
+شكرًا لاختياركِ لنا ♡
+
+<span class="wa-time">
+الآن ✓✓
+</span>
+
+</div>
+
+</div>
+
+
+<div class="wa-input-bar">
+
+<div class="wa-fake-input">
+كتابة رسالة
+</div>
+
+<div class="wa-send">
+➤
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =============================
+شاشة النهاية
+============================== -->
+
+<section
+class="final-screen"
+id="finalScreen"
+>
+
+<div class="final-content">
+
+<div class="final-bow">
+🎀
+</div>
+
+<div class="final-logo">
+Rimi
+</div>
+
+<div class="final-heart">
+♡
+</div>
+
+<h2 class="final-title">
+من أجلكِ نختار أجمل التفاصيل
+</h2>
+
+<p class="final-copy">
+من اختيار المنتج،
+وحتى تجهيز طلبكِ وإرساله،
+صُممت تجربة Rimi
+لتكون واضحة، جميلة وسهلة.
+</p>
+
+<div class="final-tag">
+اكتشفي Rimi ♡
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =============================
+الشرح
+============================== -->
+
+<div
+class="guide"
+id="guide"
+>
+
+<div class="guide-card">
+
+<div class="guide-top">
+
+<div
+class="guide-icon"
+id="guideIcon"
+>
+🎀
+</div>
+
+<div>
+
+<div
+class="guide-title"
+id="guideTitle"
+>
+أهلاً بكِ في Rimi
+</div>
+
+<div
+class="guide-step"
+id="guideStep"
+>
+البداية
+</div>
+
+</div>
+
+</div>
+
+<p
+class="guide-text"
+id="guideText"
+>
+تبدأ جولتنا من هنا.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- =============================
+المؤشر
+============================== -->
+
+<div
+class="auto-cursor"
+id="autoCursor"
+>
+
+<svg
+class="cursor-svg"
+viewBox="0 0 32 40"
+xmlns="http://www.w3.org/2000/svg"
+>
+
+<path
+d="
+M4 2
+L27 23
+L17 25
+L22 36
+L16 39
+L11 28
+L4 35
+Z
+"
+fill="#ffffff"
+stroke="#541024"
+stroke-width="2"
+stroke-linejoin="round"
+/>
+
+</svg>
+
+</div>
+
+
+<!-- =============================
+التحديد التلقائي
+============================== -->
+
+<div
+class="auto-highlight"
+id="autoHighlight"
+></div>
+
+
+<!-- =============================
+Toast
+============================== -->
+
+<div
+class="demo-toast"
+id="demoToast"
+>
+تمت الإضافة إلى السلة ♡
+</div>
+
+
+</div>
+<!-- /screen -->
+
+</div>
+<!-- /phone -->
+
+</div>
+<!-- /ad-page -->
+
+
+<!-- =========================================================
+لا تضيفي </body> أو </html> هنا
+
+الجزء الثاني يوضع مباشرة تحت هذا السطر.
+الجزء الثاني يحتوي على:
+- المحرك التلقائي
+- تحريك المؤشر
+- التمرير التلقائي
+- شرح المنتج
+- اختيار اللون والمقاس
+- الإضافة للسلة
+- شرح المكتب
+- شرح المندوب
+- شرح "التفاهم في الواتساب"
+- تعبئة بيانات العميل تلقائياً
+- شرح الزاجل من البداية للنهاية
+- تعبئة بيانات المستلم
+- كتابة رسالة الزاجل
+- شرح التحويل والدفع
+- محاكاة الضغط على إرسال الطلب
+- فتح شاشة واتساب تلقائياً
+- عرض الرسالة النهائية
+- شاشة ختامية
+========================================================= -->
+
+<!-- PART 2 BELOW -->
+  <script>
+
+/* =========================================================
+RIMI AUTO EXPERIENCE
+PART 2 / 2
+المحرك التلقائي الكامل
+========================================================= */
+
+(() => {
+
+"use strict";
 
 
 /* =========================================================
-محرك الإعلان
+العناصر
 ========================================================= */
 
+const $ = id =>
+document.getElementById(id);
+
+const phone =
+$("phone");
+
+const store =
+$("store");
+
+const progressBar =
+$("progressBar");
+
+const demoStatusText =
+$("demoStatusText");
+
+const guide =
+$("guide");
+
+const guideIcon =
+$("guideIcon");
+
+const guideTitle =
+$("guideTitle");
+
+const guideStep =
+$("guideStep");
+
+const guideText =
+$("guideText");
+
 const cursor =
-$("adCursor");
+$("autoCursor");
 
-const note =
-$("adNote");
+const highlight =
+$("autoHighlight");
 
-const spotlight =
-$("spotlight");
+const toast =
+$("demoToast");
 
-const recordLabel =
-$("recordLabel");
+const productModal =
+$("productModal");
+
+const productModalCard =
+$("productModalCard");
+
+const cartPanel =
+$("cartPanel");
+
+const whatsappScreen =
+$("whatsappScreen");
+
+const waMessage =
+$("waMessage");
+
+const finalScreen =
+$("finalScreen");
 
 
-function centerOf(element){
+/* =========================================================
+إعدادات العرض
+========================================================= */
 
-const rect =
+const SPEED = 1;
+
+/*
+كلما قل الرقم صار العرض أسرع.
+1 = السرعة الأصلية.
+*/
+
+const wait = ms =>
+new Promise(
+resolve =>
+setTimeout(
+resolve,
+ms * SPEED
+)
+);
+
+
+/* =========================================================
+أدوات عامة
+========================================================= */
+
+function setProgress(value){
+
+progressBar.style.width =
+`${Math.max(
+0,
+Math.min(100,value)
+)}%`;
+
+}
+
+
+function status(text){
+
+demoStatusText.textContent =
+text;
+
+}
+
+
+function showGuide({
+icon="🎀",
+title="Rimi",
+step="",
+text=""
+}){
+
+guideIcon.textContent =
+icon;
+
+guideTitle.textContent =
+title;
+
+guideStep.textContent =
+step;
+
+guideText.textContent =
+text;
+
+guide.classList.add("show");
+
+}
+
+
+function hideGuide(){
+
+guide.classList.remove("show");
+
+}
+
+
+function showToast(text){
+
+toast.textContent =
+text;
+
+toast.classList.add("show");
+
+setTimeout(
+() =>
+toast.classList.remove("show"),
+1700
+);
+
+}
+
+
+/* =========================================================
+معرفة مكان العنصر بالنسبة لشاشة الهاتف
+========================================================= */
+
+function elementRect(element){
+
+if(!element){
+return null;
+}
+
+const elementBox =
 element.getBoundingClientRect();
 
-return {
-x:
-rect.left +
-rect.width / 2,
+const phoneBox =
+phone.getBoundingClientRect();
 
-y:
-rect.top +
-rect.height / 2
+return {
+
+left:
+elementBox.left -
+phoneBox.left,
+
+top:
+elementBox.top -
+phoneBox.top,
+
+width:
+elementBox.width,
+
+height:
+elementBox.height,
+
+centerX:
+elementBox.left -
+phoneBox.left +
+elementBox.width / 2,
+
+centerY:
+elementBox.top -
+phoneBox.top +
+elementBox.height / 2
+
 };
 
 }
 
 
-async function moveCursorTo(
+/* =========================================================
+المؤشر
+========================================================= */
+
+async function moveCursor(
 element,
-duration=1000
+offsetX=0,
+offsetY=0
 ){
 
 if(!element){
 return;
 }
 
-if(!visible(element)){
+const rect =
+elementRect(element);
 
-element.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
-await sleep(900);
+if(!rect){
+return;
 }
-
-const point =
-centerOf(element);
 
 cursor.classList.add("show");
 
-cursor.style.transitionDuration =
-duration + "ms";
-
 cursor.style.left =
-point.x + "px";
+`${rect.centerX + offsetX}px`;
 
 cursor.style.top =
-point.y + "px";
+`${rect.centerY + offsetY}px`;
 
-await sleep(duration + 120);
+await wait(900);
 
 }
 
 
-async function tap(element){
+async function cursorClick(){
+
+cursor.classList.add("click");
+
+await wait(180);
+
+cursor.classList.remove("click");
+
+await wait(260);
+
+}
+
+
+function hideCursor(){
+
+cursor.classList.remove("show");
+
+}
+
+
+/* =========================================================
+Highlight
+========================================================= */
+
+function highlightElement(
+element,
+padding=5
+){
 
 if(!element){
 return;
 }
 
-await moveCursorTo(
+const rect =
+elementRect(element);
+
+highlight.style.left =
+`${rect.left - padding}px`;
+
+highlight.style.top =
+`${rect.top - padding}px`;
+
+highlight.style.width =
+`${rect.width + padding * 2}px`;
+
+highlight.style.height =
+`${rect.height + padding * 2}px`;
+
+highlight.classList.add("show");
+
+}
+
+
+function removeHighlight(){
+
+highlight.classList.remove("show");
+
+}
+
+
+/* =========================================================
+تمرير المتجر
+========================================================= */
+
+async function scrollStoreTo(
 element,
-650
+offset=100
+){
+
+if(!element){
+return;
+}
+
+const storeBox =
+store.getBoundingClientRect();
+
+const box =
+element.getBoundingClientRect();
+
+const target =
+store.scrollTop +
+box.top -
+storeBox.top -
+offset;
+
+store.scrollTo({
+top:
+Math.max(0,target),
+behavior:"smooth"
+});
+
+await wait(1150);
+
+}
+
+
+/* =========================================================
+تمرير لوحة السلة
+========================================================= */
+
+async function scrollCartTo(
+element,
+offset=80
+){
+
+if(!element){
+return;
+}
+
+const panelBox =
+cartPanel.getBoundingClientRect();
+
+const box =
+element.getBoundingClientRect();
+
+const target =
+cartPanel.scrollTop +
+box.top -
+panelBox.top -
+offset;
+
+cartPanel.scrollTo({
+top:
+Math.max(0,target),
+behavior:"smooth"
+});
+
+await wait(1050);
+
+}
+
+
+/* =========================================================
+شرح عنصر
+========================================================= */
+
+async function explain({
+element=null,
+icon="🎀",
+title,
+step,
+text,
+duration=2500,
+highlightIt=true
+}){
+
+if(element){
+
+if(highlightIt){
+highlightElement(
+element,
+5
+);
+}
+
+await moveCursor(
+element
 );
 
-cursor.classList.add("tap");
-
-await sleep(170);
-
-cursor.classList.remove("tap");
-
-element.click();
-
-await sleep(650);
-
 }
 
-
-function showNote(
-text,
-element
-){
-
-if(!element){
-return;
-}
-
-const rect =
-element.getBoundingClientRect();
-
-note.textContent =
-text;
-
-note.style.left =
-Math.max(
-14,
-Math.min(
-window.innerWidth - 245,
-rect.left +
-rect.width / 2 -
-105
-)
-) + "px";
-
-note.style.top =
-Math.max(
-90,
-rect.top - 75
-) + "px";
-
-note.classList.add("show");
-
-}
-
-
-function hideNote(){
-
-note.classList.remove("show");
-
-}
-
-
-function highlight(element){
-
-if(!element){
-return;
-}
-
-const rect =
-element.getBoundingClientRect();
-
-spotlight.style.left =
-(rect.left - 7) + "px";
-
-spotlight.style.top =
-(rect.top - 7) + "px";
-
-spotlight.style.width =
-(rect.width + 14) + "px";
-
-spotlight.style.height =
-(rect.height + 14) + "px";
-
-spotlight.classList.add("show");
-
-}
-
-
-function clearHighlight(){
-
-spotlight.classList.remove("show");
-
-}
-
-
-/* =========================
-كتابة تلقائية
-========================= */
-
-async function typeDemo(
-element,
+showGuide({
+icon,
+title,
+step,
 text
+});
+
+await wait(duration);
+
+removeHighlight();
+
+}
+
+
+/* =========================================================
+ضغط تلقائي
+========================================================= */
+
+async function autoPress(
+element,
+callback=null
 ){
 
 if(!element){
 return;
 }
 
-element.value = "";
-
-await moveCursorTo(
+highlightElement(
 element,
-500
+5
+);
+
+await moveCursor(
+element
+);
+
+await cursorClick();
+
+if(callback){
+callback();
+}
+
+await wait(500);
+
+removeHighlight();
+
+}
+
+
+/* =========================================================
+كتابة تلقائية داخل الحقول الوهمية
+========================================================= */
+
+async function typeInto(
+element,
+text,
+delay=65
+){
+
+if(!element){
+return;
+}
+
+await moveCursor(
+element
+);
+
+highlightElement(
+element,
+4
+);
+
+element.textContent = "";
+
+element.classList.add(
+"filling",
+"typing"
 );
 
 for(
@@ -2903,479 +4324,1381 @@ i<text.length;
 i++
 ){
 
-element.value +=
+element.textContent +=
 text[i];
 
-await sleep(65);
+await wait(delay);
 
 }
 
-await sleep(300);
+element.classList.remove(
+"typing",
+"filling"
+);
+
+element.classList.add(
+"filled"
+);
+
+removeHighlight();
+
+await wait(300);
 
 }
 
 
-/* =========================
-اختيار خيار متاح
-========================= */
+/* =========================================================
+اختيار بطاقة توصيل
+========================================================= */
 
-function firstEnabledOption(
-containerId
+function selectDelivery(
+selected,
+explanation,
+fee,
+total
 ){
 
-return document.querySelector(
-`#${containerId} .option:not(:disabled)`
+[
+$("deliveryOffice"),
+$("deliveryCourier"),
+$("deliveryWhatsApp")
+].forEach(
+item =>
+item.classList.remove(
+"selected"
+)
+);
+
+selected.classList.add(
+"selected"
+);
+
+$("deliveryExplanation")
+.textContent =
+explanation;
+
+$("deliveryPrice")
+.textContent =
+fee;
+
+$("totalPrice")
+.textContent =
+total;
+
+}
+
+
+/* =========================================================
+بداية الجولة
+========================================================= */
+
+async function intro(){
+
+setProgress(3);
+
+status(
+"نبدأ الجولة"
+);
+
+store.scrollTop = 0;
+
+await wait(900);
+
+showGuide({
+icon:"🎀",
+title:"أهلاً بكِ في Rimi",
+step:"البداية",
+text:
+"خلال هذه الجولة بنشوف طريقة الطلب كاملة من اختيار المنتج إلى تجهيز الطلب للواتساب."
+});
+
+await wait(3200);
+
+hideGuide();
+
+await wait(500);
+
+}
+
+
+/* =========================================================
+شرح الصفحة الرئيسية
+========================================================= */
+
+async function explainHome(){
+
+setProgress(8);
+
+status(
+"واجهة Rimi"
+);
+
+await explain({
+
+element:
+$("heroSection"),
+
+icon:"♡",
+
+title:
+"واجهة Rimi",
+
+step:
+"1 من 12",
+
+text:
+"من الصفحة الرئيسية تقدرين تبدأين التسوق وتنتقلين مباشرة إلى المنتجات.",
+
+duration:2600
+
+});
+
+
+await explain({
+
+element:
+$("shopNowButton"),
+
+icon:"🛍️",
+
+title:
+"ابدئي التسوق",
+
+step:
+"1 من 12",
+
+text:
+"نختار «تسوّقي الآن» حتى ننتقل للمنتجات والأقسام.",
+
+duration:2200
+
+});
+
+
+await autoPress(
+$("shopNowButton")
+);
+
+hideGuide();
+
+await scrollStoreTo(
+$("productsSection"),
+65
 );
 
 }
 
 
-/* =========================
-تشغيل الفيلم
-========================= */
+/* =========================================================
+شرح المنتجات
+========================================================= */
 
-async function runAd(){
+async function explainProducts(){
 
-if(adStarted){
-return;
+setProgress(15);
+
+status(
+"اختيار المنتج"
+);
+
+showGuide({
+icon:"🔎",
+title:"تصفحي المنتجات",
+step:"2 من 12",
+text:
+"هنا تظهر المنتجات، ومعها البحث والأقسام حتى يكون الوصول للمنتج أسرع."
+});
+
+await wait(2800);
+
+hideGuide();
+
+const product =
+$("demoProduct");
+
+product.classList.add(
+"demo-focus"
+);
+
+await explain({
+
+element:product,
+
+icon:"🎁",
+
+title:
+"اختاري المنتج",
+
+step:
+"2 من 12",
+
+text:
+"كل منتج يوضح الاسم والسعر والتفاصيل، ويمكن فتحه قبل إضافته للسلة.",
+
+duration:2700
+
+});
+
+
+await explain({
+
+element:
+$("detailsButton"),
+
+icon:"✨",
+
+title:
+"تفاصيل المنتج",
+
+step:
+"2 من 12",
+
+text:
+"نفتح التفاصيل حتى نختار الخيارات المناسبة للمنتج.",
+
+duration:1900
+
+});
+
+
+await autoPress(
+$("detailsButton"),
+() =>
+productModal.classList.add(
+"show"
+)
+);
+
+product.classList.remove(
+"demo-focus"
+);
+
+await wait(900);
+
 }
 
-adStarted = true;
 
-window.scrollTo({
+/* =========================================================
+المنتج والخيارات
+========================================================= */
+
+async function explainProductOptions(){
+
+setProgress(22);
+
+status(
+"تفاصيل المنتج"
+);
+
+
+showGuide({
+icon:"🎁",
+title:"تفاصيل المنتج",
+step:"3 من 12",
+text:
+"داخل المنتج تشوفين الوصف والسعر، وإذا كان له ألوان أو مقاسات تختارين المناسب قبل إضافته."
+});
+
+await wait(2800);
+
+hideGuide();
+
+
+await explain({
+
+element:
+$("colorOption1"),
+
+icon:"🎨",
+
+title:
+"اختيار اللون",
+
+step:
+"3 من 12",
+
+text:
+"إذا كان المنتج متوفر بأكثر من لون، نختار اللون المطلوب.",
+
+duration:2100
+
+});
+
+
+await autoPress(
+$("colorOption1"),
+() =>
+$("colorOption1")
+.classList.add(
+"auto-selected"
+)
+);
+
+
+await explain({
+
+element:
+$("sizeOption1"),
+
+icon:"📏",
+
+title:
+"اختيار المقاس",
+
+step:
+"3 من 12",
+
+text:
+"وإذا كان للمنتج مقاسات، نحدد المقاس المناسب كذلك.",
+
+duration:2100
+
+});
+
+
+await autoPress(
+$("sizeOption1"),
+() =>
+$("sizeOption1")
+.classList.add(
+"auto-selected"
+)
+);
+
+
+await explain({
+
+element:
+$("modalAddButton"),
+
+icon:"🛍️",
+
+title:
+"إضافة للسلة",
+
+step:
+"3 من 12",
+
+text:
+"بعد التأكد من الخيارات نضيف المنتج إلى السلة.",
+
+duration:1900
+
+});
+
+
+await autoPress(
+$("modalAddButton"),
+() => {
+
+$("modalAddButton")
+.classList.add(
+"auto-pressed"
+);
+
+$("cartNumber")
+.textContent =
+"1";
+
+}
+);
+
+
+showToast(
+"تمت الإضافة إلى السلة ♡"
+);
+
+await wait(1400);
+
+$("modalAddButton")
+.classList.remove(
+"auto-pressed"
+);
+
+productModal.classList.remove(
+"show"
+);
+
+await wait(700);
+
+}
+
+
+/* =========================================================
+فتح السلة
+========================================================= */
+
+async function explainCart(){
+
+setProgress(30);
+
+status(
+"مراجعة السلة"
+);
+
+store.scrollTo({
 top:0,
-behavior:"instant"
+behavior:"smooth"
 });
 
-await sleep(1200);
-
-recordLabel.classList.add("show");
-
-await sleep(1000);
-
-/* 1 — تسوقي الآن */
-
-const shopButton =
-$("shopButton");
-
-showNote(
-"ابدئي من هنا ♡",
-shopButton
-);
-
-highlight(shopButton);
-
-await sleep(900);
-
-await tap(shopButton);
-
-hideNote();
-clearHighlight();
-
-await sleep(1300);
+await wait(900);
 
 
-/* 2 — الأقسام */
+await explain({
 
-const categoriesArea =
-$("categories");
+element:
+$("cartNavButton"),
 
-showNote(
-"اختاري القسم اللي يعجبك",
-categoriesArea
-);
+icon:"🛍️",
 
-highlight(categoriesArea);
+title:
+"السلة",
 
-await sleep(1300);
+step:
+"4 من 12",
 
-const adProduct =
-chooseAdProduct();
+text:
+"بعد إضافة المنتج نفتح السلة لمراجعة الطلب والخيارات قبل الإرسال.",
 
-if(!adProduct){
+duration:2200
 
-hideNote();
-clearHighlight();
-
-recordLabel.textContent =
-"أضيفي منتجات أولًا ♡";
-
-return;
-}
-
-const productCategory =
-adProduct.categoryId;
-
-if(productCategory){
-
-const categoryButton =
-document.querySelector(
-`[data-category="${CSS.escape(productCategory)}"]`
-);
-
-if(categoryButton){
-
-await tap(categoryButton);
-
-await sleep(900);
-
-}
-
-}
-
-hideNote();
-clearHighlight();
-
-
-/* 3 — المنتج */
-
-let productCard =
-document.querySelector(
-`[data-product-card="${CSS.escape(adProduct.id)}"]`
-);
-
-if(!productCard){
-
-activeCategory = "all";
-
-renderCategories();
-renderProducts();
-
-await sleep(500);
-
-productCard =
-document.querySelector(
-`[data-product-card="${CSS.escape(adProduct.id)}"]`
-);
-
-}
-
-if(productCard){
-
-productCard.scrollIntoView({
-behavior:"smooth",
-block:"center"
 });
 
-await sleep(1100);
 
-showNote(
-"اضغطي على المنتج وشوفي التفاصيل",
-productCard
+await autoPress(
+$("cartNavButton"),
+() =>
+cartPanel.classList.add(
+"show"
+)
 );
 
-highlight(productCard);
-
-await sleep(1200);
-
-const details =
-productCard.querySelector(
-".details-btn"
-);
-
-await tap(
-details ||
-productCard
-);
-
-hideNote();
-clearHighlight();
-
-await sleep(1200);
-
-}
+await wait(900);
 
 
-/* 4 — اختيار اللون */
+await explain({
 
-if(adProduct.hasColors){
+element:
+$("cartDemoItem"),
 
-const colorOption =
-firstEnabledOption(
-"modalColors"
-);
+icon:"✓",
 
-if(colorOption){
+title:
+"مراجعة المنتج",
 
-showNote(
-"اختاري اللون ♡",
-colorOption
-);
+step:
+"4 من 12",
 
-highlight(colorOption);
+text:
+"هنا تتأكدين من المنتج واللون والمقاس والكمية والسعر قبل إكمال البيانات.",
 
-await sleep(800);
+duration:2800
 
-await tap(colorOption);
-
-hideNote();
-clearHighlight();
-
-await sleep(700);
-
-}
-
-}
-
-
-/* 5 — اختيار المقاس */
-
-if(adProduct.hasSizes){
-
-const sizeOption =
-firstEnabledOption(
-"modalSizes"
-);
-
-if(sizeOption){
-
-showNote(
-"وبعدين المقاس",
-sizeOption
-);
-
-highlight(sizeOption);
-
-await sleep(800);
-
-await tap(sizeOption);
-
-hideNote();
-clearHighlight();
-
-await sleep(700);
-
-}
-
-}
-
-
-/* 6 — إضافة للسلة */
-
-const addButton =
-$("modalAddButton");
-
-if(!addButton.disabled){
-
-showNote(
-"وأضيفيه للسلة 🛍️",
-addButton
-);
-
-highlight(addButton);
-
-await sleep(900);
-
-await tap(addButton);
-
-hideNote();
-clearHighlight();
-
-await sleep(1300);
-
-}
-
-
-/* 7 — السلة */
-
-const cartItem =
-document.querySelector(
-".cart-item"
-);
-
-if(cartItem){
-
-showNote(
-"هنا تشوفين طلبك والإجمالي",
-cartItem
-);
-
-highlight(cartItem);
-
-await sleep(1500);
-
-hideNote();
-clearHighlight();
-
-}
-
-
-/* 8 — طريقة التوصيل */
-
-const courier =
-document.querySelector(
-'input[name="demoDelivery"][value="courier"]'
-);
-
-if(courier){
-
-const label =
-courier.closest(
-".delivery-option"
-);
-
-label.scrollIntoView({
-behavior:"smooth",
-block:"center"
 });
 
-await sleep(900);
 
-showNote(
-"اختاري طريقة التوصيل",
-label
-);
+await explain({
 
-highlight(label);
+element:
+$("summaryBox"),
 
-await sleep(850);
+icon:"🧾",
 
-await tap(label);
+title:
+"ملخص الطلب",
 
-hideNote();
-clearHighlight();
+step:
+"4 من 12",
 
-await sleep(650);
+text:
+"ويظهر ملخص السعر ورسوم الاستلام والإجمالي بشكل واضح.",
 
-}
+duration:2500
 
-
-/* 9 — بيانات الطلب */
-
-const nameInput =
-$("demoName");
-
-nameInput.scrollIntoView({
-behavior:"smooth",
-block:"center"
 });
 
-await sleep(800);
+}
 
-showNote(
-"وأكملي بياناتك",
-nameInput
+
+/* =========================================================
+شرح جميع طرق الاستلام
+========================================================= */
+
+async function explainDelivery(){
+
+setProgress(39);
+
+status(
+"خيارات الاستلام"
 );
 
-highlight(nameInput);
-
-await sleep(700);
-
-await typeDemo(
-nameInput,
-"ريم"
+await scrollCartTo(
+$("deliveryGrid"),
+85
 );
 
-await typeDemo(
-$("demoPhone"),
-"9XXXXXXX"
-);
 
-await typeDemo(
-$("demoGovernorate"),
-"مسقط"
-);
+/* المكتب */
 
-hideNote();
-clearHighlight();
+await explain({
 
-await sleep(800);
+element:
+$("deliveryOffice"),
 
+icon:"📍",
 
-/* 10 — تأكيد تجريبي */
+title:
+"الخيار الأول: المكتب",
 
-const orderButton =
-$("demoOrderButton");
+step:
+"5 من 12",
 
-orderButton.scrollIntoView({
-behavior:"smooth",
-block:"center"
+text:
+"إذا اخترتِ المكتب، يتم احتساب رسوم هذا الخيار وإضافتها إلى إجمالي الطلب.",
+
+duration:2900
+
 });
 
-await sleep(700);
 
-showNote(
-"وبكل سهولة… تأكيد الطلب ♡",
-orderButton
+await autoPress(
+$("deliveryOffice"),
+() =>
+selectDelivery(
+
+$("deliveryOffice"),
+
+"خيار المكتب: يتم احتساب رسوم الاستلام وإضافتها تلقائياً إلى إجمالي الطلب.",
+
+"1.000 ر.ع",
+
+"9.500 ر.ع"
+
+)
 );
 
-highlight(orderButton);
 
-await sleep(1100);
+await wait(800);
 
-await tap(orderButton);
+
+/* المندوب */
+
+await explain({
+
+element:
+$("deliveryCourier"),
+
+icon:"🚚",
+
+title:
+"الخيار الثاني: المندوب",
+
+step:
+"5 من 12",
+
+text:
+"وإذا اخترتِ المندوب، تتغير رسوم التوصيل والإجمالي تلقائياً حسب هذا الخيار.",
+
+duration:3000
+
+});
+
+
+await autoPress(
+$("deliveryCourier"),
+() =>
+selectDelivery(
+
+$("deliveryCourier"),
+
+"خيار المندوب: يتم توصيل الطلب، وتظهر رسوم المندوب ضمن إجمالي الطلب.",
+
+"2.000 ر.ع",
+
+"10.500 ر.ع"
+
+)
+);
+
+
+await wait(900);
+
+
+/* واتساب */
+
+await explain({
+
+element:
+$("deliveryWhatsApp"),
+
+icon:"💬",
+
+title:
+"الخيار الثالث: التفاهم في الواتساب",
+
+step:
+"5 من 12",
+
+text:
+"أما إذا كان الاستلام يحتاج تنسيقاً خاصاً، مثل رغبتك في الاستلام بنفسك، اختاري «يتم التفاهم في الواتساب» ليتم الاتفاق على التفاصيل مع المتجر.",
+
+duration:3900
+
+});
+
+
+await autoPress(
+$("deliveryWhatsApp"),
+() =>
+selectDelivery(
+
+$("deliveryWhatsApp"),
+
+"التفاهم في الواتساب: يتم الاتفاق مع المتجر على تفاصيل الاستلام المناسبة، مثل التنسيق للاستلام بنفسك.",
+
+"0.000 ر.ع",
+
+"8.500 ر.ع"
+
+)
+);
+
+
+await wait(1200);
 
 }
 
 
-/* =========================
-نهاية الإعلان
-========================= */
+/* =========================================================
+بيانات العميل
+========================================================= */
 
-$("demoOrderButton").onclick =
-async ()=>{
+async function explainCustomerData(){
 
-hideNote();
-clearHighlight();
+setProgress(49);
 
-cursor.classList.remove("show");
+status(
+"بيانات الطلب"
+);
 
-recordLabel.classList.remove("show");
-
-await sleep(450);
-
-$("endScreen")
-.classList.add("show");
-
-};
+await scrollCartTo(
+$("customerDataTitle"),
+65
+);
 
 
-/* =========================
-إعادة ضبط أولية
-========================= */
+showGuide({
+icon:"👤",
+title:"بياناتك",
+step:"6 من 12",
+text:
+"بعد اختيار طريقة الاستلام، ندخل بيانات التواصل والعنوان المطلوبة لإكمال الطلب."
+});
 
-function resetDemo(){
+await wait(2900);
 
-demoCart = [];
+hideGuide();
 
-selectedProduct = null;
-selectedColor = "";
-selectedSize = "";
 
-renderCart();
+await typeInto(
+$("customerNameField"),
+"سارة",
+100
+);
 
-$("demoName").value = "";
-$("demoPhone").value = "";
-$("demoGovernorate").value = "";
+
+await typeInto(
+$("customerPhoneField"),
+"9XXXXXXX",
+85
+);
+
+
+await typeInto(
+$("customerGovernorateField"),
+"مسقط",
+100
+);
+
+
+await typeInto(
+$("customerWilayaField"),
+"بوشر",
+100
+);
+
+
+await typeInto(
+$("customerAddressField"),
+"تفاصيل العنوان",
+65
+);
+
+
+showGuide({
+icon:"✓",
+title:"بيانات التواصل",
+step:"6 من 12",
+text:
+"بهذا تكون بيانات التواصل والموقع جاهزة ضمن الطلب."
+});
+
+await wait(2200);
+
+hideGuide();
 
 }
 
 
-/* =========================
-تشغيل Rimi Ad Studio
-========================= */
+/* =========================================================
+شرح الزاجل بالكامل
+========================================================= */
 
-async function start(){
+async function explainZajel(){
 
-resetDemo();
+setProgress(59);
 
-await Promise.all([
-loadCategories(),
-loadProducts()
-]);
+status(
+"ميزة الزاجل"
+);
+
+await scrollCartTo(
+$("zajelTitle"),
+70
+);
+
+
+showGuide({
+icon:"💌",
+title:"ميزة الزاجل",
+step:"7 من 12",
+text:
+"إذا كان الطلب لكِ، تختارين «لا». أما إذا أردتِ إرسال الطلب لشخص آخر كزاجل، اختاري «نعم»."
+});
+
+await wait(3400);
+
+hideGuide();
+
+
+/* أولاً توضيح لا */
+
+await explain({
+
+element:
+$("zajelNo"),
+
+icon:"♡",
+
+title:
+"إذا كان الطلب لكِ",
+
+step:
+"7 من 12",
+
+text:
+"اختيار «لا» يعني أن الطلب ليس زاجلاً، لذلك لا نحتاج بيانات شخص مستلم آخر.",
+
+duration:2800
+
+});
+
+
+await autoPress(
+$("zajelNo"),
+() => {
+
+$("zajelNo")
+.classList.add(
+"selected"
+);
+
+$("zajelYes")
+.classList.remove(
+"selected"
+);
+
+}
+);
+
+
+await wait(800);
+
+
+/* ثم نعم */
+
+await explain({
+
+element:
+$("zajelYes"),
+
+icon:"💝",
+
+title:
+"إذا كان زاجلاً",
+
+step:
+"7 من 12",
+
+text:
+"نختار «نعم» عندما يكون الطلب لشخص آخر، وهنا تظهر بيانات المستلم ورسالة الزاجل.",
+
+duration:3100
+
+});
+
+
+await autoPress(
+$("zajelYes"),
+() => {
+
+$("zajelYes")
+.classList.add(
+"selected"
+);
+
+$("zajelNo")
+.classList.remove(
+"selected"
+);
+
+$("zajelFields")
+.classList.add(
+"show"
+);
+
+}
+);
+
+
+await wait(1200);
+
+
+/* بيانات المستلم */
+
+await scrollCartTo(
+$("recipientNameField"),
+85
+);
+
+
+showGuide({
+icon:"🎁",
+title:"بيانات مستلم الزاجل",
+step:"7 من 12",
+text:
+"ندخل بيانات الشخص الذي سيستلم الزاجل حتى تكون معلومات الطلب واضحة."
+});
+
+await wait(2800);
+
+hideGuide();
+
+
+await typeInto(
+$("recipientNameField"),
+"مريم",
+100
+);
+
+
+await typeInto(
+$("recipientPhoneField"),
+"9XXXXXXX",
+80
+);
+
+
+await typeInto(
+$("recipientGovernorateField"),
+"مسقط",
+95
+);
+
+
+await typeInto(
+$("recipientWilayaField"),
+"السيب",
+95
+);
+
+
+await typeInto(
+$("recipientAddressField"),
+"تفاصيل عنوان المستلم",
+60
+);
+
+
+/* رسالة الزاجل */
+
+await scrollCartTo(
+$("zajelMessageField"),
+90
+);
+
+
+await explain({
+
+element:
+$("zajelMessageField"),
+
+icon:"💌",
+
+title:
+"رسالة الزاجل",
+
+step:
+"7 من 12",
+
+text:
+"ويمكن كتابة الرسالة التي تريدين إرفاقها مع الزاجل للشخص المستلم.",
+
+duration:2900
+
+});
+
+
+await typeInto(
+$("zajelMessageField"),
+"لكِ بكل حب ♡",
+100
+);
+
+
+await wait(700);
+
+}
+
+
+/* =========================================================
+الملاحظات
+========================================================= */
+
+async function explainNotes(){
+
+setProgress(70);
+
+status(
+"التفاصيل الأخيرة"
+);
+
+await scrollCartTo(
+$("notesTitle"),
+75
+);
+
+
+await explain({
+
+element:
+$("notesField"),
+
+icon:"📝",
+
+title:
+"ملاحظات الطلب",
+
+step:
+"8 من 12",
+
+text:
+"إذا عندك أي ملاحظة إضافية للطلب، تقدرين تكتبينها هنا قبل الإرسال.",
+
+duration:2700
+
+});
+
+
+await typeInto(
+$("notesField"),
+"تغليف هدية",
+100
+);
+
+}
+
+
+/* =========================================================
+شرح تثبيت الطلب والتحويل
+========================================================= */
+
+async function explainPayment(){
+
+setProgress(78);
+
+status(
+"تثبيت الطلب"
+);
+
+await scrollCartTo(
+$("paymentNotice"),
+90
+);
+
+
+await explain({
+
+element:
+$("paymentNotice"),
+
+icon:"✓",
+
+title:
+"تثبيت الطلب",
+
+step:
+"9 من 12",
+
+text:
+"قبل الإرسال يظهر التنبيه الخاص بتثبيت الطلب بعد تحويل المبلغ والتأكد من استلامه.",
+
+duration:3400
+
+});
+
+
+await wait(500);
+
+}
+
+
+/* =========================================================
+إرسال الطلب - محاكاة فقط
+========================================================= */
+
+async function explainSendOrder(){
+
+setProgress(85);
+
+status(
+"تجهيز الطلب"
+);
+
+
+await explain({
+
+element:
+$("sendOrderButton"),
+
+icon:"💬",
+
+title:
+"إرسال الطلب",
+
+step:
+"10 من 12",
+
+text:
+"بعد مراجعة كل شيء، يتم تجهيز تفاصيل الطلب في رسالة مرتبة للواتساب.",
+
+duration:3000
+
+});
+
+
+await moveCursor(
+$("sendOrderButton")
+);
+
+highlightElement(
+$("sendOrderButton"),
+5
+);
+
+await cursorClick();
+
+$("sendOrderButton")
+.classList.add(
+"auto-pressed"
+);
+
+await wait(400);
+
+removeHighlight();
+
+showToast(
+"جاري تجهيز رسالة الطلب..."
+);
+
+await wait(1800);
+
+$("sendOrderButton")
+.classList.remove(
+"auto-pressed"
+);
+
+hideGuide();
+
+hideCursor();
+
 
 /*
-نعطي الصور وقت بسيط للتحميل
-ثم يبدأ الإعلان تلقائيًا.
+مهم:
+لا يوجد window.open
+ولا إرسال حقيقي إلى واتساب.
+هذه شاشة محاكاة للإعلان فقط.
 */
 
-await sleep(1800);
+whatsappScreen.classList.add(
+"show"
+);
 
-runAd();
+await wait(1100);
 
 }
 
-start();
+
+/* =========================================================
+شرح رسالة واتساب
+========================================================= */
+
+async function explainWhatsApp(){
+
+setProgress(92);
+
+status(
+"رسالة واتساب"
+);
+
+showGuide({
+icon:"💬",
+title:"رسالة الطلب",
+step:"11 من 12",
+text:
+"هكذا تكون تفاصيل الطلب مرتبة في رسالة واحدة: بيانات العميل، المنتجات، طريقة الاستلام، الزاجل، الملاحظات والإجمالي."
+});
+
+await wait(3400);
+
+waMessage.classList.add(
+"show"
+);
+
+await wait(1200);
+
+
+const rect =
+elementRect(
+waMessage
+);
+
+if(rect){
+
+cursor.classList.add(
+"show"
+);
+
+cursor.style.left =
+`${Math.min(
+rect.left +
+rect.width -
+25,
+phone.clientWidth - 35
+)}px`;
+
+cursor.style.top =
+`${Math.min(
+rect.top + 100,
+phone.clientHeight - 180
+)}px`;
+
+}
+
+await wait(2500);
+
+
+showGuide({
+icon:"✓",
+title:"كل التفاصيل في مكان واحد",
+step:"11 من 12",
+text:
+"وبكذا يقدر المتجر مراجعة تفاصيل الطلب والتواصل مع العميلة بوضوح لإكمال الإجراء."
+});
+
+await wait(3200);
+
+hideGuide();
+
+hideCursor();
+
+}
+
+
+/* =========================================================
+النهاية
+========================================================= */
+
+async function finish(){
+
+setProgress(98);
+
+status(
+"اكتمل الشرح"
+);
+
+await wait(700);
+
+finalScreen.classList.add(
+"show"
+);
+
+setProgress(100);
+
+await wait(900);
+
+
+showGuide({
+icon:"🎀",
+title:"Rimi",
+step:"12 من 12",
+text:
+"من اختيار المنتج إلى تجهيز الطلب، كل الخطوات مرتبة لتكون تجربة التسوق أسهل وأوضح."
+});
+
+await wait(4000);
+
+hideGuide();
+
+}
+
+
+/* =========================================================
+تشغيل الجولة كاملة
+========================================================= */
+
+async function runRimiExperience(){
+
+try{
+
+/*
+لا يوجد أي event listener
+يحتاج من المشاهد الضغط.
+
+كل العرض أدناه يعمل تلقائياً.
+*/
+
+await intro();
+
+await explainHome();
+
+await explainProducts();
+
+await explainProductOptions();
+
+await explainCart();
+
+await explainDelivery();
+
+await explainCustomerData();
+
+await explainZajel();
+
+await explainNotes();
+
+await explainPayment();
+
+await explainSendOrder();
+
+await explainWhatsApp();
+
+await finish();
+
+}
+
+catch(error){
+
+console.error(
+"Rimi Demo Error:",
+error
+);
+
+hideCursor();
+removeHighlight();
+
+showGuide({
+icon:"🎀",
+title:"Rimi",
+step:"",
+text:
+"تم إيقاف العرض التجريبي."
+});
+
+}
+
+}
+
+
+/* =========================================================
+منع التفاعل اليدوي
+========================================================= */
+
+/*
+المشاهد لا يحتاج يضغط على شيء.
+نمنع اللمس والنقر داخل العرض
+حتى لا يخرب تسلسل الفيديو.
+*/
+
+phone.addEventListener(
+"click",
+event => {
+
+event.preventDefault();
+event.stopPropagation();
+
+},
+true
+);
+
+
+phone.addEventListener(
+"touchstart",
+event => {
+
+event.preventDefault();
+
+},
+{
+passive:false
+}
+);
+
+
+phone.addEventListener(
+"touchmove",
+event => {
+
+event.preventDefault();
+
+},
+{
+passive:false
+}
+);
+
+
+/* =========================================================
+إعادة العرض تلقائياً عند إعادة تحميل الصفحة
+========================================================= */
+
+window.addEventListener(
+"load",
+async () => {
+
+/*
+نعطي المتصفح لحظة حتى يرسم
+كل عناصر الصفحة أولاً.
+*/
+
+await wait(1000);
+
+runRimiExperience();
+
+}
+);
+
+
+})();
 
 </script>
 
